@@ -27,7 +27,10 @@
 
 # Python stdlib imports
 import re
-from collections import namedtuple
+try:
+    from collections import namedtuple
+except ImportError:
+    from openpyxl2.shared.compat import namedtuple
 from openpyxl2.shared.compat import any
 
 

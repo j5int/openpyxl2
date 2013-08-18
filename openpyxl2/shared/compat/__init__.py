@@ -28,6 +28,7 @@ from openpyxl2.shared.compat.allany import all, any
 from openpyxl2.shared.compat.strings import basestring, unicode, StringIO, file, BytesIO
 from openpyxl2.shared.compat.numbers import long
 from openpyxl2.shared.compat.itertools import ifilter, xrange
+from openpyxl2.shared.compat.namedtuple import namedtuple
 
 try:
     from collections import OrderedDict
