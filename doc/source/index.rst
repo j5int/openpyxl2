@@ -1,4 +1,4 @@
-:mod:`openpyxl` - A Python library to read/write Excel 2007 xlsx/xlsm files
+:mod:`openpyxl2` - A Python library to read/write Excel 2007 xlsx/xlsm files
 =============================================================================
 
 .. module:: openpyxl

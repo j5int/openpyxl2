@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Setup script for packaging openpyxl.
+"""Setup script for packaging openpyxl2.
 
 Requires setuptools.
 
@@ -20,20 +20,20 @@ them here.
 """
 
 from setuptools import setup, Extension, find_packages
-import openpyxl  # to fetch __version__ etc
+import openpyxl2  # to fetch __version__ etc
 
-setup(name = 'openpyxl',
+setup(name = 'openpyxl2',
     packages = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     # metadata
-    version = openpyxl.__version__,
+    version = openpyxl2.__version__,
     description = "A Python library to read/write Excel 2007 xlsx/xlsm files",
-    long_description = 'openpyxl is a pure python reader and writer of '
+    long_description = 'openpyxl2 is a pure python reader and writer of '
         'Excel OpenXML files.  It is ported from the PHPExcel project',
-    author = openpyxl.__author__,
-    author_email = openpyxl.__author_email__,
-    url = openpyxl.__url__,
-    license = openpyxl.__license__,
-    download_url = openpyxl.__downloadUrl__,
+    author = openpyxl2.__author__,
+    author_email = openpyxl2.__author_email__,
+    url = openpyxl2.__url__,
+    license = openpyxl2.__license__,
+    download_url = openpyxl2.__downloadUrl__,
     test_suite = 'nose.collector',
     tests_require = ['nose'],
     classifiers = ['Development Status :: 4 - Beta',
