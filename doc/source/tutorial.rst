@@ -11,7 +11,7 @@ Just import the Worbook class and start using it ::
     >>> wb = Workbook()
 
 A workbook is always created with at least one worksheet. You can get it by
-using the :func:`openpyxl.workbook.Workbook.active` property ::
+using the :func:`openpyxl2[.]workbook.Workbook.active` property ::
 
     >>> ws = wb.active
 
@@ -22,7 +22,7 @@ using the :func:`openpyxl.workbook.Workbook.active` property ::
     first worksheet by using this method.
 
 You can also create new worksheets by using the
-:func:`openpyxl.workbook.Workbook.create_sheet` method ::
+:func:`openpyxl2[.]workbook.Workbook.create_sheet` method ::
 
     >>> ws1 = wb.create_sheet() # insert at the end (default)
     # or
@@ -35,7 +35,7 @@ You can change this name at any time with the `title` property::
     ws.title = "New Title"
 
 Once you gave a worksheet a name, you can get it as a key of the workbook or
-using the :func:`openpyxl.workbook.Workbook.get_sheet_by_name` method ::
+using the :func:`openpyxl2[.]workbook.Workbook.get_sheet_by_name` method ::
 
     >>> ws3 = wb["New Title"]
     >>> ws4 = wb.get_sheet_by_name("New Title")
@@ -43,7 +43,7 @@ using the :func:`openpyxl.workbook.Workbook.get_sheet_by_name` method ::
     True
 
 You can review the names of all worksheets of the workbook with the
-:func:`openpyxl.workbook.Workbook.get_sheet_names` method ::
+:func:`openpyxl2[.]workbook.Workbook.get_sheet_names` method ::
 
     >>> print wb.get_sheet_names()
     ['Sheet2', 'New Title', 'Sheet1']
@@ -71,7 +71,7 @@ Values can be directly assigned ::
 
     >>> ws['A4'] = 4
 
-There is also the :func:`openpyxl.worksheet.Worksheet.cell` method::
+There is also the :func:`openpyxl2[.]worksheet.Worksheet.cell` method::
 
     >>> c = ws.cell('A4')
 
@@ -107,7 +107,7 @@ Ranges of cells can be accessed using slicing ::
 
     >>> cell_range = ws['A1':'C2']
 
-You can also use the :func:`openpyxl.worksheet.Worksheet.range` method::
+You can also use the :func:`openpyxl2[.]worksheet.Worksheet.range` method::
 
     >>> ws.range('A1:C2')
     ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
@@ -124,7 +124,7 @@ You can also use the :func:`openpyxl.worksheet.Worksheet.range` method::
     <Cell Sheet1.C2>
 
 If you need to iterate through all the rows or columns of a file, you can instead use the
-:func:`openpyxl.worksheet.Worksheet.rows` property::
+:func:`openpyxl2[.]worksheet.Worksheet.rows` property::
 
     >>> ws = wb.active
     >>> ws.['C9'] = 'hello world'
@@ -139,7 +139,7 @@ If you need to iterate through all the rows or columns of a file, you can instea
     (<Cell Sheet.A8>, <Cell Sheet.B8>, <Cell Sheet.C8>),
     (<Cell Sheet.A9>, <Cell Sheet.B9>, <Cell Sheet.C9>))
 
-or the :func:`openpyxl.worksheet.Worksheet.columns` property::
+or the :func:`openpyxl2[.]worksheet.Worksheet.columns` property::
 
     >>> ws.columns
     ((<Cell Sheet.A1>,
@@ -166,7 +166,7 @@ or the :func:`openpyxl.worksheet.Worksheet.columns` property::
 Data storage
 ++++++++++++
 
-Once we have a :class:`openpyxl.cell.Cell`, we can assign it a value::
+Once we have a :class:`openpyxl2[.]cell.Cell`, we can assign it a value::
 
     >>> c.value = 'hello, world'
     >>> print c.value
@@ -195,8 +195,8 @@ Saving to a file
 ================
 
 The simplest and safest way to save a workbook is by using the
-:func:`openpyxl.workbook.Workbook.save()` method of the
-:class:`openpyxl.workbook.Workbook` object::
+:func:`openpyxl2[.]workbook.Workbook.save()` method of the
+:class:`openpyxl2[.]workbook.Workbook` object::
 
     >>> wb = Workbook()
     >>> wb.save('balances.xlsx')
@@ -217,7 +217,7 @@ The simplest and safest way to save a workbook is by using the
 Loading from a file
 ===================
 
-The same way as writing, you can import :func:`openpyxl.load_workbook` to
+The same way as writing, you can import :func:`openpyxl2[.]load_workbook` to
 open an existing workbook::
 
     >>> from openpyxl import load_workbook

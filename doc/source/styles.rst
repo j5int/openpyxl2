@@ -8,7 +8,7 @@ Styles are used to change the look of your data while displayed on screen.
 They are also used to determine the number format being used for a given cell
 or range of cells.
 
-Each :class:`openpyxl.styles.Style` object is composed of many sub-styles, each controlling a 
+Each :class:`openpyxl2[.]styles.Style` object is composed of many sub-styles, each controlling a 
 dimension of the styling.  
 
 This is what the default `Style` looks like::

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Setup script for packaging openpyxl.
+"""Setup script for packaging openpyxl2.
 
 Requires setuptools.
 
@@ -40,13 +40,13 @@ except IOError:
 __author__ = 'See AUTHORS'
 __license__ = 'MIT/Expat'
 __author_email__ = 'eric.gazoni@gmail.com'
-__maintainer_email__ = 'openpyxl-users@googlegroups.com'
-__url__ = 'http://openpyxl.readthedocs.org'
-__downloadUrl__ = "http://bitbucket.org/ericgazoni/openpyxl/downloads"
+__maintainer_email__ = 'openpyxl2-users@googlegroups.com'
+__url__ = 'http://openpyxl2.readthedocs.org'
+__downloadUrl__ = "http://bitbucket.org/ericgazoni/openpyxl2/downloads"
 
 
 def get_version():
-    f = open(os.path.join(here, 'openpyxl', '__init__.py'))
+    f = open(os.path.join(here, 'openpyxl2', '__init__.py'))
     version_file = f.read()
     f.close()
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
@@ -55,7 +55,7 @@ def get_version():
         return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
 
-setup(name = 'openpyxl',
+setup(name = 'openpyxl2',
     packages = find_packages(),
     # metadata
     version = get_version(),

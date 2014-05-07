@@ -66,7 +66,7 @@ statistics for code under development easier:
 Checking XML
 ++++++++++++
 
-Use the :code:`openpyxl.tests.helper.compare_xml` function to compare
+Use the :code:`openpyxl2[.]tests.helper.compare_xml` function to compare
 generated and expected fragments of XML.
 
 
@@ -155,7 +155,7 @@ Pympler
 
 As openpyxl does not include any internal memory benchmarking tools, the
 python *pympler* package was used during the testing of styles to profile the
-memory usage in :code:`openpyxl.reader.excel.read_style_table()`::
+memory usage in :code:`openpyxl2[.]reader.excel.read_style_table()`::
 
     # in openpyxl/reader/style.py
     from pympler import muppy, summary
