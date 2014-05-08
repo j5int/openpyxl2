@@ -23,6 +23,7 @@ from __future__ import absolute_import
 # @author: see AUTHORS file
 
 # Python stdlib imports
+from io import BytesIO
 import os
 import os.path
 import shutil
@@ -31,7 +32,6 @@ from sys import version_info
 from lxml.doctestcompare import LXMLOutputChecker, PARSE_XML
 
 # package imports
-from openpyxl2.compat import BytesIO
 from openpyxl2.xml.functions import ElementTree
 
 # constants

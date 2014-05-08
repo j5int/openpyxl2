@@ -24,11 +24,9 @@
 # Python stdlib imports
 import datetime
 from functools import partial
+from io import BytesIO
 
 import pytest
-
-# compatibility imports
-from openpyxl2.compat import BytesIO
 
 # package imports
 from openpyxl2.reader.excel import load_workbook
