@@ -23,6 +23,7 @@ from __future__ import absolute_import
 # @author: see AUTHORS file
 
 """Write the shared string table."""
+from io import BytesIO
 
 # compatibility imports
 from openpyxl2.compat import StringIO
