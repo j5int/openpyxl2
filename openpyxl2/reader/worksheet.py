@@ -38,7 +38,6 @@ from openpyxl2.xml.functions import safe_iterator
 from openpyxl2.styles import Color
 from openpyxl2.styles import colors
 from openpyxl2.formatting import ConditionalFormatting
-from openpyxl2.worksheet.page import PageMargins
 
 
 def _get_xml_iter(xml_source):
@@ -177,12 +176,10 @@ class WorkSheetParser(object):
             self.ws.page_setup.verticalCentered = vc
 
     def parse_margins(self, element):
-        margins = dict(element.items())
-        self.page_margins = PageMargins(**margins)
-        #for key in ("left", "right", "top", "bottom", "header", "footer"):
-            #value = element.get(key)
-            #if value is not None:
-                #setattr(self.ws.page_margins, key, float(value))
+        for key in ("left", "right", "top", "bottom", "header", "footer"):
+            value = element.get(key)
+            if value is not None:
+                setattr(self.ws.page_margins, key, float(value))
 
     def parse_page_setup(self, element):
         for key in ("orientation", "paperSize", "scale", "fitToPage",
