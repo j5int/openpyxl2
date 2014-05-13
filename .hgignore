@@ -1,9 +1,10 @@
+\.tox
 syntax: regexp
 \.pyc$
 .coverage
 org.eclipse
 \.pytest
-(build|dist|openpyxl.egg-info)
+(build|dist|openpyxl2.egg-info)
 \.(dot|svg|pf)
 \.noseids
 \.*\.swp

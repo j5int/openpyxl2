@@ -14,7 +14,7 @@ Adding a comment to a cell
 Comments have a text attribute and an author attribute, which must both be set
 
 >>> from openpyxl import Workbook
->>> from openpyxl.comments import Comment
+>>> from openpyxl2[.]comments import Comment
 >>> wb = Workbook()
 >>> ws = wb.active
 >>> comment = ws["A1"].comment
@@ -28,12 +28,13 @@ You cannot assign the same Comment object to two different cells. Doing so
 raises an AttributeError.
 
 >>> from openpyxl import Workbook
->>> from openpyxl.comments import Comment
+>>> from openpyxl2[.]comments import Comment
 >>> wb=Workbook()
 >>> ws=wb.active
 >>> comment = Comment("Text", "Author")
 >>> ws["A1"].comment = comment
 >>> ws["B2"].comment = comment
+Traceback (most recent call last):
 AttributeError: Comment already assigned to A1 in worksheet Sheet. Cannot
 assign a comment to more than one cell
 

@@ -1,48 +1,54 @@
-Module :mod:`openpyxl.workbook` -- Workbook
+Module :mod:`openpyxl2[.]workbook` -- Workbook
 =============================================================
 
 .. autoclass:: openpyxl.workbook.Workbook
        :members:
 
-Module :mod:`openpyxl.worksheet` -- Worksheet
+Module :mod:`openpyxl2[.]worksheet` -- Worksheet
 =============================================================
 
 .. autoclass:: openpyxl.worksheet.Worksheet
        :members:
 
-Module :mod:`openpyxl.reader.iter_worksheet` -- Optimized reader
-================================================================
+.. autoclass:: openpyxl.worksheet.AutoFilter
+       :members:
 
-.. autoclass:: openpyxl.reader.iter_worksheet.IterableWorksheet
+Module :mod:`.iter_worksheet` -- Optimized reader
+===================================================================
+
+.. autoclass:: openpyxl.worksheet.iter_worksheet.IterableWorksheet
     :members:
 
-.. autoclass:: openpyxl.reader.iter_worksheet.RawCell
+Module :mod:`openpyxl2[.]cell.read_only` -- ReadOnlyCell
+=====================================================
+
+.. autoclass:` openpyxl.cell.read_only.ReadOnlyCell
     :members:
 
-Module :mod:`openpyxl.cell` -- Worksheet Cell
+Module :mod:`openpyxl2[.]cell` -- Worksheet Cell
 =============================================================
 
 .. autoclass:: openpyxl.cell.Cell
        :members:
 
-Module :mod:`openpyxl.comments` -- Cell Comment
+Module :mod:`openpyxl2[.]comments` -- Cell Comment
 =============================================================
 
 .. autoclass:: openpyxl.comments.Comment
        :members:
 
-Module :mod:`openpyxl.reader.excel` -- Filesystem reader
+Module :mod:`openpyxl2[.]reader.excel` -- Filesystem reader
 =============================================================
 
 .. autofunction:: openpyxl.reader.excel.load_workbook
 
-Module :mod:`openpyxl.writer.dump_worksheet` -- Optimized writer
+Module :mod:`openpyxl2[.]writer.dump_worksheet` -- Optimized writer
 =================================================================
 
 .. autoclass:: openpyxl.writer.dump_worksheet.DumpWorksheet
     :members:
 
-Module :mod:`openpyxl.datavalidation`
+Module :mod:`openpyxl2[.]datavalidation`
 =====================================
 
 .. autoclass:: openpyxl.datavalidation.DataValidation
