@@ -1,5 +1,6 @@
 prune openpyxl2/tests
 prune openpyxl2/sample
+prune openpyxl2/benchmarks
 include LICENCE
 include AUTHORS
 include README
