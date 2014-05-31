@@ -59,6 +59,9 @@ from openpyxl2.writer.styles import StyleWriter
 from openpyxl2.writer.drawings import DrawingWriter, ShapeWriter
 from openpyxl2.writer.charts import ChartWriter
 from openpyxl2.writer.worksheet import write_worksheet, write_worksheet_rels
+from openpyxl2 import LXML
+if LXML is True:
+    from . lxml_worksheet import write_worksheet, write_rels as write_worksheet_rels
 from openpyxl2.writer.comments import CommentWriter
 
 
