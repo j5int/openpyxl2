@@ -16,7 +16,7 @@ from openpyxl2.writer.excel import (
     save_workbook,
     save_virtual_workbook,
     )
-from openpyxl2.writer.worksheet import write_worksheet, write_worksheet_rels
+from openpyxl2.writer.worksheet import write_worksheet
 
 from .. workbook import write_workbook, write_workbook_rels
 

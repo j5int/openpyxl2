@@ -1,30 +1,6 @@
 from __future__ import absolute_import
-from openpyxl2.comments.comments import Comment
-from openpyxl2.writer.comments import CommentWriter
-from openpyxl2.writer.worksheet import write_worksheet_rels, write_worksheet_cols, \
-    write_worksheet_format
 # Copyright (c) 2010-2014 openpyxl
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-#
-# @license: http://www.opensource.org/licenses/mit-license.php
-# @author: see AUTHORS file
+
 
 """Write worksheets to xml representations in an optimized way"""
 
@@ -33,8 +9,9 @@ import os
 from tempfile import NamedTemporaryFile
 
 from openpyxl2.compat import OrderedDict, unicode
-
+from openpyxl2.comments.comments import Comment
 from openpyxl2.cell import  get_column_letter, Cell, TIME_TYPES
+from openpyxl2.styles import Style, NumberFormat, DEFAULTS
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import (
@@ -59,7 +36,9 @@ from openpyxl2.exceptions import WorkbookAlreadySaved
 from openpyxl2.writer.excel import ExcelWriter
 from openpyxl2.writer.strings import write_string_table
 from openpyxl2.writer.styles import StyleWriter
-from openpyxl2.styles import Style, NumberFormat, DEFAULTS
+from openpyxl2.writer.comments import CommentWriter
+from .relations import write_rels
+from .worksheet import write_worksheet_cols, write_worksheet_format
 
 from openpyxl2.xml.constants import (ARC_SHARED_STRINGS, PACKAGE_WORKSHEETS)
 
@@ -355,7 +334,7 @@ class ExcelDumpWriter(ExcelWriter):
 
             # write comments
             if sheet._comments:
-                rels = write_worksheet_rels(sheet, drawing_id, comments_id)
+                rels = write_rels(sheet, drawing_id, comments_id)
                 archive.writestr(
                     PACKAGE_WORKSHEETS + '/_rels/sheet%d.xml.rels' % (i + 1),
                     tostring(rels)
