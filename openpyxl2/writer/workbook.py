@@ -54,6 +54,7 @@ from openpyxl2.xml.constants import (
 )
 from openpyxl2.xml.functions import tostring, fromstring
 from openpyxl2.date_time import datetime_to_W3CDTF
+from openpyxl2.worksheet import Worksheet
 from openpyxl2.workbook.named_range import NamedRange, NamedRangeContainingValue
 
 
@@ -241,7 +242,7 @@ def write_workbook(workbook):
             sheets, '{%s}sheet' % SHEET_MAIN_NS,
             {'name': sheet.title, 'sheetId': '%d' % (i + 1),
              '{%s}id' % REL_NS: 'rId%d' % (i + 1)})
-        if not sheet.sheet_state == sheet.SHEETSTATE_VISIBLE:
+        if not sheet.sheet_state == Worksheet.SHEETSTATE_VISIBLE:
             sheet_node.set('state', sheet.sheet_state)
 
     # Defined names
