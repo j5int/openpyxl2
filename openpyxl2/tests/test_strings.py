@@ -10,18 +10,6 @@ from openpyxl2.reader.strings import read_string_table
 from openpyxl2.tests.helper import compare_xml
 
 
-def test_create_string_table():
-    from openpyxl2.writer.strings import create_string_table
-
-    wb = Workbook()
-    ws = wb.create_sheet()
-    ws.cell('B12').value = 'hello'
-    ws.cell('B13').value = 'world'
-    ws.cell('D28').value = 'hello'
-    table = create_string_table(wb)
-    assert table == ['hello', 'world']
-
-
 def test_read_string_table(datadir):
     datadir.join('reader').chdir()
     src = 'sharedStrings.xml'
