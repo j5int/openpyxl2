@@ -16,10 +16,10 @@ def Worksheet(Workbook):
         data_only = False
 
 
-    from openpyxl2.styles import NumberFormat
+    from openpyxl2.styles import numbers
 
     class DummyStyle:
-        number_format = NumberFormat()
+        number_format = numbers.FORMAT_GENERAL
 
 
     class DummyWorksheet:
