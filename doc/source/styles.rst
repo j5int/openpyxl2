@@ -112,15 +112,15 @@ Keep this in mind when working with styles and you should be fine.
 
 Basic Font Colors
 -----------------
-::
+:: doctest
 
 >>> from openpyxl2[.]workbook import Workbook
->>> from openpyxl2[.]styles import Style, Color, Font
->>> from openpyxl2[.]colors import RED
+>>> from openpyxl2[.]styles import Style, Font
+>>> from openpyxl2[.]styles.colors import RED
 >>> wb = Workbook()
 >>> ws = wb.active
 >>> ws['A1'] = 'This is red'
->>> ws['A1'].styles = Style(font=Font(color=RED))
+>>> ws['A1'].style = Style(font=Font(color=RED))
 
 
 Edit Print Settings
