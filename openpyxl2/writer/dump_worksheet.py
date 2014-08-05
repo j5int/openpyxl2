@@ -4,35 +4,22 @@ from __future__ import absolute_import
 
 """Write worksheets to xml representations in an optimized way"""
 
-import datetime
 import fileinput
 import os
 from tempfile import NamedTemporaryFile
 
-from openpyxl2.compat import OrderedDict, unicode
-from openpyxl2.comments.comments import Comment
-from openpyxl2.cell import get_column_letter, Cell, TIME_TYPES
-from openpyxl2.styles import Style, DEFAULTS
+from openpyxl2.compat import OrderedDict
+from openpyxl2.cell import get_column_letter, Cell
 from openpyxl2.worksheet import Worksheet
 
-from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import (
     XMLGenerator,
     start_tag,
     end_tag,
     tag,
-    Element,
-    SubElement,
-    ConditionalElement,
     tostring
 )
-from openpyxl2.date_time import (
-    to_excel,
-    timedelta_to_days,
-    time_to_days
-)
 from openpyxl2.xml.constants import MAX_COLUMN, MAX_ROW, PACKAGE_XL
-from openpyxl2.compat import safe_string
 from openpyxl2.exceptions import WorkbookAlreadySaved
 from openpyxl2.writer.excel import ExcelWriter
 from openpyxl2.writer.strings import write_string_table
