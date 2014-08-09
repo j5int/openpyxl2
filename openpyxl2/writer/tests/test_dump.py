@@ -7,6 +7,8 @@ from openpyxl2.compat import file
 from openpyxl2.tests.helper import compare_xml
 
 from openpyxl2.collections import IndexedList
+from openpyxl2.workbook import CALENDAR_WINDOWS_1900
+from openpyxl2.styles import Style
 
 
 class DummyLocalData:
@@ -19,8 +21,10 @@ class DummyWorkbook:
     def __init__(self):
         self.shared_strings = IndexedList()
         self.shared_styles = IndexedList()
+        self.shared_styles.add(Style())
         self._local_data = DummyLocalData()
         self.encoding = "UTF-8"
+        self.excel_base_date = CALENDAR_WINDOWS_1900
 
     def get_sheet_names(self):
         return []
