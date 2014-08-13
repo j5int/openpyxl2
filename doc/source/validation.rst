@@ -7,7 +7,7 @@ You can add data validation to a workbook but currently cannot read existing dat
 Examples
 --------
 
-:: doctest
+.. :: doctest
 
 >>> from openpyxl import Workbook
 >>> from openpyxl2[.]datavalidation import DataValidation, ValidationType
