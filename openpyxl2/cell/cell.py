@@ -35,7 +35,6 @@ __docformat__ = "restructuredtext en"
 # Python stdlib imports
 import datetime
 import re
-import warnings
 
 from openpyxl2.compat import NUMERIC_TYPES
 from openpyxl2.compat import lru_cache, range
