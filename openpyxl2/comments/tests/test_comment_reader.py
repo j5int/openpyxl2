@@ -23,13 +23,14 @@
 
 
 from zipfile import ZipFile, ZIP_DEFLATED
-import os.path
 
 from openpyxl2.workbook import Workbook
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.reader import comments
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.xml.functions import fromstring
+
+import pytest
 
 def test_get_author_list():
     xml = """<?xml version="1.0" standalone="yes"?><comments
@@ -81,6 +82,7 @@ def test_comments_cell_association(datadir):
     assert wb['Sheet2'].cell(coordinate="A1").comment is None
     assert wb['Sheet1'].cell(coordinate="D1").comment.text == "Cuke:\nSecond Comment"
 
+@pytest.mark.xfail
 def test_comments_with_iterators(datadir):
     datadir.chdir()
     wb = load_workbook('comments.xlsx', use_iterators=True)

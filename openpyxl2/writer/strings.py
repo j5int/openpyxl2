@@ -26,9 +26,7 @@ from __future__ import absolute_import
 from io import BytesIO
 
 # package imports
-from openpyxl2.compat import itervalues
 from openpyxl2.xml.functions import start_tag, end_tag, tag, XMLGenerator
-from openpyxl2.collections import IndexedList
 
 
 def write_string_table(string_table):
