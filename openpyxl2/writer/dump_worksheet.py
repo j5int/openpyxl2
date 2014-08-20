@@ -23,8 +23,6 @@ from openpyxl2.xml.functions import (
 from openpyxl2.xml.constants import MAX_COLUMN, MAX_ROW, PACKAGE_XL
 from openpyxl2.exceptions import WorkbookAlreadySaved
 from openpyxl2.writer.excel import ExcelWriter
-from openpyxl2.writer.strings import write_string_table
-from openpyxl2.writer.styles import StyleWriter
 from openpyxl2.writer.comments import CommentWriter
 from .relations import write_rels
 from .worksheet import (
@@ -32,7 +30,7 @@ from .worksheet import (
     write_worksheet_cols,
     write_worksheet_format
 )
-from openpyxl2.xml.constants import (ARC_SHARED_STRINGS, PACKAGE_WORKSHEETS)
+from openpyxl2.xml.constants import PACKAGE_WORKSHEETS
 
 
 DESCRIPTORS_CACHE_SIZE = 50

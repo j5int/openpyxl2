@@ -37,7 +37,7 @@ from openpyxl2.units import (
     DEFAULT_COLUMN_WIDTH,
     DEFAULT_ROW_HEIGHT
 )
-from openpyxl2.styles import Style, DEFAULTS as DEFAULTS_STYLE
+from openpyxl2.styles import DEFAULTS as DEFAULTS_STYLE
 from openpyxl2.formatting import ConditionalFormatting
 from openpyxl2.workbook.named_range import NamedRangeContainingValue
 

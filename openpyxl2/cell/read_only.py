@@ -3,9 +3,10 @@ from __future__ import absolute_import
 
 
 from openpyxl2.compat import unicode
+
+from openpyxl2.cell import Cell
 from openpyxl2.date_time import from_excel
 from openpyxl2.styles import is_date_format, Style
-from .cell import Cell, get_column_letter
 
 
 class ReadOnlyCell(object):

@@ -4,7 +4,7 @@ from __future__ import absolute_import
 from io import BytesIO
 from inspect import isgenerator
 import os
-from lxml.etree import xmlfile, Element, SubElement, tostring
+from lxml.etree import xmlfile, Element, SubElement
 
 from openpyxl2.compat import safe_string
 from openpyxl2.cell import get_column_letter, Cell

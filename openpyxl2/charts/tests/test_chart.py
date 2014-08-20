@@ -75,7 +75,7 @@ def bar_chart(ten_row_sheet, BarChart, Series, Reference):
 
 from openpyxl2.writer.charts import BarChartWriter, BaseChartWriter
 from openpyxl2.xml.constants import CHART_NS
-from openpyxl2.xml.functions import Element, fromstring, safe_iterator
+from openpyxl2.xml.functions import Element
 
 from openpyxl2.tests.helper import get_xml, compare_xml
 from openpyxl2.tests.schema import chart_schema
@@ -184,7 +184,6 @@ class TestChartWriter(object):
         assert diff is None, diff
 
     def test_write_no_ascii(self, ten_row_sheet, Series, BarChart, Reference, root_xml):
-        from openpyxl2.writer.charts import ChartWriter
         ws = ten_row_sheet
         ws.append([b"D\xc3\xbcsseldorf"]*10)
         serie = Series(values=Reference(ws, (1,1), (1,10)),
