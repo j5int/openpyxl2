@@ -2,7 +2,9 @@ from __future__ import absolute_import
 # Copyright (c) 2010-2014 openpyxl
 
 from openpyxl2.collections import IndexedList
-from openpyxl2.descriptors import String
+from openpyxl2.descriptors import String, Strict
+from openpyxl2.xml.constants import SHEET_MAIN_NS
+from openpyxl2.xml.functions import fromstring, safe_iterator
 
 """Manage links to external Workbooks"""
 
@@ -18,17 +20,7 @@ class ExternalRelationship(object):
         self.TargetMode = TargetMode
 
 
-class ExternalLink(object):
-
-    """
-    Map the links to named ranges in an external workbook
-    """
-
-    def __init__(self):
-        self.names = IndexedList()
-
-
-class ExternalRange(object):
+class ExternalRange(Strict):
 
     """
     Map external named ranges
@@ -44,3 +36,11 @@ class ExternalRange(object):
         self.name = name
         self.refersTo = refersTo
         self.sheetId = sheetId
+
+
+def parse_names(xml):
+    tree = fromstring(xml)
+    book = tree.find('{%s}externalBook' % SHEET_MAIN_NS)
+    names = book.find('{%s}definedNames' % SHEET_MAIN_NS)
+    for __n in safe_iterator(names, '{%s}definedName' % SHEET_MAIN_NS):
+        yield ExternalRange(**dict(__n.attrib))
