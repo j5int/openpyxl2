@@ -1,12 +1,34 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2014 openpyxl
 
-from openpyxl2.collections import IndexedList
-from openpyxl2.descriptors import String, Strict, Sequence
+from openpyxl2.descriptors import String, Strict
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS, PKG_REL_NS
 from openpyxl2.xml.functions import fromstring, safe_iterator
 
 """Manage links to external Workbooks"""
+
+
+class ExternalBook(Strict):
+
+    """
+    Map the relationship of one workbook to another
+    """
+
+    Id = String()
+    Type = String()
+    Target = String()
+    TargetMode = String()
+
+    def __init__(self, Id, Type, Target, TargetMode):
+        self.Id = Id
+        self.Type = Type
+        self.Target = Target
+        self.TargetMode = TargetMode
+
+    def __iter__(self):
+        for attr in ('Id', 'Type', 'TargetMode', 'Target'):
+            value = getattr(self, attr)
+            yield attr, value
 
 
 class ExternalRange(Strict):
@@ -32,30 +54,6 @@ class ExternalRange(Strict):
             value = getattr(self, name, None)
             if value is not None:
                 yield attr, value
-
-
-class ExternalBook(Strict):
-
-    """
-    Map the relationship of one workbook to another
-    """
-
-    Id = String()
-    Type = String()
-    Target = String()
-    TargetMode = String()
-    links = Sequence(type=ExternalRange)
-
-    def __init__(self, Id, Type, Target, TargetMode):
-        self.Id = Id
-        self.Type = Type
-        self.Target = Target
-        self.TargetMode = TargetMode
-
-    def __iter__(self):
-        for attr in ('Id', 'Type', 'TargetMode', 'Target'):
-            value = getattr(self, attr)
-            yield attr, value
 
 
 def parse_books(xml):
