@@ -29,6 +29,7 @@ from openpyxl2.xml.constants import (
     ARC_STYLE,
     ARC_THEME,
     SHARED_STRINGS,
+    EXTERNAL_LINK,
 )
 
 from openpyxl2.workbook import Workbook, DocumentProperties
@@ -234,3 +235,6 @@ def _load_workbook(wb, archive, filename, read_only, keep_vba):
                 read_comments(new_ws, archive.read(comments_file))
 
     wb._named_ranges = list(read_named_ranges(archive.read(ARC_WORKBOOK), wb))
+
+    if EXTERNAL_LINK in cts:
+        pass
