@@ -3,6 +3,7 @@
 import pytest
 
 # package imports
+from openpyxl2.compat import safe_string
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.reader.style import read_style_table
 
@@ -17,6 +18,7 @@ from openpyxl2.styles import (
     Alignment
 )
 from openpyxl2.styles import borders
+from openpyxl2.xml.functions import Element
 
 
 @pytest.fixture
@@ -24,6 +26,21 @@ def StyleReader():
     from ..style import SharedStylesParser
     return SharedStylesParser
 
+
+@pytest.mark.parametrize("value, expected",
+                         [
+                         ('f', False),
+                         ('0', False),
+                         ('false', False),
+                         ('1', True),
+                         ('t', True),
+                         ('true', True),
+                         ('anyvalue', True),
+                         ])
+def test_bool_attrib(value, expected):
+    from .. style import bool_attrib
+    el = Element("root", value=value)
+    assert bool_attrib(el, "value") is expected
 
 def test_read_pattern_fill(StyleReader, datadir):
     datadir.chdir()
