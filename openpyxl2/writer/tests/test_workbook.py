@@ -11,7 +11,7 @@ from openpyxl2.tests.helper import compare_xml, get_xml
 
 # package
 from openpyxl2 import Workbook, load_workbook
-from openpyxl2.workbook.named_range import NamedRange
+from openpyxl2.workbook.names.named_range import NamedRange
 from openpyxl2.xml.functions import Element
 from .. excel import (
     save_workbook,
