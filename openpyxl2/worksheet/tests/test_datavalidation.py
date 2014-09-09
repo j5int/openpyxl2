@@ -24,7 +24,7 @@
 import pytest
 
 # package imports
-from openpyxl2.datavalidation import (
+from .. datavalidation import (
     collapse_cell_addresses,
     DataValidation,
     ValidationType
