@@ -5,7 +5,6 @@ import os.path
 
 import pytest
 
-from openpyxl2.tests.helper import DATADIR
 from openpyxl2.worksheet.iter_worksheet import read_dimension
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.compat import range, zip
@@ -54,15 +53,6 @@ def sample_workbook(datadir):
                        data_only=True)
     return wb
 
-
-class TestWorksheet(object):
-
-    workbook_name = os.path.join(DATADIR, 'genuine', 'empty.xlsx')
-
-    def _open_wb(self, data_only=False):
-        return load_workbook(filename=self.workbook_name,
-                             use_iterators=True,
-                             data_only=data_only)
 
 def test_getitem(sample_workbook):
     wb = sample_workbook
