@@ -12,8 +12,8 @@ from openpyxl2.formatting.rules import ColorScaleRule, CellIsRule, FormulaRule
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.reader.style import read_style_table
 from openpyxl2.xml.constants import ARC_STYLE
-from openpyxl2.xml.functions import XMLGenerator
-from openpyxl2.writer.worksheet import write_worksheet_conditional_formatting
+from openpyxl2.xml.functions import XMLGenerator, tostring
+from openpyxl2.writer.worksheet import write_conditional_formatting
 from openpyxl2.writer.styles import StyleWriter
 from openpyxl2.styles import Color, PatternFill, Font, Border, Side
 from openpyxl2.styles import borders, fills, colors
@@ -21,7 +21,7 @@ from openpyxl2.styles import borders, fills, colors
 # test imports
 import pytest
 from zipfile import ZIP_DEFLATED, ZipFile
-from openpyxl2.tests.helper import get_xml, compare_xml
+from openpyxl2.tests.helper import compare_xml
 from openpyxl2.collections import IndexedList
 
 
@@ -110,12 +110,10 @@ class TestConditionalFormatting(object):
         worksheet.conditional_formatting.add('C1:C10', {'type': 'expression', 'formula': ['ISBLANK(C1)'],
                                                         'stopIfTrue': '1', 'dxf': {}})
         worksheet.conditional_formatting.setDxfStyles(self.workbook)
-        temp_buffer = BytesIO()
-        doc = XMLGenerator(out=temp_buffer)
-        write_worksheet_conditional_formatting(doc, worksheet)
-        doc.endDocument()
-        xml = temp_buffer.getvalue()
-        temp_buffer.close()
+        cfs = write_conditional_formatting(worksheet)
+        xml = b""
+        for cf in cfs:
+            xml += tostring(cf)
 
         diff = compare_xml(xml, """
         <conditionalFormatting sqref="C1:C10">
@@ -153,12 +151,11 @@ class TestConditionalFormatting(object):
                                            [Color('FFFF7128'), Color('FFFFEF9C')]}}]}
         worksheet.conditional_formatting.update(rules)
 
-        temp_buffer = BytesIO()
-        doc = XMLGenerator(out=temp_buffer)
-        write_worksheet_conditional_formatting(doc, worksheet)
-        doc.endDocument()
-        xml = temp_buffer.getvalue()
-        temp_buffer.close()
+        cfs = write_conditional_formatting(worksheet)
+        xml = b""
+        for cf in cfs:
+            xml += tostring(cf)
+
         diff = compare_xml(xml, """
         <conditionalFormatting sqref="A1:A4">
           <cfRule type="colorScale" priority="1">
@@ -189,12 +186,11 @@ class TestConditionalFormatting(object):
         worksheet.conditional_formatting.setDxfStyles(self.workbook)
 
         # First, verify conditional formatting xml
-        temp_buffer = BytesIO()
-        doc = XMLGenerator(out=temp_buffer)
-        write_worksheet_conditional_formatting(doc, worksheet)
-        doc.endDocument()
-        xml = temp_buffer.getvalue()
-        temp_buffer.close()
+        cfs = write_conditional_formatting(worksheet)
+        xml = b""
+        for cf in cfs:
+            xml += tostring(cf)
+
         diff = compare_xml(xml, """
         <conditionalFormatting sqref="A1:A3">
           <cfRule dxfId="0" operator="equal" priority="1" type="cellIs">
@@ -207,7 +203,7 @@ class TestConditionalFormatting(object):
         # Second, verify conditional formatting dxf styles
         w = StyleWriter(self.workbook)
         w._write_dxfs()
-        xml = get_xml(w._root)
+        xml = tostring(w._root)
         diff = compare_xml(xml, """
         <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
           <dxfs count="1">
@@ -495,12 +491,11 @@ class TestFormulaRule(object):
         worksheet = WS()
         worksheet.conditional_formatting.add('C1:C10', FormulaRule(formula=['ISBLANK(C1)'], stopIfTrue=True))
         worksheet.conditional_formatting.setDxfStyles(self.workbook)
-        temp_buffer = BytesIO()
-        doc = XMLGenerator(out=temp_buffer)
-        write_worksheet_conditional_formatting(doc, worksheet)
-        doc.endDocument()
-        xml = temp_buffer.getvalue()
-        temp_buffer.close()
+
+        cfs = write_conditional_formatting(worksheet)
+        xml = b""
+        for cf in cfs:
+            xml += tostring(cf)
 
         diff = compare_xml(xml, """
         <conditionalFormatting sqref="C1:C10">
@@ -745,7 +740,7 @@ def test_parse_dxfs(datadir):
     # Verify that the dxf styles stay the same when they're written and read back in.
     w = StyleWriter(wb)
     w._write_dxfs()
-    write_xml = get_xml(w._root)
+    write_xml = tostring(w._root)
     read_style_prop = read_style_table(write_xml)
     assert len(read_style_prop[2]) == len(wb.style_properties['dxf_list'])
     for i, dxf in enumerate(read_style_prop[2]):
