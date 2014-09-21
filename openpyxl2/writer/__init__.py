@@ -25,9 +25,9 @@ from __future__ import absolute_import
 """Imports for the openpyxl.writer namespace."""
 
 # package imports
-from openpyxl2.writer import excel
-from openpyxl2.writer import strings
-from openpyxl2.writer import styles
-from openpyxl2.writer import theme
-from openpyxl2.writer import workbook
-from openpyxl2.writer import worksheet
+#from openpyxl.writer import excel
+#from openpyxl.writer import strings
+#from openpyxl.writer import styles
+#from openpyxl.writer import theme
+#from openpyxl.writer import workbook
+#from openpyxl.writer import worksheet

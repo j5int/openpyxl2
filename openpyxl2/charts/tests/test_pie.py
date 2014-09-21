@@ -1,4 +1,12 @@
+
+from openpyxl2.writer.charts import PieChartWriter
+from openpyxl2.xml.constants import CHART_NS
+from openpyxl2.xml.functions import safe_iterator, fromstring
+
 import pytest
+
+from openpyxl2.tests.helper import compare_xml
+from openpyxl2.tests.schema import chart_schema
 
 
 class TestPieChart:
@@ -19,13 +27,7 @@ def pie_chart(ws, Reference, Series, PieChart):
     chart.add_serie(series)
     return chart
 
-import os
-from openpyxl2.writer.charts import PieChartWriter
-from openpyxl2.xml.constants import CHART_NS
-from openpyxl2.xml.functions import safe_iterator, fromstring
-from openpyxl2.tests.schema import chart_schema
 
-from openpyxl2.tests.helper import get_xml, compare_xml
 
 class TestPieChartWriter(object):
 
