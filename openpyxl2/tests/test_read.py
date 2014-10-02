@@ -27,6 +27,7 @@
 from datetime import datetime
 from io import BytesIO
 from tempfile import NamedTemporaryFile
+from zipfile import ZipFile
 
 import pytest
 
@@ -40,8 +41,10 @@ from openpyxl2.workbook import Workbook
 from openpyxl2.styles import numbers, Style
 from openpyxl2.reader.worksheet import read_worksheet
 from openpyxl2.reader.excel import load_workbook
+from openpyxl2.reader.workbook import read_workbook_code_name
 from openpyxl2.exceptions import InvalidFileException
 from openpyxl2.date_time import CALENDAR_WINDOWS_1900, CALENDAR_MAC_1904
+from openpyxl2.xml.constants import ARC_WORKBOOK
 
 
 def test_read_standalone_worksheet(datadir):
@@ -116,7 +119,7 @@ def test_read_empty_file(datadir):
 def test_read_workbook_with_no_core_properties(datadir):
     from openpyxl2.workbook import DocumentProperties
     from openpyxl2.reader.excel import _load_workbook
-    from zipfile import ZipFile
+
     datadir.join('genuine').chdir()
     archive = ZipFile('empty_with_no_properties.xlsx')
     wb = Workbook()
@@ -327,6 +330,7 @@ def test_get_xml_iter():
     #4 zipfile
     from openpyxl2.reader.worksheet import _get_xml_iter
     from tempfile import TemporaryFile
+
     FUT = _get_xml_iter
     s = b""
     stream = FUT(s)
@@ -341,7 +345,6 @@ def test_get_xml_iter():
     assert stream == f
     f.close()
 
-    from zipfile import ZipFile
     t = TemporaryFile()
     z = ZipFile(t, mode="w")
     z.writestr("test", "whatever")
