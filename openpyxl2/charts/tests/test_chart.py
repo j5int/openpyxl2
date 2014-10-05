@@ -74,7 +74,7 @@ def bar_chart(ten_row_sheet, BarChart, Series, Reference):
     return chart
 
 
-from openpyxl2.writer.charts import BarChartWriter, BaseChartWriter
+from openpyxl2.charts.writer import BarChartWriter, BaseChartWriter
 from openpyxl2.xml.constants import CHART_NS
 from openpyxl2.xml.functions import Element, tostring
 

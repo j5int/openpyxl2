@@ -2,7 +2,7 @@ import pytest
 
 from openpyxl2.xml.functions import tostring
 from openpyxl2.xml.constants import CHART_NS
-from openpyxl2.writer.charts import ScatterChartWriter
+from openpyxl2.charts.writer import ScatterChartWriter
 
 from openpyxl2.tests.helper import compare_xml
 

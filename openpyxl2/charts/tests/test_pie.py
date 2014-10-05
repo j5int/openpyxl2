@@ -1,5 +1,5 @@
 
-from openpyxl2.writer.charts import PieChartWriter
+from openpyxl2.charts.writer import PieChartWriter
 from openpyxl2.xml.constants import CHART_NS
 from openpyxl2.xml.functions import safe_iterator, fromstring
 

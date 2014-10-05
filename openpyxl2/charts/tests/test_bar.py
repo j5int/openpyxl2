@@ -11,7 +11,7 @@ class TestBarChart:
 
 from openpyxl2.xml.functions import safe_iterator, fromstring
 from openpyxl2.xml.constants import CHART_NS
-from openpyxl2.writer.charts import BarChartWriter
+from openpyxl2.charts.writer import BarChartWriter
 
 from openpyxl2.tests.helper import compare_xml
 from openpyxl2.tests.schema import chart_schema
