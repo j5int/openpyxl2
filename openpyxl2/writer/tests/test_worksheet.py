@@ -770,7 +770,6 @@ def test_data_validation(worksheet):
 
 
 def test_vba(worksheet):
-    from openpyxl2.xml.functions import fromstring
     ws = worksheet
     ws.vba_code = {"codeName":"Sheet1"}
     ws.vba_controls = "rId2"
