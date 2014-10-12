@@ -5,7 +5,7 @@ from __future__ import absolute_import
 
 from openpyxl2.compat import safe_string
 from openpyxl2.descriptors import Strict, String, Bool, Typed
-from openpyxl2.styles.colors import Color
+from openpyxl2.styles.colors import ColorDescriptor
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import Element
 
@@ -23,7 +23,7 @@ class WorksheetProperties(Strict):
     syncVertical = Bool(allow_none=True)
     transitionEvaluation = Bool(allow_none=True)
     transitionEntry = Bool(allow_none=True)
-    tabColor = Color(allow_none=True)
+    tabColor = ColorDescriptor(allow_none=True)
     outlinePr = Typed(expected_type=Outline)
     pageSetUpPr = Typed(expected_type=PageSetup)
 
