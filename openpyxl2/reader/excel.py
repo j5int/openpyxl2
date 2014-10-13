@@ -34,11 +34,11 @@ from openpyxl2.xml.constants import (
 
 from openpyxl2.workbook import Workbook, DocumentProperties
 from openpyxl2.workbook.names.external import detect_external_links
+from openpyxl2.workbook.names.named_range import read_named_ranges
 from openpyxl2.reader.strings import read_string_table
 from openpyxl2.reader.style import read_style_table
 from openpyxl2.reader.workbook import (
     read_content_types,
-    read_named_ranges,
     read_properties_core,
     read_excel_base_date,
     detect_worksheets,
