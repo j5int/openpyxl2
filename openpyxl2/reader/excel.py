@@ -34,19 +34,19 @@ from openpyxl2.xml.constants import (
     XLTX,
 )
 
-from openpyxl2.workbook import Workbook, DocumentProperties
+from openpyxl2.workbook import Workbook
 from openpyxl2.workbook.names.external import detect_external_links
 from openpyxl2.workbook.names.named_range import read_named_ranges
 from openpyxl2.reader.strings import read_string_table
 from openpyxl2.reader.style import read_style_table
 from openpyxl2.reader.workbook import (
     read_content_types,
-    read_properties_core,
     read_excel_base_date,
     detect_worksheets,
     read_rels,
     read_workbook_code_name,
 )
+from openpyxl2.workbook.properties import read_properties, DocumentProperties
 from openpyxl2.reader.worksheet import read_worksheet
 from openpyxl2.reader.comments import read_comments, get_comments_file
 # Use exc_info for Python 2 compatibility with "except Exception[,/ as] e"
@@ -183,7 +183,7 @@ def _load_workbook(wb, archive, filename, read_only, keep_vba):
 
     # get workbook-level information
     try:
-        wb.properties = read_properties_core(archive.read(ARC_CORE))
+        wb.properties = read_properties(archive.read(ARC_CORE))
     except KeyError:
         wb.properties = DocumentProperties()
     wb._read_workbook_settings(archive.read(ARC_WORKBOOK))
