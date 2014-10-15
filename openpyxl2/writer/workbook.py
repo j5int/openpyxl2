@@ -38,25 +38,7 @@ from openpyxl2.xml.constants import (
 from openpyxl2.xml.functions import tostring, fromstring
 from openpyxl2.date_time import datetime_to_W3CDTF
 from openpyxl2.worksheet import Worksheet
-
-
-def write_properties_core(properties):
-    """Write the core properties to xml."""
-    root = Element('{%s}coreProperties' % COREPROPS_NS)
-    SubElement(root, '{%s}creator' % DCORE_NS).text = properties.creator
-    SubElement(root, '{%s}lastModifiedBy' % COREPROPS_NS).text = properties.last_modified_by
-    SubElement(root, '{%s}created' % DCTERMS_NS,
-               {'{%s}type' % XSI_NS: '%s:W3CDTF' % DCTERMS_PREFIX}).text = \
-                   datetime_to_W3CDTF(properties.created)
-    SubElement(root, '{%s}modified' % DCTERMS_NS,
-               {'{%s}type' % XSI_NS: '%s:W3CDTF' % DCTERMS_PREFIX}).text = \
-                   datetime_to_W3CDTF(properties.modified)
-    SubElement(root, '{%s}title' % DCORE_NS).text = properties.title
-    SubElement(root, '{%s}description' % DCORE_NS).text = properties.description
-    SubElement(root, '{%s}subject' % DCORE_NS).text = properties.subject
-    SubElement(root, '{%s}keywords' % COREPROPS_NS).text = properties.keywords
-    SubElement(root, '{%s}category' % COREPROPS_NS).text = properties.category
-    return tostring(root)
+from openpyxl2.workbook.properties import write_properties
 
 
 from openpyxl2.xml.constants import (

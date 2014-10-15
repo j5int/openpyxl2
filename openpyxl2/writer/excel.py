@@ -52,9 +52,9 @@ from openpyxl2.writer.workbook import (
     write_root_rels,
     write_workbook_rels,
     write_properties_app,
-    write_properties_core,
     write_workbook
     )
+from openpyxl2.workbook.properties import write_properties
 from openpyxl2.writer.theme import write_theme
 from openpyxl2.writer.styles import StyleWriter
 from openpyxl2.writer.drawings import DrawingWriter, ShapeWriter
@@ -88,7 +88,7 @@ class ExcelWriter(object):
         archive.writestr(ARC_ROOT_RELS, write_root_rels(self.workbook))
         archive.writestr(ARC_WORKBOOK_RELS, write_workbook_rels(self.workbook))
         archive.writestr(ARC_APP, write_properties_app(self.workbook))
-        archive.writestr(ARC_CORE, write_properties_core(self.workbook.properties))
+        archive.writestr(ARC_CORE, write_properties(self.workbook.properties))
         if self.workbook.loaded_theme:
             archive.writestr(ARC_THEME, self.workbook.loaded_theme)
         else:
