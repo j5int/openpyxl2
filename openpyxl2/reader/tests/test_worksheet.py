@@ -2,12 +2,56 @@
 
 import pytest
 
+from io import BytesIO
+from zipfile import ZipFile
+
 from lxml.etree import iterparse, fromstring
 
+from openpyxl2.exceptions import InvalidFileException
+from openpyxl2 import load_workbook
+from openpyxl2.compat import unicode
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.cell import Cell
 from openpyxl2.collections import IndexedList
 from openpyxl2.styles import Style
+
+
+def test_get_xml_iter():
+    #1 file object
+    #2 stream (file-like)
+    #3 string
+    #4 zipfile
+    from openpyxl2.reader.worksheet import _get_xml_iter
+    from tempfile import TemporaryFile
+
+    FUT = _get_xml_iter
+    s = b""
+    stream = FUT(s)
+    assert isinstance(stream, BytesIO), type(stream)
+
+    u = unicode(s)
+    stream = FUT(u)
+    assert isinstance(stream, BytesIO), type(stream)
+
+    f = TemporaryFile(mode='rb+', prefix='openpyxl.', suffix='.unpack.temp')
+    stream = FUT(f)
+    assert stream == f
+    f.close()
+
+    t = TemporaryFile()
+    z = ZipFile(t, mode="w")
+    z.writestr("test", "whatever")
+    stream = FUT(z.open("test"))
+    assert hasattr(stream, "read")
+    # z.close()
+    try:
+        z.close()
+    except IOError:
+        # you can't just close zipfiles in Windows
+        if z.fp is not None:
+            z.fp.close() # python 2.6
+        else:
+            z.close() # python 2.7
 
 
 @pytest.fixture
@@ -311,3 +355,9 @@ def test_data_validation(Worksheet, WorkSheetParser, datadir):
     dvs = ws._data_validations
     assert len(dvs) == 1
 
+
+def test_read_autofilter(datadir):
+    datadir.chdir()
+    wb = load_workbook("bug275.xlsx")
+    ws = wb.active
+    assert ws.auto_filter.ref == 'A1:B6'
