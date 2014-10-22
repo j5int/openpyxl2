@@ -25,6 +25,7 @@ from __future__ import absolute_import
 
 from openpyxl2.compat import OrderedDict, safe_string
 from openpyxl2.descriptors import Strict, Float
+from openpyxl2.compat import deprecated
 
 
 class PageSetup(object):
@@ -67,6 +68,10 @@ class PageSetup(object):
                 optionsGroup[options_name] = '1'
 
         return optionsGroup
+    
+    @deprecated('this property has to be called through worksheet.sheet_properties.pageSetUpPr.fitToPage')
+    def fitToPage(self):
+        pass
 
 
 class PageMargins(Strict):
