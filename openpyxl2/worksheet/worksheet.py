@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2014 openpyxl2
+# Copyright (c) 2010-2014 openpyxl
 
 """Worksheet is the 2nd-level container in Excel."""
 
@@ -19,15 +19,16 @@ from openpyxl2.compat import (
 )
 
 # package imports
-import openpyxl2.cell
-from openpyxl2.cell import (
+from openpyxl2.utils import (
     coordinate_from_string,
     COORD_RE,
     ABSOLUTE_RE,
     column_index_from_string,
     get_column_letter,
-    Cell
+    range_boundaries,
+    cells_from_range,
 )
+from openpyxl2.cell import Cell
 from openpyxl2.exceptions import (
     SheetTitleException,
     InsufficientCoordinatesException,
@@ -63,43 +64,12 @@ class SheetView(object):
     pass
 
 
-def range_boundaries(range_string):
-    """
-    Convert a range string into a tuple of boundaries:
-    (min_col, min_row, max_col, max_row)
-    Cell coordinates will be converted into a range with the cell at both end
-    """
-    m = ABSOLUTE_RE.match(range_string)
-    min_col, min_row, sep, max_col, max_row = m.groups()
-    min_col = column_index_from_string(min_col)
-    min_row = int(min_row)
-
-    if max_col is None or max_row is None:
-        max_col = min_col
-        max_row = min_row
-    else:
-        max_col = column_index_from_string(max_col)
-        max_row = int(max_row)
-
-    return min_col, min_row, max_col, max_row
-
-
-def cells_from_range(range_string):
-    """
-    Get individual addresses for every cell in a range.
-    Yields one row at a time.
-    """
-    min_col, min_row, max_col, max_row = range_boundaries(range_string)
-    for row in range(min_row, max_row+1):
-        yield tuple('%s%d' % (get_column_letter(col), row)
-                    for col in range(min_col, max_col+1))
-
 
 class Worksheet(object):
     """Represents a worksheet.
 
     Do not create worksheets yourself,
-    use :func:`openpyxl22.workbook.Workbook.create_sheet` instead
+    use :func:`openpyxl2.workbook.Workbook.create_sheet` instead
 
     """
     repr_format = unicode('<Worksheet "%s">')
@@ -243,7 +213,7 @@ class Worksheet(object):
 
     @property
     def auto_filter(self):
-        """Return :class:`~openpyxl2.worksheet.AutoFilter` object.
+        """Return :class:`~openpyxl.worksheet.AutoFilter` object.
 
         `auto_filter` attribute stores/returns string until 1.8. You should change your code like ``ws.auto_filter.ref = "A1:A3"``.
 
@@ -300,7 +270,7 @@ class Worksheet(object):
 
         :raise: InsufficientCoordinatesException when coordinate or (row and column) are not given
 
-        :rtype: :class:`openpyxl22.cell.Cell`
+        :rtype: :class:`openpyxl2.cell.Cell`
 
         """
         if coordinate is None:
@@ -319,7 +289,7 @@ class Worksheet(object):
 
         if not coordinate in self._cells:
             column, row = coordinate_from_string(coordinate)
-            new_cell = openpyxl2.cell.Cell(self, column, row)
+            new_cell = Cell(self, column, row)
             self._cells[coordinate] = new_cell
             if column not in self.column_dimensions:
                 self.column_dimensions[column] = ColumnDimension(column, worksheet=self)
@@ -458,7 +428,7 @@ class Worksheet(object):
         :param range_string: `named range` name
         :type range_string: string
 
-        :rtype: tuples of tuples of :class:`openpyxl22.cell.Cell
+        :rtype: tuples of tuples of :class:`openpyxl2.cell.Cell
         """
         named_range = self._parent.get_named_range(range_string)
         if named_range is None:
@@ -499,7 +469,7 @@ class Worksheet(object):
         :param column: number of columns to offset
         :type column: int
 
-        :rtype: tuples of tuples of :class:`openpyxl22.cell.Cell`
+        :rtype: tuples of tuples of :class:`openpyxl2.cell.Cell`
 
         """
         _rs = range_string.upper()

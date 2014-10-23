@@ -14,13 +14,13 @@ from openpyxl2.xml.functions import iterparse
 
 # package
 from openpyxl2.worksheet import Worksheet
-from openpyxl2.cell import (
+from openpyxl2.utils import (
     ABSOLUTE_RE,
     coordinate_from_string,
     column_index_from_string,
     get_column_letter,
-    Cell
 )
+from openpyxl2.cell import Cell
 from openpyxl2.cell.read_only import ReadOnlyCell, EMPTY_CELL
 from openpyxl2.xml.functions import safe_iterator
 from openpyxl2.xml.constants import SHEET_MAIN_NS
