@@ -1,6 +1,7 @@
 prune openpyxl2/tests
 prune openpyxl2/sample
 prune openpyxl2/benchmarks
+prune openpyxl2/classify
 include LICENCE.rst
 include AUTHORS.rst
 include README.rst
