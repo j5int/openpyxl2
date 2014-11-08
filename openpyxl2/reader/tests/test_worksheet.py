@@ -12,7 +12,7 @@ from openpyxl2 import load_workbook
 from openpyxl2.compat import unicode
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.cell import Cell
-from openpyxl2.collections import IndexedList
+from openpyxl2.utils.collections import IndexedList
 from openpyxl2.styles import Style
 
 

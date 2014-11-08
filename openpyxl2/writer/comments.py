@@ -22,7 +22,7 @@ from __future__ import absolute_import
 # @license: http://www.opensource.org/licenses/mit-license.php
 # @author: see AUTHORS file
 
-from openpyxl2.collections import IndexedList
+from openpyxl2.utils.collections import IndexedList
 from openpyxl2.compat import iteritems
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import Element, SubElement, tostring
