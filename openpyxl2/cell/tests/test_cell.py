@@ -9,17 +9,10 @@ import pytest
 
 # package imports
 from openpyxl2.collections import IndexedList
-from openpyxl2.exceptions import (
-    CellCoordinatesException,
-    )
+
 from openpyxl2.date_time import CALENDAR_WINDOWS_1900
-from openpyxl2.cell import (
-    column_index_from_string,
-    coordinate_from_string,
-    get_column_letter,
-    Cell,
-    absolute_coordinate
-    )
+from openpyxl2.cell import Cell
+
 from openpyxl2.comments import Comment
 from openpyxl2.styles import numbers, Style
 
@@ -45,27 +38,6 @@ def build_dummy_worksheet():
 
     return Ws()
 
-
-def test_coordinates():
-    column, row = coordinate_from_string('ZF46')
-    assert "ZF" == column
-    assert 46 == row
-
-
-def test_invalid_coordinate():
-    with pytest.raises(CellCoordinatesException):
-        coordinate_from_string('AAA')
-
-def test_zero_row():
-    with pytest.raises(CellCoordinatesException):
-        coordinate_from_string('AQ0')
-
-def test_absolute():
-    assert '$ZF$51' == absolute_coordinate('ZF51')
-
-def test_absolute_multiple():
-
-    assert '$ZF$51:$ZF$53' == absolute_coordinate('ZF51:ZF$53')
 
 @pytest.mark.parametrize("column, idx",
                          [
