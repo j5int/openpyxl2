@@ -13,7 +13,7 @@ from openpyxl2.writer.workbook import (
     write_properties_app
 )
 from openpyxl2.xml.constants import ARC_CORE
-from openpyxl2.date_time import CALENDAR_WINDOWS_1900
+from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.workbook import DocumentProperties, Workbook
 
 

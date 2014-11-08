@@ -4,7 +4,7 @@ from __future__ import absolute_import
 import datetime
 
 from openpyxl2.compat import safe_string, unicode
-from openpyxl2.date_time import CALENDAR_WINDOWS_1900, datetime_to_W3CDTF, W3CDTF_to_datetime
+from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900, datetime_to_W3CDTF, W3CDTF_to_datetime
 from openpyxl2.descriptors import Strict, String, Typed, Alias
 from openpyxl2.xml.functions import ElementTree, Element, SubElement, tostring, fromstring, safe_iterator, localname
 from openpyxl2.xml.constants import COREPROPS_NS, DCORE_NS, XSI_NS, DCTERMS_NS, DCTERMS_PREFIX

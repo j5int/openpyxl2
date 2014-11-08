@@ -20,7 +20,7 @@ from openpyxl2.xml.constants import (
     EXTERNAL_LINK,
 )
 from openpyxl2.workbook import DocumentProperties
-from openpyxl2.date_time import (
+from openpyxl2.utils.datetime  import (
     W3CDTF_to_datetime,
     CALENDAR_WINDOWS_1900,
     CALENDAR_MAC_1904

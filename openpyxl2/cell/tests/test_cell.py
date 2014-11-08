@@ -10,7 +10,7 @@ import pytest
 # package imports
 from openpyxl2.utils.collections import IndexedList
 
-from openpyxl2.date_time import CALENDAR_WINDOWS_1900
+from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.cell import Cell
 
 from openpyxl2.comments import Comment

@@ -11,7 +11,7 @@ import threading
 
 # package imports
 from openpyxl2.utils.collections import IndexedList
-from openpyxl2.date_time import CALENDAR_WINDOWS_1900
+from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.writer.dump_worksheet import DumpWorksheet, save_dump
 from . names.named_range import NamedRange
