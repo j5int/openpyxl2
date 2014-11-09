@@ -12,7 +12,7 @@ import pytest
 from openpyxl2.compat import unicode
 
 # package imports
-from openpyxl2.utils.collections import IndexedList
+from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.workbook import Workbook
 from openpyxl2.styles import numbers, Style

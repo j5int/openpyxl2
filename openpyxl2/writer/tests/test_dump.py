@@ -8,7 +8,7 @@ import os
 import pytest
 from openpyxl2.tests.helper import compare_xml
 
-from openpyxl2.utils.collections import IndexedList
+from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.styles import Style
 from openpyxl2.styles.fonts import Font

@@ -10,7 +10,7 @@ __docformat__ = "restructuredtext en"
 import threading
 
 # package imports
-from openpyxl2.utils.collections import IndexedList
+from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.writer.dump_worksheet import DumpWorksheet, save_dump
