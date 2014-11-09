@@ -23,7 +23,7 @@ from __future__ import absolute_import
 # @author: see AUTHORS file
 
 from openpyxl2.compat import NUMERIC_TYPES
-from openpyxl2.units import short_color
+from openpyxl2.utils.units import short_color
 
 from .reference import Reference
 

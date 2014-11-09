@@ -24,7 +24,7 @@ from __future__ import absolute_import
 
 import math
 from openpyxl2.styles.colors import Color, BLACK, WHITE
-from openpyxl2.units import pixels_to_EMU, EMU_to_pixels, short_color
+from openpyxl2.utils.units import pixels_to_EMU, EMU_to_pixels, short_color
 from openpyxl2.cell import column_index_from_string
 
 class Shadow(object):
