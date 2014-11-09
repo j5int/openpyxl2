@@ -21,7 +21,7 @@ from openpyxl2.xml.functions import (
     tostring
 )
 from openpyxl2.xml.constants import MAX_COLUMN, MAX_ROW, PACKAGE_XL
-from openpyxl2.exceptions import WorkbookAlreadySaved
+from openpyxl2.utils.exceptions import WorkbookAlreadySaved
 from openpyxl2.writer.excel import ExcelWriter
 from openpyxl2.writer.comments import CommentWriter
 from .relations import write_rels

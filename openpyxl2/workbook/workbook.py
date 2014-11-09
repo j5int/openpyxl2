@@ -17,7 +17,7 @@ from openpyxl2.writer.dump_worksheet import DumpWorksheet, save_dump
 from . names.named_range import NamedRange
 from openpyxl2.styles import Style
 from openpyxl2.writer.excel import save_workbook
-from openpyxl2.exceptions import ReadOnlyWorkbookException
+from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 from openpyxl2.xml import LXML
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.xml.constants import SHEET_MAIN_NS

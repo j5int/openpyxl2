@@ -11,7 +11,7 @@ from openpyxl2.workbook import Workbook
 from openpyxl2.worksheet import Worksheet, Relationship, flatten
 from openpyxl2.cell import Cell, coordinate_from_string
 from openpyxl2.comments import Comment
-from openpyxl2.exceptions import (
+from openpyxl2.utils.exceptions import (
     CellCoordinatesException,
     SheetTitleException,
     InsufficientCoordinatesException,

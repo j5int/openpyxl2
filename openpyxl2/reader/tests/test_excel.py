@@ -4,7 +4,7 @@ from __future__ import absolute_import
 from io import BytesIO
 from tempfile import NamedTemporaryFile
 
-from openpyxl2.exceptions import InvalidFileException
+from openpyxl2.utils.exceptions import InvalidFileException
 from .. excel import load_workbook
 
 import pytest
