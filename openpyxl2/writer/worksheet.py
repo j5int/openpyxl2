@@ -11,7 +11,7 @@ from io import BytesIO
 from openpyxl2.compat import safe_string, itervalues
 
 # package imports
-from openpyxl2.utils import COORD_RE
+from openpyxl2.utils.cell import COORD_RE
 from openpyxl2.cell import (
     coordinate_from_string,
     column_index_from_string,

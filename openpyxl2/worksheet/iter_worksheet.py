@@ -14,7 +14,7 @@ from openpyxl2.xml.functions import iterparse
 
 # package
 from openpyxl2.worksheet import Worksheet
-from openpyxl2.utils import (
+from openpyxl2.utils.cell import (
     ABSOLUTE_RE,
     coordinate_from_string,
     column_index_from_string,
