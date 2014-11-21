@@ -11,7 +11,7 @@ from io import BytesIO
 from openpyxl2.compat import safe_string, itervalues
 
 # package imports
-from openpyxl2.utils.cell import COORD_RE
+from openpyxl2.utils import COORD_RE
 from openpyxl2.cell import (
     coordinate_from_string,
     column_index_from_string,
@@ -392,7 +392,7 @@ def write_cell(doc, worksheet, cell):
     coordinate = cell.coordinate
     attributes = {'r': coordinate}
     if cell.has_style:
-        attributes['s'] = '%d' % cell._style_id
+        attributes['s'] = '%d' % cell.style_id
 
     if cell.data_type != cell.TYPE_FORMULA:
         attributes['t'] = cell.data_type

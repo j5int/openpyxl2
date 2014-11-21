@@ -16,6 +16,7 @@ from openpyxl2.worksheet import Worksheet
 from openpyxl2.writer.dump_worksheet import DumpWorksheet, save_dump
 from . names.named_range import NamedRange
 from openpyxl2.styles import Style
+from openpyxl2.styles.proxy import StyleId
 from openpyxl2.writer.excel import save_workbook
 from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 from openpyxl2.xml import LXML
@@ -74,13 +75,32 @@ class Workbook(object):
 
     def _setup_styles(self):
         """Bootstrap styles"""
+        from openpyxl2.styles.alignment import Alignment
+        from openpyxl2.styles.borders import DEFAULT_BORDER
+        from openpyxl2.styles.fills import DEFAULT_EMPTY_FILL, DEFAULT_GRAY_FILL
+        from openpyxl2.styles.fonts import DEFAULT_FONT
+        from openpyxl2.styles.protection import Protection
+
         self._fonts = IndexedList()
+        self._fonts.add(DEFAULT_FONT)
+
         self._alignments = IndexedList()
+        self._alignments.add(Alignment())
+
         self._borders = IndexedList()
+        self._borders.add(DEFAULT_BORDER)
+
         self._fills = IndexedList()
-        self._numbers = IndexedList()
+        self._fills.add(DEFAULT_EMPTY_FILL)
+        self._fills.add(DEFAULT_GRAY_FILL)
+
+        self._number_formats = IndexedList()
+
         self._protections = IndexedList()
+        self._protections.add(Protection())
+
         self._colors = IndexedList()
+        self._cell_styles = IndexedList([StyleId(0, 0, 0, 0, 0, 0)])
 
 
     @deprecated('this method is private and should not be called directly')
