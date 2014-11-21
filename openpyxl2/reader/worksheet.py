@@ -11,7 +11,7 @@ from openpyxl2.xml.functions import iterparse
 from openpyxl2.cell import get_column_letter
 from openpyxl2.worksheet import Worksheet, ColumnDimension, RowDimension
 from openpyxl2.worksheet.iter_worksheet import IterableWorksheet
-from openpyxl2.worksheet.page import PageMargins, PrintOptions, CTPageSetup
+from openpyxl2.worksheet.page import PageMargins, PrintOptions, PageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
 from openpyxl2.xml.functions import safe_iterator
@@ -183,7 +183,7 @@ class WorkSheetParser(object):
             self.parse_cell(cell)
 
     def parse_print_options(self, element):
-        self.ws.page_setup.options = PrintOptions(**element.attrib)
+        self.ws.print_options = PrintOptions(**element.attrib)
 
     def parse_margins(self, element):
         margins = dict(element.items())
@@ -194,7 +194,7 @@ class WorkSheetParser(object):
         if id_key in element.attrib.keys():
             element.attrib['id'] = element.attrib.pop(id_key)
 
-        self.ws.page_setup.setup = CTPageSetup(**element.attrib)
+        self.ws.page_setup = PageSetup(**element.attrib)
 
     def parse_header_footer(self, element):
         oddHeader = element.find('{%s}oddHeader' % SHEET_MAIN_NS)
