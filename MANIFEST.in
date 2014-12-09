@@ -1,7 +1,7 @@
 prune openpyxl2/tests
 prune openpyxl2/sample
 prune openpyxl2/benchmarks
-include LICENCE.rst
-include AUTHORS.rst
-include README.rst
-include CHANGES.rst
+
+recursive-exclude openpyxl2 test_*.py tests/*.py
+
+include *.rst
