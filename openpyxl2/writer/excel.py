@@ -45,9 +45,6 @@ from openpyxl2.workbook.names.external import (
     write_external_book_rel
 )
 
-from openpyxl2 import LXML
-if LXML is True:
-    from . lxml_worksheet import write_worksheet
 from openpyxl2.writer.comments import CommentWriter
 
 
