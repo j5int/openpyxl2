@@ -5,7 +5,8 @@ from __future__ import absolute_import
 import datetime
 import decimal
 from io import BytesIO
-from lxml.etree import tostring, xmlfile
+
+from openpyxl2.xml.functions import tostring, xmlfile
 
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
