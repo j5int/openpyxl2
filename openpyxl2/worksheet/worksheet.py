@@ -296,7 +296,7 @@ class Worksheet(object):
 
         :raise: InsufficientCoordinatesException when coordinate or (row and column) are not given
 
-        :rtype: :class:`openpyxl2.cell.Cell`
+        :rtype: :class:openpyxl2.cell.Cell
 
         """
         if coordinate is None:
