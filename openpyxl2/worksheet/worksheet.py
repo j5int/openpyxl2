@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2014 openpyxl2
+# Copyright (c) 2010-2015 openpyxl2
 
 """Worksheet is the 2nd-level container in Excel."""
 
