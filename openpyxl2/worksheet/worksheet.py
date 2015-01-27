@@ -460,7 +460,7 @@ class Worksheet(object):
         :param range_string: `named range` name
         :type range_string: string
 
-        :rtype: tuples of tuples of :class:`openpyxl22.cell.Cell
+        :rtype: tuples of tuples of :class:openpyxl22.cell.Cell
         """
         named_range = self._parent.get_named_range(range_string)
         if named_range is None:
