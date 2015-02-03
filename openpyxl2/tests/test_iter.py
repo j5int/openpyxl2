@@ -226,7 +226,7 @@ def test_read_style_iter(tmpdir):
     '''
     Test if cell styles are read properly in iter mode.
     '''
-    #tmpdir.chdir()
+    tmpdir.chdir()
     from openpyxl2 import Workbook
     from openpyxl2.styles import Font
 
