@@ -16,14 +16,6 @@ from openpyxl2.tests.helper import compare_xml
 from openpyxl2.worksheet.properties import PageSetupPr
 
 
-class DummyWorksheet:
-
-    def __init__(self):
-        self._styles = {}
-        self.column_dimensions = {}
-        self.parent = Workbook()
-
-
 @pytest.fixture
 def worksheet():
     from openpyxl2 import Workbook
@@ -73,10 +65,11 @@ def test_col_widths(write_cols, ColumnDimension, DummyWorksheet):
 
 
 def test_col_style(write_cols, ColumnDimension, DummyWorksheet):
+    from openpyxl2.styles import Font
     ws = DummyWorksheet
     cd = ColumnDimension(worksheet=ws)
     ws.column_dimensions['A'] = cd
-    cd._style = 1
+    cd.font = Font(color="FF0000")
     cols = write_cols(ws)
     xml = tostring(cols)
     expected = """<cols><col max="1" min="1" style="1"></col></cols>"""
@@ -85,12 +78,14 @@ def test_col_style(write_cols, ColumnDimension, DummyWorksheet):
 
 
 def test_lots_cols(write_cols, ColumnDimension, DummyWorksheet):
+    from openpyxl2.styles import Font
     ws = DummyWorksheet
     from openpyxl2.cell import get_column_letter
     for i in range(1, 15):
         label = get_column_letter(i)
         cd = ColumnDimension(worksheet=ws)
-        cd._style = i
+        cd.font = Font(name=label)
+        dict(cd) # create style_id in order for test
         ws.column_dimensions[label] = cd
     cols = write_cols(ws)
     xml = tostring(cols)
