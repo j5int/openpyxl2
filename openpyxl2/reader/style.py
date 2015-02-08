@@ -22,7 +22,7 @@ from openpyxl2.styles import (
 )
 from openpyxl2.formatting.conditional import ConditionaStyle
 from openpyxl2.styles.colors import COLOR_INDEX, Color
-from openpyxl2.styles.proxy import StyleId
+from openpyxl2.styles.styleable import StyleId
 from openpyxl2.styles.named_styles import NamedStyle
 from openpyxl2.xml.functions import fromstring, safe_iterator, localname
 from openpyxl2.xml.constants import SHEET_MAIN_NS, ARC_STYLE
