@@ -23,7 +23,6 @@ from openpyxl2.worksheet.datavalidation import writer
 from .worksheet import (
     write_datavalidation,
     write_properties,
-    write_sheetviews,
     write_format,
     write_cols,
     write_autofilter,
