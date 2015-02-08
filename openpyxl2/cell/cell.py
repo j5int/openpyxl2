@@ -47,7 +47,7 @@ from openpyxl2.utils import (
     coordinate_from_string,
 )
 from openpyxl2.styles import numbers, is_date_format, Style
-from openpyxl2.styles.proxy import StyleableObject
+from openpyxl2.styles.styleable import StyleableObject
 
 # constants
 

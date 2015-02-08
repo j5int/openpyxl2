@@ -5,7 +5,7 @@ from openpyxl2.compat import safe_string
 from openpyxl2.cell import get_column_interval, column_index_from_string
 from openpyxl2.descriptors import Integer, Float, Bool, Strict, String, Alias
 from openpyxl2.compat import OrderedDict
-from openpyxl2.styles.proxy import StyleableObject
+from openpyxl2.styles.styleable import StyleableObject
 
 
 class Dimension(Strict, StyleableObject):
