@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2014 openpyxl
+# Copyright (c) 2010-2015 openpyxl
 
 from openpyxl2.compat import safe_string
 from openpyxl2.cell import get_column_interval, column_index_from_string
