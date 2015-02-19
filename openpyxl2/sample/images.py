@@ -5,7 +5,7 @@ from openpyxl2.drawing import Image
 from openpyxl2.tests.helper import DATADIR
 
 wb = Workbook()
-ws = wb.get_active_sheet()
+ws = wb.active
 ws.cell('A1').value = 'You should see a logo below'
 
 # create an image instance
