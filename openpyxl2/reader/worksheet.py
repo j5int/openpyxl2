@@ -10,7 +10,6 @@ from openpyxl2.xml.functions import iterparse
 # package imports
 from openpyxl2.cell import Cell
 from openpyxl2.worksheet import Worksheet, ColumnDimension, RowDimension
-from openpyxl2.worksheet.iter_worksheet import IterableWorksheet
 from openpyxl2.worksheet.page import PageMargins, PrintOptions, PageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetView
@@ -305,19 +304,8 @@ class WorkSheetParser(object):
         self.ws.sheet_view = SheetView.from_tree(el)
 
 
-def fast_parse(ws, xml_source, shared_strings):
+def fast_parse(xml_source, parent, sheet_title, shared_strings):
+    ws = Worksheet(parent, sheet_title)
     parser = WorkSheetParser(ws, xml_source, shared_strings)
     parser.parse()
-    del parser
-
-
-def read_worksheet(xml_source, parent, preset_title, shared_strings,
-                   worksheet_path=None, keep_vba=False):
-    """Read an xml worksheet"""
-    if worksheet_path:
-        ws = IterableWorksheet(parent, preset_title,
-                worksheet_path, xml_source, shared_strings)
-    else:
-        ws = Worksheet(parent, preset_title)
-        fast_parse(ws, xml_source, shared_strings)
-    return ws
+    return parser.ws
