@@ -15,6 +15,7 @@ from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.cell import Cell
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.styles import Style
+from openpyxl2.worksheet import Worksheet
 
 
 def test_get_xml_iter():
@@ -94,6 +95,9 @@ def Workbook():
                 self._cell_styles.add((StyleId(i, i, i, i, i, i)))
             self._cell_styles.add(StyleId(number_format=0, font=0, fill=4, border=6, alignment=1, protection=0))
 
+
+        def create_sheet(self, title):
+            return Worksheet(self)
 
         def get_sheet_names(self):
             return []

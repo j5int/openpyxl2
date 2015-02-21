@@ -15,6 +15,7 @@ from openpyxl2.compat import unicode
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.workbook import Workbook
+from openpyxl2.worksheet import worksheet
 from openpyxl2.styles import numbers, Style
 from openpyxl2.reader.worksheet import fast_parse
 from openpyxl2.reader.excel import load_workbook
@@ -41,8 +42,10 @@ def test_read_standalone_worksheet(datadir):
         def get_sheet_names(self):
             return []
 
+        def create_sheet(self, title):
+            return Worksheet(self, title=title)
+
     datadir.join("reader").chdir()
-    ws = None
     shared_strings = IndexedList(['hello'])
 
     with open('sheet2.xml') as src:
