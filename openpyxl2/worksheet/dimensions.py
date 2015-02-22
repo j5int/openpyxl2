@@ -4,7 +4,6 @@ from __future__ import absolute_import
 from openpyxl2.compat import safe_string
 from openpyxl2.cell import get_column_interval, column_index_from_string
 from openpyxl2.descriptors import Integer, Float, Bool, Strict, String, Alias
-from openpyxl2.compat import OrderedDict
 from openpyxl2.styles.styleable import StyleableObject
 
 from openpyxl2.utils.bound_dictionary import BoundDictionary
@@ -176,7 +175,7 @@ class ColumnDimension(Dimension):
         # return get_column_letter(self.index)
 
 
-class DimensionHolder(OrderedDict, BoundDictionary):
+class DimensionHolder(BoundDictionary):
     "hold (row|column)dimensions and allow operations over them"
     def __init__(self, worksheet, reference="index", default_factory=None, *args, **kwargs):
         self.worksheet = worksheet
