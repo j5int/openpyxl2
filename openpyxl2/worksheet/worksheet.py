@@ -47,6 +47,7 @@ from openpyxl2.utils.units import (
 from openpyxl2.styles import DEFAULTS as DEFAULTS_STYLE
 from openpyxl2.formatting import ConditionalFormatting
 from openpyxl2.workbook.names.named_range import NamedRange
+from openpyxl2.utils.bound_dictionary import BoundDictionary
 
 from .header_footer import HeaderFooter
 from .relationship import Relationship
@@ -104,7 +105,7 @@ class Worksheet(object):
         self._parent = parent_workbook
         self._title = ''
         self.title = title or "Sheet"
-        self.row_dimensions = defaultdict(self._add_row)
+        self.row_dimensions = BoundDictionary("index", self._add_row)
         self.column_dimensions = DimensionHolder(worksheet=self,
                                                  direction=[],
                                                  default_factory=self._add_column)
