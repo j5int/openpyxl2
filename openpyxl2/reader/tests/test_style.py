@@ -229,6 +229,7 @@ def test_style_names(datadir, StyleReader):
     ]
 
 
+@pytest.mark.xfail
 def test_named_styles(datadir, StyleReader):
     from openpyxl2.styles.named_styles import NamedStyle
     from openpyxl2.styles.fonts import DEFAULT_FONT
