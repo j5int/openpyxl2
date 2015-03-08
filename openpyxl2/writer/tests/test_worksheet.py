@@ -486,9 +486,13 @@ def write_conditional_formatting():
 
 def test_conditional_formatting_customRule(worksheet_with_cf, write_conditional_formatting):
     ws = worksheet_with_cf
+    from openpyxl2.formatting.rule import Rule
 
-    ws.conditional_formatting.add('C1:C10', {'type': 'expression', 'formula': ['ISBLANK(C1)'],
-                                                    'stopIfTrue': '1', 'dxf': {}})
+    ws.conditional_formatting.add('C1:C10',
+                                  Rule(**{'type': 'expression',
+                                          'formula': ['ISBLANK(C1)'], 'stopIfTrue': '1'}
+                                       )
+                                  )
     cfs = write_conditional_formatting(ws)
     xml = b""
     for cf in cfs:
@@ -509,7 +513,7 @@ def test_conditional_font(worksheet_with_cf, write_conditional_formatting):
 
     # Create cf rule
     from openpyxl2.styles import PatternFill, Font, Color
-    from openpyxl2.formatting import CellIsRule
+    from openpyxl2.formatting.rule import CellIsRule
 
     redFill = PatternFill(start_color=Color('FFEE1111'),
                    end_color=Color('FFEE1111'),
@@ -530,7 +534,7 @@ def test_conditional_font(worksheet_with_cf, write_conditional_formatting):
         xml += tostring(cf)
     diff = compare_xml(xml, """
     <conditionalFormatting sqref="A1:A3">
-      <cfRule operator="equal" priority="1" type="cellIs" dxfId="0">
+      <cfRule operator="equal" priority="1" type="cellIs" dxfId="0" stopIfTrue="0">
         <formula>"Fail"</formula>
       </cfRule>
     </conditionalFormatting>
@@ -539,7 +543,7 @@ def test_conditional_font(worksheet_with_cf, write_conditional_formatting):
 
 
 def test_formula_rule(worksheet_with_cf, write_conditional_formatting):
-    from openpyxl2.formatting import FormulaRule
+    from openpyxl2.formatting.rule import FormulaRule
 
     ws = worksheet_with_cf
     ws.conditional_formatting.add('C1:C10',
