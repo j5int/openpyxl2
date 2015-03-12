@@ -19,7 +19,6 @@ Introducing :class:`openpyxl2[.]worksheet.iter_worksheet.IterableWorksheet`::
 .. warning::
 
     * :class:`openpyxl2[.]worksheet.iter_worksheet.IterableWorksheet` are read-only
-    * range, rows, columns methods and properties are disabled
 
 Cells returned are not regular :class:`openpyxl2[.]cell.cell.Cell` but
 :class:`openpyxl2[.]cell.read_only.ReadOnlyCell`.
