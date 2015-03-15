@@ -1,27 +1,15 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
-from io import BytesIO
 from operator import itemgetter
 
 from openpyxl2.compat import (
     itervalues,
     safe_string,
-    iteritems
 )
-from openpyxl2.cell import (
-    column_index_from_string,
-    coordinate_from_string,
-)
-from openpyxl2.xml.constants import (
-    REL_NS,
-    SHEET_MAIN_NS
-)
-
 
 from .etree_worksheet import get_rows_to_write
-from openpyxl2.xml.functions import xmlfile, Element, SubElement
-
+from openpyxl2.xml.functions import xmlfile
 
 ### LXML optimisation using xf.element to reduce instance creation
 
