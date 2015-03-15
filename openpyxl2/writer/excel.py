@@ -37,7 +37,6 @@ from openpyxl2.workbook.properties import write_properties
 from openpyxl2.writer.theme import write_theme
 from openpyxl2.writer.styles import StyleWriter
 from openpyxl2.writer.drawings import DrawingWriter, ShapeWriter
-from openpyxl2.charts.writer import ChartWriter
 from .relations import write_rels
 from openpyxl2.writer.worksheet import write_worksheet
 from openpyxl2.workbook.names.external import (
