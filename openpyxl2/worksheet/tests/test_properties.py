@@ -6,7 +6,6 @@ from lxml.etree import fromstring
 from openpyxl2.styles.colors import Color
 from openpyxl2.tests.schema import sheet_schema
 from openpyxl2.tests.helper import compare_xml
-from _pytest.main import Node
 
 from openpyxl2.xml.functions import safe_iterator, tostring
 
