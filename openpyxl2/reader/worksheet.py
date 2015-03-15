@@ -17,7 +17,7 @@ from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
 from openpyxl2.xml.functions import safe_iterator
 from openpyxl2.styles import Color
 from openpyxl2.formatting import ConditionalFormatting
-from openpyxl2.worksheet.properties import parse_sheetPr
+from openpyxl2.worksheet.properties import WorksheetProperties
 from openpyxl2.utils import (
     coordinate_from_string,
     get_column_letter,
@@ -248,7 +248,7 @@ class WorkSheetParser(object):
 
 
     def parse_properties(self, element):
-        self.ws.sheet_properties = parse_sheetPr(element)
+        self.ws.sheet_properties = WorksheetProperties.from_tree(element)
 
 
     def parse_legacy_drawing(self, element):

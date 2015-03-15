@@ -18,21 +18,6 @@ from openpyxl2.xml.constants import (
     SHEET_MAIN_NS
 )
 
-from openpyxl2.formatting import ConditionalFormatting
-from openpyxl2.worksheet.datavalidation import writer
-
-from .worksheet import (
-    write_datavalidation,
-    write_properties,
-    write_format,
-    write_cols,
-    write_autofilter,
-    write_mergecells,
-    write_conditional_formatting,
-    write_header_footer,
-    write_hyperlinks,
-    write_pagebreaks,
-)
 
 from .etree_worksheet import get_rows_to_write
 from openpyxl2.xml.functions import xmlfile, Element, SubElement
