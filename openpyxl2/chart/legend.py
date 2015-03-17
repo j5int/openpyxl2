@@ -3,7 +3,9 @@ from openpyxl2.descriptors import (
     Typed,
     NoneSet,
     Integer,
+    Bool,
 )
+from openpyxl2.descriptors.excel import ExtensionList
 
 from .layout import Layout
 from .shapes import ShapeProperties
