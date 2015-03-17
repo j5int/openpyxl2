@@ -9,6 +9,9 @@ from openpyxl2.descriptors import (
     Typed,
     MinMax
 )
+from openpyxl2.descriptors.excel import ExtensionList
+
+
 from .shapes import ShapeProperties
 
 
