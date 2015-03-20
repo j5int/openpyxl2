@@ -1,6 +1,6 @@
+from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
-# Python stdlib imports
 
 # package imports
 from openpyxl2.tests.helper import compare_xml

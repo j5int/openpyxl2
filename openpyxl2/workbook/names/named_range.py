@@ -8,9 +8,9 @@ import re
 import warnings
 
 # package imports
-from openpyxl2.cell import absolute_coordinate
+from openpyxl2.utils import absolute_coordinate
 from openpyxl2.compat import unicode
-from openpyxl2.exceptions import NamedRangeException
+from openpyxl2.utils.exceptions import NamedRangeException
 from openpyxl2.xml.functions import fromstring, safe_iterator
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 
