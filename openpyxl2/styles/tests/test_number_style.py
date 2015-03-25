@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2014 openpyxl
+# Copyright (c) 2010-2015 openpyxl
 
 from openpyxl2.styles import numbers
 
