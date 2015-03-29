@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from openpyxl2.xml.constants import REL_NS, PKG_REL_NS
 from openpyxl2.xml.functions import Element, SubElement, tostring
 
+
 class Relationship(object):
     """Represents many kinds of relationships."""
     # TODO: Use this object for workbook relationships as well as
