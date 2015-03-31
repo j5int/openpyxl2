@@ -37,8 +37,10 @@ try:
 except IOError:
     README = ''
 
+
 import json
-with open("openpyxl2/.constants.json") as src:
+src_file = os.path.join(here, "openpyxl2", ".constants.json")
+with open(src_file) as src:
     constants = json.load(src)
     __author__ = constants['__author__']
     __author_email__ = constants["__author_email__"]
