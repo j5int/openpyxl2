@@ -9,7 +9,7 @@ from openpyxl2.xml.constants import (
     REL_NS,
     VML_NS,
 )
-from openpyxl2.worksheet.relationship import Relationship
+from openpyxl2.packaging.relationship import Relationship
 
 
 def write_rels(worksheet, drawing_id, comments_id, vba_controls_id):
