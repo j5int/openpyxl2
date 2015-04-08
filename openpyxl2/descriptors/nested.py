@@ -4,7 +4,7 @@ from __future__ import absolute_import
 """
 Generic serialisable classes
 """
-from .base import Convertible
+from .base import Convertible, Bool
 from openpyxl2.compat import safe_string
 from openpyxl2.xml.functions import Element, localname
 
@@ -51,3 +51,7 @@ class Text(Value):
         el = Element(tagname)
         el.text = safe_string(value)
         return el
+
+
+class BoolValue(Value, Bool):
+    pass
