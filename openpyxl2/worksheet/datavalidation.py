@@ -6,7 +6,8 @@ import warnings
 
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import Bool, NoneSet, Set, String
-from openpyxl2.compat import OrderedDict, safe_string, deprecated
+from openpyxl2.descriptors.nested import Text
+from openpyxl2.compat import OrderedDict, safe_string, deprecated, basestring
 from openpyxl2.cell import coordinate_from_string
 from openpyxl2.worksheet import cells_from_range
 from openpyxl2.xml.constants import SHEET_MAIN_NS
@@ -78,8 +79,8 @@ class DataValidation(Serialisable):
     promptTitle = String(allow_none = True)
     prompt = String(allow_none = True)
     sqref = String(allow_none = True)
-    formula1 = String(allow_none=True, nested=True)
-    formula2 = String(allow_none=True, nested=True)
+    formula1 = Text(allow_none=True, expected_type=basestring)
+    formula2 = Text(allow_none=True, expected_type=basestring)
 
     type = NoneSet(values=("whole", "decimal", "list", "date", "time",
                            "textLength", "custom"))
@@ -143,10 +144,6 @@ class DataValidation(Serialisable):
             if value:
                 SubElement(el, n).text = value
         return el
-
-    @classmethod
-    def _create_nested(cls, el, tag):
-        return el.text
 
 
     @deprecated("Use DataValidation.add()")
