@@ -3,11 +3,8 @@ from __future__ import absolute_import
 
 from operator import itemgetter
 
-from openpyxl2.compat import iterkeys, itervalues, safe_string
-
-from openpyxl2.utils import COORD_RE, column_index_from_string
+from openpyxl2.compat import safe_string
 from openpyxl2.xml.functions import xmlfile, Element, SubElement
-
 
 
 def get_rows_to_write(worksheet):
