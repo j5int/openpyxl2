@@ -15,7 +15,6 @@ from openpyxl2.descriptors.excel import UniversalMeasure
 from openpyxl2.xml.functions import Element
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
 from openpyxl2.compat import deprecated
-from .properties import PageSetUpPr
 
 
 class PageSetup(Serialisable):
