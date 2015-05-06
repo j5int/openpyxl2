@@ -8,7 +8,10 @@ from openpyxl2.descriptors import (
     Integer,
     Sequence,
 )
-from openpyxl2.descriptors.excel import Coordinate
+from openpyxl2.descriptors.nested import (
+    NestedText,
+)
+
 from openpyxl2.packaging.relationship import Relationship
 from openpyxl2.utils import coordinate_to_tuple
 
@@ -44,10 +47,10 @@ class AnchorMarker(Serialisable):
 
     tagname = "marker"
 
-    col = Integer()
-    colOff = Coordinate()
-    row = Integer()
-    rowOff = Coordinate()
+    col = NestedText(expected_type=int)
+    colOff = NestedText(expected_type=int)
+    row = NestedText(expected_type=int)
+    rowOff = NestedText(expected_type=int)
 
     def __init__(self,
                  col=0,
