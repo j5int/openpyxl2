@@ -10,6 +10,7 @@ from openpyxl2.descriptors import (
 )
 from openpyxl2.descriptors.nested import (
     NestedText,
+    NestedNoneSet,
 )
 
 from openpyxl2.packaging.relationship import Relationship
@@ -19,7 +20,6 @@ from openpyxl2.xml.constants import SHEET_DRAWING_NS
 
 from .chartspace import RelId
 from .shapes import (
-    Shape,
     Point2D,
     PositiveSize2D,
 )
@@ -70,7 +70,7 @@ class AnchorMarker(Serialisable):
 class _AnchorBase(Serialisable):
 
     #one of
-    sp = Typed(expected_type=Shape, allow_none=True)
+    sp = NestedNoneSet(values=(['cone', 'coneToMax', 'box', 'cylinder', 'pyramid', 'pyramidToMax']))
     grpSp = Typed(expected_type=GroupShape, allow_none=True)
     graphicFrame = Typed(expected_type=GraphicFrame, allow_none=True)
     cxnSp = Typed(expected_type=Connector, allow_none=True)
