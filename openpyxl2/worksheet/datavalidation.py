@@ -9,7 +9,7 @@ from openpyxl2.descriptors import Bool, NoneSet, Set, String
 from openpyxl2.descriptors.nested import NestedText
 from openpyxl2.compat import OrderedDict, safe_string, deprecated, basestring
 from openpyxl2.cell import coordinate_from_string
-from openpyxl2.worksheet import cells_from_range
+from openpyxl2.worksheet import rows_from_range
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import Element, safe_iterator, SubElement
 
@@ -59,7 +59,7 @@ def expand_cell_ranges(range_string):
     """
     cells = []
     for rs in range_string.split():
-        cells.extend(cells_from_range(rs))
+        cells.extend(rows_from_range(rs))
     return list(chain.from_iterable(cells))
 
 
