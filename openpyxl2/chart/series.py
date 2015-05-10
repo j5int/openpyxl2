@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from openpyxl2.compat import basestring
+from openpyxl2.compat import unicode
 
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
@@ -52,7 +52,7 @@ class SeriesLabel(Serialisable):
     tagname = "tx"
 
     strRef = Typed(expected_type=StrRef, allow_none=True)
-    v = NestedText(expected_type=basestring, allow_none=True)
+    v = NestedText(expected_type=unicode, allow_none=True)
     value = Alias('v')
 
     __elements__ = ('strRef', 'v')
