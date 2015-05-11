@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from openpyxl2.compat import unicode
+from openpyxl2.compat import basestring, unicode
 
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
@@ -212,6 +212,6 @@ class ColorChoiceDescriptor(Typed):
     allow_none = True
 
     def __set__(self, instance, value):
-        if isinstance(value, unicode):
+        if isinstance(value, basestring):
             value = ColorChoice(srgbClr=value)
         super(ColorChoiceDescriptor, self).__set__(instance, value)
