@@ -10,7 +10,7 @@ from openpyxl2.xml.functions import iterparse
 # package imports
 from openpyxl2.cell import Cell
 from openpyxl2.worksheet import Worksheet, ColumnDimension, RowDimension
-from openpyxl2.worksheet.page import PageMargins, PrintOptions, PageSetup
+from openpyxl2.worksheet.page import PageMargins, PrintOptions, PrintPageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetView
 from openpyxl2.worksheet.datavalidation import DataValidation
@@ -196,7 +196,7 @@ class WorkSheetParser(object):
         self.page_margins = PageMargins.from_tree(element)
 
     def parse_page_setup(self, element):
-        self.ws.page_setup = PageSetup.from_tree(element)
+        self.ws.page_setup = PrintPageSetup.from_tree(element)
 
     def parse_header_footer(self, element):
         oddHeader = element.find('{%s}oddHeader' % SHEET_MAIN_NS)
