@@ -21,7 +21,7 @@ from openpyxl2.descriptors.nested import (
 from openpyxl2.styles.colors import RGB
 from openpyxl2.xml.constants import DRAWING_NS
 
-from .drawing import OfficeArtExtensionList
+from openpyxl2.descriptors.excel import ExtensionList as OfficeArtExtensionList
 
 PRESET_COLORS = [
         'aliceBlue', 'antiqueWhite', 'aqua', 'aquamarine',

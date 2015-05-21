@@ -34,7 +34,7 @@ from openpyxl2.descriptors.nested import (
     NestedText,
 )
 
-from .colors import ColorMapping
+from openpyxl2.drawing.colors import ColorMapping
 from .text import Text, RichText
 from .layout import Layout
 from .shapes import ShapeProperties
