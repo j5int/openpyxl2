@@ -12,8 +12,6 @@ from openpyxl2.utils.units import (
     EMU_to_pixels,
     short_color,
 )
-from openpyxl2.chart.spreadsheet_drawing import OneCellAnchor, TwoCellAnchor, AbsoluteAnchor
-
 
 class Shadow(object):
 
@@ -105,6 +103,10 @@ class Drawing(object):
 
     @property
     def anchor(self):
+        from openpyxl2.chart.spreadsheet_drawing import (
+            OneCellAnchor,
+            TwoCellAnchor,
+            AbsoluteAnchor)
         if self.anchortype == "absolute":
             anchor = AbsoluteAnchor()
             anchor.pos.x = pixels_to_EMU(self.left)
