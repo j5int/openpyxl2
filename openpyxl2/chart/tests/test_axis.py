@@ -185,7 +185,7 @@ class TestDateAx:
 
 
     def test_from_xml(self, DateAxis):
-        from openpyxl2.chart.axis import NumFmt
+        from openpyxl2.chart.data_source import NumFmt
 
         src = """
         <dateAx>
