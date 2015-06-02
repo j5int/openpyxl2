@@ -5,13 +5,12 @@ from itertools import groupby, chain
 import warnings
 
 from openpyxl2.descriptors.serialisable import Serialisable
-from openpyxl2.descriptors import Bool, NoneSet, Set, String
+from openpyxl2.descriptors import Bool, NoneSet, String
 from openpyxl2.descriptors.nested import NestedText
 from openpyxl2.compat import OrderedDict, safe_string, deprecated, unicode
 from openpyxl2.utils import coordinate_from_string
 from openpyxl2.worksheet import rows_from_range
-from openpyxl2.xml.constants import SHEET_MAIN_NS
-from openpyxl2.xml.functions import Element, safe_iterator, SubElement
+from openpyxl2.xml.functions import Element, SubElement
 
 
 def collapse_cell_addresses(cells, input_ranges=()):

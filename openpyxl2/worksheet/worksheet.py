@@ -6,8 +6,6 @@ from __future__ import absolute_import
 
 # Python stdlib imports
 from itertools import islice, chain
-from operator import itemgetter
-from collections import defaultdict
 import re
 from inspect import isgenerator
 from weakref import ref
@@ -37,7 +35,6 @@ from openpyxl2.cell import Cell
 from openpyxl2.utils.exceptions import (
     SheetTitleException,
     InsufficientCoordinatesException,
-    CellCoordinatesException,
     NamedRangeException
 )
 from openpyxl2.utils.units import (
@@ -45,7 +42,6 @@ from openpyxl2.utils.units import (
     DEFAULT_COLUMN_WIDTH,
     DEFAULT_ROW_HEIGHT
 )
-from openpyxl2.styles import DEFAULTS as DEFAULTS_STYLE
 from openpyxl2.formatting import ConditionalFormatting
 from openpyxl2.workbook.names.named_range import NamedRange
 from openpyxl2.utils.bound_dictionary import BoundDictionary
@@ -58,8 +54,6 @@ from .filters import AutoFilter
 from .views import SheetView, Pane, Selection
 from .properties import WorksheetProperties
 from .pagebreak import PageBreak
-
-from openpyxl2.packaging.relationship import Relationship
 
 
 def flatten(results):

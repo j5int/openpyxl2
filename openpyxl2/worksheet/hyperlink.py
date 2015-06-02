@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
-    Typed,
     String,
 )
 from openpyxl2.descriptors.excel import Relation

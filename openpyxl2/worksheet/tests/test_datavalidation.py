@@ -1,10 +1,7 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
-from io import BytesIO
-
 import pytest
-
 
 from openpyxl2.workbook import Workbook
 from openpyxl2.xml.functions import fromstring, tostring
