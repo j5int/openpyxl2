@@ -46,7 +46,8 @@ from openpyxl2.workbook.names.external import (
 
 from openpyxl2.writer.comments import CommentWriter
 
-ARC_VBA = ('xl/vba', r'xl/drawings/.*\.vml', 'xl/ctrlProps', 'customUI')
+ARC_VBA = ('xl/vba', r'xl/drawings/.*\.vml', 'xl/ctrlProps', 'customUI',
+           'xl/activeX', r'xl/media/.*\.emf')
 
 class ExcelWriter(object):
     """Write a workbook object to an Excel file."""
