@@ -25,7 +25,8 @@ from openpyxl2.xml import LXML
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.compat import deprecated
-from . properties import DocumentProperties, DocumentSecurity
+from openpyxl2.packaging.core import DocumentProperties
+from . protection import DocumentSecurity
 
 
 class Workbook(object):
