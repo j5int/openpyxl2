@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 """Reader for a single worksheet."""
 from io import BytesIO
+from warnings import warn
 
 # compatibility imports
 from openpyxl2.xml.functions import iterparse
@@ -14,7 +15,11 @@ from openpyxl2.worksheet.page import PageMargins, PrintOptions, PrintPageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetView
 from openpyxl2.worksheet.datavalidation import DataValidation
-from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
+from openpyxl2.xml.constants import (
+    SHEET_MAIN_NS,
+    REL_NS,
+    EXT_TYPES
+)
 from openpyxl2.xml.functions import safe_iterator
 from openpyxl2.styles import Color
 from openpyxl2.formatting import ConditionalFormatting, Rule
@@ -26,6 +31,7 @@ from openpyxl2.utils import (
     column_index_from_string,
     coordinate_to_tuple,
     )
+from openpyxl2.descriptors.excel import ExtensionList, Extension
 
 
 def _get_xml_iter(xml_source):
@@ -93,6 +99,7 @@ class WorkSheetParser(object):
             '{%s}sheetPr' % SHEET_MAIN_NS: self.parse_properties,
             '{%s}legacyDrawing' % SHEET_MAIN_NS: self.parse_legacy_drawing,
             '{%s}sheetViews' % SHEET_MAIN_NS: self.parse_sheet_views,
+            '{%s}extLst' % SHEET_MAIN_NS: self.parse_extensions,
                       }
         tags = dispatcher.keys()
         stream = _get_xml_iter(self.source)
@@ -304,6 +311,14 @@ class WorkSheetParser(object):
             # according to the specification the last view wins
             pass
         self.ws.sheet_view = SheetView.from_tree(el)
+
+
+    def parse_extensions(self, element):
+        extLst = ExtensionList.from_tree(element)
+        for e in extLst.ext:
+            ext_type = EXT_TYPES.get(e.uri.upper(), "Unknown")
+            msg = "{0} extension is not supported and will be removed".format(ext_type)
+            warn(msg)
 
 
 def fast_parse(xml_source, parent, sheet_title, shared_strings):
