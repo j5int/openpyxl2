@@ -10,7 +10,6 @@ from openpyxl2.xml.functions import Element
 from openpyxl2.utils.indexed_list import IndexedList
 from .numbers import BUILTIN_FORMATS, BUILTIN_FORMATS_REVERSE
 from .proxy import StyleProxy
-from .style import StyleId
 from . import Style
 
 
