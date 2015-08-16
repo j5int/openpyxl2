@@ -20,7 +20,6 @@ from openpyxl2.styles import (
 )
 from openpyxl2.styles.differential import DifferentialStyle
 from openpyxl2.styles.colors import COLOR_INDEX, Color
-from openpyxl2.styles.style import StyleId
 from openpyxl2.styles.styleable import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle
 from openpyxl2.xml.functions import fromstring, safe_iterator, localname
