@@ -6,17 +6,17 @@ from io import BytesIO
 
 import pytest
 
+from openpyxl2.styles.styleable import StyleArray
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.compat import range, zip
-from openpyxl2.styles.styleable import StyleId
 
 
 @pytest.fixture
 def DummyWorkbook():
     class Workbook:
         excel_base_date = None
-        _cell_styles = [StyleId(0, 0, 0, 0, 0, 0)]
+        _cell_styles = [StyleArray([0, 0, 0, 0, 0, 0, 0, 0, 0])]
 
         def get_sheet_names(self):
             return []
