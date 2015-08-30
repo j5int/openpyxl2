@@ -16,7 +16,7 @@ from openpyxl2.worksheet import Worksheet, ColumnDimension, RowDimension
 from openpyxl2.worksheet.page import PageMargins, PrintOptions, PrintPageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetView
-from openpyxl2.worksheet.datavalidation import DataValidation
+from openpyxl2.worksheet.datavalidation import DataValidationList
 from openpyxl2.xml.constants import (
     SHEET_MAIN_NS,
     REL_NS,
@@ -287,9 +287,7 @@ class WorkSheetParser(object):
             self.ws.protection.set_password(password, True)
 
     def parse_data_validation(self, element):
-        for node in safe_iterator(element, "{%s}dataValidation" % SHEET_MAIN_NS):
-            dv = DataValidation.from_tree(node)
-            self.ws._data_validations.append(dv)
+        self.ws.data_validations = DataValidationList.from_tree(element)
 
 
     def parse_properties(self, element):
