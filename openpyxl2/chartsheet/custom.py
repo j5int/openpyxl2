@@ -4,7 +4,9 @@ from openpyxl2.worksheet.header_footer import HeaderFooter
 from openpyxl2.descriptors import (Bool, Integer, Set, Typed, Sequence)
 from openpyxl2.descriptors.excel import Guid
 from openpyxl2.descriptors.serialisable import Serialisable
-from openpyxl2.worksheet.page import (PageMargins, PrintPageSetup)
+from openpyxl2.worksheet.page import (
+    PageMargins, PrintPageSetup
+)
 
 
 class CustomChartsheetView(Serialisable):

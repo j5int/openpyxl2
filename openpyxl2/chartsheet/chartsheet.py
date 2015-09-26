@@ -1,23 +1,23 @@
 from __future__ import absolute_import
 
-from openpyxl2.chartsheet.relation import Drawing, DrawingHF, SheetBackgroundPicture
-from openpyxl2.chartsheet.chartsheetpr import ChartsheetPr
-from openpyxl2.chartsheet.chartsheetprotection import ChartsheetProtection
-from openpyxl2.chartsheet.chartsheetview import ChartsheetViews
-from openpyxl2.chartsheet.customchartsheetview import CustomChartsheetViews
-from openpyxl2.chartsheet.webpublishitem import WebPublishItems
-
 from openpyxl2.descriptors import Typed
 from openpyxl2.descriptors.excel import ExtensionList
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.worksheet.page import (PageMargins, PrintPageSetup)
 from openpyxl2.worksheet.header_footer import HeaderFooter
 
+from .relation import Drawing, DrawingHF, SheetBackgroundPicture
+from .properties import ChartsheetProperties
+from .protection import ChartsheetProtection
+from .views import ChartsheetViews
+from .custom import CustomChartsheetViews
+from .publish import WebPublishItems
+
 
 class Chartsheet(Serialisable):
     tagname = "chartsheet"
 
-    sheetPr = Typed(expected_type=ChartsheetPr, allow_none=True)
+    sheetPr = Typed(expected_type=ChartsheetProperties, allow_none=True)
     sheetViews = Typed(expected_type=ChartsheetViews, )
     sheetProtection = Typed(expected_type=ChartsheetProtection, allow_none=True)
     customSheetViews = Typed(expected_type=CustomChartsheetViews, allow_none=True)
