@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+# Copyright (c) 2010-2015 openpyxl
 
 from openpyxl2.descriptors import Typed
 from openpyxl2.descriptors.excel import ExtensionList

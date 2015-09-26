@@ -1,6 +1,11 @@
 from __future__ import absolute_import
+# Copyright (c) 2010-2015 openpyxl
 
-from openpyxl2.descriptors import (Bool, String, Typed)
+from openpyxl2.descriptors import (
+    Bool,
+    String,
+    Typed
+)
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.styles import Color
 

@@ -1,11 +1,20 @@
 from __future__ import absolute_import
+# Copyright (c) 2010-2015 openpyxl
+
 from openpyxl2.worksheet.header_footer import HeaderFooter
 
-from openpyxl2.descriptors import (Bool, Integer, Set, Typed, Sequence)
+from openpyxl2.descriptors import (
+    Bool,
+    Integer,
+    Set,
+    Typed,
+    Sequence
+)
 from openpyxl2.descriptors.excel import Guid
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.worksheet.page import (
-    PageMargins, PrintPageSetup
+    PageMargins,
+    PrintPageSetup
 )
 
 
