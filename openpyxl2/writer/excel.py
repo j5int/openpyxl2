@@ -27,9 +27,9 @@ from openpyxl2.xml.constants import (
     )
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.xml.functions import tostring
+from openpyxl2.packaging.manifest import write_content_types
 from openpyxl2.writer.strings import write_string_table
 from openpyxl2.writer.workbook import (
-    write_content_types,
     write_root_rels,
     write_workbook_rels,
     write_properties_app,
@@ -64,8 +64,6 @@ class ExcelWriter(object):
         """Write the various xml files into the zip archive."""
         # cleanup all worksheets
 
-        archive.writestr(ARC_CONTENT_TYPES, write_content_types(self.workbook,
-                                                                as_template=as_template))
         archive.writestr(ARC_ROOT_RELS, write_root_rels(self.workbook))
         archive.writestr(ARC_WORKBOOK_RELS, write_workbook_rels(self.workbook))
         archive.writestr(ARC_APP, write_properties_app(self.workbook))
@@ -90,6 +88,8 @@ class ExcelWriter(object):
         self._write_string_table(archive)
         self._write_external_links(archive)
         archive.writestr(ARC_STYLE, self.style_writer.write_table())
+        manifest = write_content_types(self.workbook, as_template=as_template)
+        archive.writestr(ARC_CONTENT_TYPES, tostring(manifest.to_tree()))
 
     def _write_string_table(self, archive):
         archive.writestr(ARC_SHARED_STRINGS,
