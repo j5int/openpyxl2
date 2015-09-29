@@ -15,6 +15,7 @@ from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.worksheet.drawing import Drawing
 from openpyxl2.worksheet.header_footer import HeaderFooter
 from openpyxl2.workbook.child import _WorkbookChild
+from openpyxl2.xml.constants import SHEET_MAIN_NS
 
 from .relation import DrawingHF, SheetBackgroundPicture
 from .properties import ChartsheetProperties
@@ -91,3 +92,9 @@ class Chartsheet(_WorkbookChild, Serialisable):
         chart.anchor = AbsoluteAnchor()
         self._charts.append(chart)
         self.parent._charts.append(ref(chart))
+
+
+    def to_tree(self):
+        tree = super(Chartsheet, self).to_tree()
+        tree.set("xmlns", SHEET_MAIN_NS)
+        return tree
