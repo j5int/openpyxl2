@@ -11,7 +11,7 @@ from openpyxl2.worksheet.page import (
     PageMargins,
     PrintPageSetup
 )
-from openpyxl2.packaging.relationship import Relationship
+from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.worksheet.drawing import Drawing
 from openpyxl2.worksheet.header_footer import HeaderFooter
 from openpyxl2.workbook.child import _WorkbookChild
@@ -87,7 +87,7 @@ class Chartsheet(_WorkbookChild, Serialisable):
 
 
     def to_tree(self):
-        self._rels = []
+        self._rels = RelationshipList()
         if self._charts:
             rel = Relationship(type="drawing", target="")
             self._rels.append(rel)
