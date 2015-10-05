@@ -6,6 +6,8 @@ from openpyxl2.descriptors import (
 )
 from openpyxl2.descriptors.excel import ExtensionList
 from openpyxl2.utils.indexed_list import IndexedList
+from openpyxl2.xml.constants import ARC_STYLE
+from openpyxl2.xml.functions import fromstring
 
 from .colors import ColorList, COLOR_INDEX
 from .differential import DifferentialStyleList
@@ -117,9 +119,6 @@ class Stylesheet(Serialisable):
         fmts = [n.formatCode for n in self.numFmts.numFmt]
         return IndexedList(fmts)
 
-
-from openpyxl2.xml.constants import ARC_STYLE
-from openpyxl2.xml.functions import fromstring
 
 def apply_stylesheet(archive, wb):
     """
