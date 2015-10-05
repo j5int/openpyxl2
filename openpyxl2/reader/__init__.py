@@ -6,6 +6,5 @@ from __future__ import absolute_import
 # package imports
 from openpyxl2.reader import excel
 from openpyxl2.reader import strings
-from openpyxl2.reader import style
 from openpyxl2.reader import workbook
 from openpyxl2.reader import worksheet
