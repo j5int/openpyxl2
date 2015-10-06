@@ -13,7 +13,7 @@ from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 from openpyxl2.writer.write_only import WriteOnlyWorksheet, save_dump
 from openpyxl2.writer.excel import save_workbook
 
-from openpyxl2.styles.styleable import StyleArray
+from openpyxl2.styles.cell_style import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle
 
 from openpyxl2.chartsheet import Chartsheet
