@@ -20,7 +20,7 @@ from openpyxl2.descriptors import (
     Convertible,
 )
 from openpyxl2.descriptors.excel import ExtensionList
-from openpyxl2.descriptors.nested import NestedSequence
+from openpyxl2.descriptors.sequence import ValueSequence
 
 from openpyxl2.utils import RANGE_EXPR
 
@@ -244,7 +244,7 @@ class Filters(Serialisable):
                                    "gregorianMeFrench","gregorianArabic", "hijri","hebrew",
                                    "taiwan","japan", "thai","korea",
                                    "saka","gregorianXlitEnglish","gregorianXlitFrench"])
-    filter = NestedSequence(expected_type=str)
+    filter = ValueSequence(expected_type=str)
     dateGroupItem = Sequence(expected_type=DateGroupItem, allow_none=True)
 
     __elements__ = ('filter', 'dateGroupItem')

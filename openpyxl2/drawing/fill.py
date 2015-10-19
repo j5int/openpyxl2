@@ -14,10 +14,8 @@ from openpyxl2.descriptors import (
     Sequence,
 )
 from openpyxl2.descriptors.excel import Relation
-from openpyxl2.descriptors.nested import (
-    NestedNoneSet,
-    NestedSequence,
-)
+from openpyxl2.descriptors.nested import NestedNoneSet
+from openpyxl2.descriptors.sequence import NestedSequence
 from openpyxl2.xml.constants import DRAWING_NS
 
 from .colors import ColorChoice

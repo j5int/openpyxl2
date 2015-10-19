@@ -9,8 +9,8 @@ from openpyxl2.descriptors import (
     Sequence,
     Integer,
 )
-from openpyxl2.descriptors.nested import NestedSequence
 from openpyxl2.descriptors.serialisable import Serialisable
+from openpyxl2.descriptors.sequence import ValueSequence
 from openpyxl2.compat import safe_string
 
 from .colors import ColorDescriptor, Color
@@ -145,7 +145,7 @@ class GradientFill(Fill):
     right = Float()
     top = Float()
     bottom = Float()
-    stop = NestedSequence(expected_type=Color, to_tree=_serialise_stop)
+    stop = ValueSequence(expected_type=Color, to_tree=_serialise_stop)
 
 
     def __init__(self, type="linear", degree=0, left=0, right=0, top=0,

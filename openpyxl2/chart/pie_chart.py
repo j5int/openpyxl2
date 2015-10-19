@@ -19,8 +19,8 @@ from openpyxl2.descriptors.nested import (
     NestedFloat,
     NestedNoneSet,
     NestedSet,
-    NestedSequence
 )
+from openpyxl2.descriptors.sequence import ValueSequence
 
 from ._chart import ChartBase
 from .axis import ChartLines
@@ -116,7 +116,7 @@ class CustomSplit(Serialisable):
 
     tagname = "custSplit"
 
-    secondPiePt = NestedSequence(expected_type=int)
+    secondPiePt = ValueSequence(expected_type=int)
 
     __elements__ = ('secondPiePt',)
 

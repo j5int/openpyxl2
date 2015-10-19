@@ -24,7 +24,6 @@ from openpyxl2.descriptors.nested import (
     NestedFloat,
     NestedInteger,
     NestedMinMax,
-    NestedSequence,
 )
 
 from .descriptors import NumberFormatDescriptor
