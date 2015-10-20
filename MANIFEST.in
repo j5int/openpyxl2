@@ -1,8 +1,9 @@
 prune openpyxl2/tests
 prune openpyxl2/sample
 prune openpyxl2/benchmarks
-prune openpyxl2/classify
+prune openpyxl2/develop
 
 recursive-exclude openpyxl2 test_*.py tests/*.py
 
 include *.rst
+include openpyxl2/.constants.json

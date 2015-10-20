@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+# Copyright (c) 2010-2015 openpyxl
 
 from openpyxl2.descriptors import Integer, String, Typed
 from openpyxl2.descriptors.serialisable import Serialisable
@@ -10,6 +11,7 @@ from openpyxl2.styles import (
     Border,
     Alignment,
     Protection,
+    HashableObject
     )
 
 from openpyxl2.xml.functions import localname, Element
@@ -28,11 +30,12 @@ class NumFmt(Serialisable):
         self.formatCode = formatCode
 
 
-class DifferentialStyle(Serialisable):
+class DifferentialStyle(HashableObject):
 
     tagname = "dxf"
 
     __elements__ = ("font", "numFmt", "fill", "alignment", "border", "protection")
+    __fields__ = __elements__
 
     font = Typed(expected_type=Font, allow_none=True)
     numFmt = Typed(expected_type=NumFmt, allow_none=True)

@@ -1,10 +1,14 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
-from openpyxl2.descriptors import Bool, Integer, String, Set, Float, Typed, NoneSet, Sequence
+from openpyxl2.descriptors import (
+    Bool,
+    Integer,
+    String,
+    Set,
+    NoneSet,
+)
 from openpyxl2.descriptors.serialisable import Serialisable
-
-from openpyxl2.compat import safe_string
 
 
 class PivotSelection(Serialisable):
