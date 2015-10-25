@@ -50,7 +50,7 @@ from .workbook import (
 from openpyxl2.workbook.properties import read_properties, DocumentProperties
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
 from .worksheet import WorkSheetParser
-from .comments import read_comments, get_comments_file
+from openpyxl2.comments.reader import read_comments, get_comments_file
 # Use exc_info for Python 2 compatibility with "except Exception[,/ as] e"
 
 
