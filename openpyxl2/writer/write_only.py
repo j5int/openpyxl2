@@ -15,7 +15,7 @@ from openpyxl2.worksheet.related import Related
 
 from openpyxl2.utils.exceptions import WorkbookAlreadySaved
 from openpyxl2.writer.excel import ExcelWriter
-from openpyxl2.writer.comments import CommentWriter
+from openpyxl2.comments.writer import CommentWriter
 from .relations import write_rels
 from .worksheet import (
     write_cell,

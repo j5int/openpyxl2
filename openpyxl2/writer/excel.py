@@ -44,7 +44,7 @@ from openpyxl2.workbook.names.external import (
 )
 from openpyxl2.styles.stylesheet import write_stylesheet
 
-from openpyxl2.writer.comments import CommentWriter
+from openpyxl2.comments.writer import CommentWriter
 
 ARC_VBA = ('xl/vba', r'xl/drawings/.*vmlDrawing\d\.vml', 'xl/ctrlProps', 'customUI',
            'xl/activeX', r'xl/media/.*\.emf')
