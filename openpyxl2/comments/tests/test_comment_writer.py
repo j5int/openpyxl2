@@ -4,12 +4,16 @@ from __future__ import absolute_import
 from openpyxl2.compat import zip
 from openpyxl2.workbook import Workbook
 from openpyxl2.worksheet import Worksheet
-from openpyxl2.writer.comments import CommentWriter
 from openpyxl2.comments import Comment
 from openpyxl2.tests.helper import compare_xml
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.xml.constants import SHEET_MAIN_NS
-from openpyxl2.writer.comments import vmlns, excelns
+from ..writer import (
+    CommentWriter,
+    vmlns,
+    excelns,
+)
+
 
 def _create_ws():
     wb = Workbook()
