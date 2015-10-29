@@ -14,9 +14,8 @@ from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.related import Related
 
 from openpyxl2.utils.exceptions import WorkbookAlreadySaved
-from openpyxl2.writer.excel import ExcelWriter
-from openpyxl2.comments.writer import CommentWriter
-from openpyxl2.comments.properties import Comment
+
+from .excel import ExcelWriter
 from .relations import write_rels
 from .worksheet import (
     write_cell,
@@ -214,18 +213,9 @@ setattr(WriteOnlyWorksheet, 'range', removed_method)
 setattr(WriteOnlyWorksheet, 'merge_cells', removed_method)
 
 
-class DumpCommentWriter(CommentWriter):
-    def extract_comments(self):
-        for comment in self.sheet._comments:
-            if comment is not None:
-                self.authors.add(comment.author)
-                self.comments.append(comment)
-
-
 def save_dump(workbook, filename):
     if workbook.worksheets == []:
         workbook.create_sheet()
     writer = ExcelWriter(workbook)
-    writer.comment_writer = DumpCommentWriter
     writer.save(filename)
     return True
