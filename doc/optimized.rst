@@ -49,7 +49,7 @@ If you want to have cells with styles or comments then use a :func:`openpyxl2[.]
 .. :: doctest
 
 >>> from openpyxl import Workbook
->>> wb = Workbook(optimized_write = True)
+>>> wb = Workbook(write_only=True)
 >>> ws = wb.create_sheet()
 >>> from openpyxl2[.]writer.write_only import WriteOnlyCell
 >>> from openpyxl2[.]comments import Comment
