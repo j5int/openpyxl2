@@ -1,6 +1,8 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
+import posixpath
+
 from openpyxl2.descriptors import (
     String,
     Set,
@@ -11,7 +13,11 @@ from openpyxl2.descriptors import (
 from openpyxl2.descriptors.serialisable import Serialisable
 
 from openpyxl2.xml.constants import REL_NS, PKG_REL_NS
-from openpyxl2.xml.functions import Element, SubElement, tostring
+from openpyxl2.xml.functions import (
+    Element,
+    fromstring,
+    tostring
+)
 
 
 class Relationship(Serialisable):
@@ -92,3 +98,22 @@ class RelationshipList(Serialisable):
             tree.append(rel.to_tree())
 
         return tree
+
+
+def get_dependents(archive, filename):
+    """
+    Normalise dependency file paths to absolute ones
+
+    Relative paths are relative to parent object
+    """
+    src = archive.read(filename)
+    node = fromstring(src)
+    rels = RelationshipList.from_tree(node)
+    folder = posixpath.dirname(filename)
+    parent = posixpath.split(folder)[0]
+    for r in rels.Relationship:
+        if r.target.startswith("/"):
+            r.target = r.target[1:]
+        pth = posixpath.join(parent, r.target)
+        r.target = posixpath.normpath(pth)
+    return rels
