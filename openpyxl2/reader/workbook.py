@@ -10,7 +10,6 @@ from openpyxl2.xml.constants import (
     COREPROPS_NS,
     DCTERMS_NS,
     SHEET_MAIN_NS,
-    CONTYPES_NS,
     PKG_REL_NS,
     REL_NS,
     ARC_CONTENT_TYPES,
@@ -32,6 +31,7 @@ from openpyxl2.workbook.names.named_range import (
     external_range,
     )
 
+from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.workbook.parser import WorkbookPackage
 
 import datetime
@@ -52,9 +52,9 @@ def read_content_types(archive):
     """Read content types."""
     xml_source = archive.read(ARC_CONTENT_TYPES)
     root = fromstring(xml_source)
-    contents_root = root.findall('{%s}Override' % CONTYPES_NS)
-    for type in contents_root:
-        yield type.get('ContentType'), type.get('PartName')
+    package = Manifest.from_tree(root)
+    for typ in package.Override:
+        yield typ.ContentType, typ.PartName
 
 
 def read_rels(archive):
