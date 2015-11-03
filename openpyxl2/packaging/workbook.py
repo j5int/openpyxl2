@@ -15,8 +15,8 @@ from openpyxl2.xml.functions import fromstring
 
 from openpyxl2.packaging.relationship import get_dependents
 from openpyxl2.packaging.manifest import Manifest
-from .parser import WorkbookPackage
-from .workbook import Workbook
+from openpyxl2.workbook.parser import WorkbookPackage
+from openpyxl2.workbook.workbook import Workbook
 from openpyxl2.utils.datetime import CALENDAR_MAC_1904
 
 chart_type = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/chartsheet"
