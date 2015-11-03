@@ -30,9 +30,6 @@ from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.packaging.relationship import RelationshipList
 from openpyxl2.workbook.parser import WorkbookPackage
 
-import datetime
-import re
-
 # constants
 VALID_WORKSHEET = WORKSHEET_TYPE
 
