@@ -1,5 +1,9 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
+
+"""
+Richtext definition
+"""
 from openpyxl2.compat import unicode
 
 from openpyxl2.descriptors.serialisable import Serialisable
