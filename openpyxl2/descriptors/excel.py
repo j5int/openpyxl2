@@ -5,7 +5,6 @@ from __future__ import absolute_import
 Excel specific descriptors
 """
 
-from openpyxl2.compat import basestring
 from openpyxl2.xml.constants import REL_NS
 from . import MatchPattern, MinMax, Integer, String, Typed, Sequence
 from .serialisable import Serialisable
@@ -55,7 +54,7 @@ class ExtensionList(Serialisable):
     ext = Sequence(expected_type=Extension)
 
     def __init__(self,
-                 ext=None,
+                 ext=(),
                 ):
         self.ext = ext
 

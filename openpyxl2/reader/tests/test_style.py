@@ -234,6 +234,15 @@ def test_style_names(datadir, StyleReader):
     ]
 
 
+def test_no_style_names(StyleReader):
+    xml = """
+    <root />
+    """
+    parser = StyleReader(xml)
+
+    assert parser._parse_style_names() == {}
+
+
 def test_named_styles(datadir, StyleReader):
     from openpyxl2.styles.named_styles import NamedStyle
     from openpyxl2.styles.fonts import DEFAULT_FONT
