@@ -36,6 +36,7 @@ from openpyxl2.xml.constants import (
 from openpyxl2.workbook import Workbook
 from openpyxl2.workbook.names.external import detect_external_links
 from openpyxl2.workbook.names.named_range import read_named_ranges
+from openpyxl2.packaging.relationship import get_dependents
 from .strings import read_string_table
 from openpyxl2.styles.stylesheet import apply_stylesheet
 from .workbook import (
@@ -215,6 +216,13 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA, data_only=False,
             parser.parse()
             new_ws = wb[sheet_name]
         new_ws.sheet_state = sheet.state
+
+        if wb.vba_archive is not None and new_ws.legacy_drawing is not None:
+            # We need to get the file name of the legacy drawing
+            dirname, basename = worksheet_path.rsplit('/', 1)
+            rels_path = '/'.join((dirname, '_rels', basename + '.rels'))
+            rels = get_dependents(archive, rels_path)
+            new_ws.legacy_drawing = rels[new_ws.legacy_drawing].target
 
         if not read_only:
         # load comments into the worksheet cells
