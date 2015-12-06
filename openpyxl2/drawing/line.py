@@ -17,7 +17,6 @@ from openpyxl2.descriptors import (
 from openpyxl2.descriptors.excel import Coordinate, Percentage
 
 from openpyxl2.descriptors.nested import (
-    NoneSet,
     NestedSet,
     NestedNoneSet,
     EmptyTag,
