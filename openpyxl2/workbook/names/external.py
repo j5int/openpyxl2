@@ -14,6 +14,7 @@ from openpyxl2.descriptors import (
 )
 from openpyxl2.descriptors.excel import Relation, ExtensionList
 from openpyxl2.descriptors.nested import NestedText
+from openpyxl2.descriptors.sequence import NestedSequence
 
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.xml.constants import (
