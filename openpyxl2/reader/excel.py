@@ -40,10 +40,7 @@ from openpyxl2.workbook.names.named_range import read_named_ranges
 from openpyxl2.packaging.relationship import get_dependents
 from .strings import read_string_table
 from openpyxl2.styles.stylesheet import apply_stylesheet
-from .workbook import (
-    read_content_types,
-    read_rels,
-)
+from .workbook import  read_content_types
 from openpyxl2.packaging.core import DocumentProperties
 from openpyxl2.packaging.workbook import WorkbookParser
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
@@ -228,7 +225,7 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA, data_only=False,
     wb._named_ranges = list(read_named_ranges(archive.read(ARC_WORKBOOK), wb))
 
     if EXTERNAL_LINK in cts:
-        rels = read_rels(archive.read(ARC_WORKBOOK_RELS))
+        rels = get_dependents(archive, ARC_WORKBOOK_RELS)
         wb._external_links = list(detect_external_links(rels, archive))
 
 
