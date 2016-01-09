@@ -12,14 +12,6 @@ from openpyxl2.xml.constants import (
     ARC_WORKBOOK,
 )
 
-from openpyxl2.workbook.names.named_range import (
-    NamedRange,
-    NamedValue,
-    split_named_range,
-    refers_to_range,
-    external_range,
-    )
-
 from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.packaging.relationship import RelationshipList
 
