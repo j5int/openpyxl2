@@ -7,7 +7,6 @@ from zipfile import ZipFile
 import pytest
 from openpyxl2.tests.helper import compare_xml
 
-from openpyxl2.reader.workbook import read_rels
 from openpyxl2.xml.constants import (
     ARC_CONTENT_TYPES,
     ARC_WORKBOOK,
