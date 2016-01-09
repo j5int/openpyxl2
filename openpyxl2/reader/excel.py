@@ -25,6 +25,7 @@ from openpyxl2.utils.exceptions import InvalidFileException
 from openpyxl2.xml.constants import (
     ARC_SHARED_STRINGS,
     ARC_CORE,
+    ARC_CONTENT_TYPES,
     ARC_WORKBOOK,
     ARC_WORKBOOK_RELS,
     ARC_THEME,
@@ -37,12 +38,15 @@ from openpyxl2.xml.constants import (
 from openpyxl2.workbook import Workbook
 from openpyxl2.workbook.names.external import detect_external_links
 from openpyxl2.workbook.names.named_range import read_named_ranges
-from openpyxl2.packaging.relationship import get_dependents
+
 from .strings import read_string_table
 from openpyxl2.styles.stylesheet import apply_stylesheet
-from .workbook import  read_content_types
+
 from openpyxl2.packaging.core import DocumentProperties
+from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.packaging.workbook import WorkbookParser
+from openpyxl2.packaging.relationship import get_dependents
+
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
 from openpyxl2.xml.functions import fromstring
 from .worksheet import WorkSheetParser
@@ -172,15 +176,16 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA, data_only=False,
         src = fromstring(archive.read(ARC_CORE))
         wb.properties = DocumentProperties.from_tree(src)
 
-    # what content types do we have?
-    cts = dict(read_content_types(archive))
-    wb.is_template = XLTX in cts or XLTM in cts
+    # is workbook a template or note
+    src = archive.read(ARC_CONTENT_TYPES)
+    root = fromstring(src)
+    package = Manifest.from_tree(root)
+    wb.is_template = XLTX in package or XLTM in package
 
     shared_strings = []
-    strings_path = cts.get(SHARED_STRINGS)
-    if strings_path is not None:
-        if strings_path.startswith("/"):
-            strings_path = strings_path[1:]
+    ct = package.find(SHARED_STRINGS)
+    if ct is not None:
+        strings_path = ct.PartName[1:]
         shared_strings = read_string_table(archive.read(strings_path))
 
 
@@ -224,7 +229,7 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA, data_only=False,
     wb._differential_styles = [] # reset
     wb._named_ranges = list(read_named_ranges(archive.read(ARC_WORKBOOK), wb))
 
-    if EXTERNAL_LINK in cts:
+    if EXTERNAL_LINK in package:
         rels = get_dependents(archive, ARC_WORKBOOK_RELS)
         wb._external_links = list(detect_external_links(rels, archive))
 
