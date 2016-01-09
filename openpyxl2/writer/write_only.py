@@ -9,6 +9,7 @@ from inspect import isgenerator
 import os
 from tempfile import NamedTemporaryFile
 
+from openpyxl2.compat import removed_method
 from openpyxl2.cell import Cell
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.related import Related
@@ -202,9 +203,6 @@ class WriteOnlyWorksheet(Worksheet):
         self._cleanup()
         return out
 
-
-def removed_method(*args, **kw):
-    raise NotImplementedError
 
 setattr(WriteOnlyWorksheet, '__getitem__', removed_method)
 setattr(WriteOnlyWorksheet, '__setitem__', removed_method)
