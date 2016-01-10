@@ -38,8 +38,8 @@ from openpyxl2.xml.constants import (
 
 from openpyxl2.comments.properties import CommentSheet
 from openpyxl2.workbook import Workbook
-from openpyxl2.workbook.names.external import detect_external_links
-from openpyxl2.workbook.names.named_range import read_named_ranges
+from openpyxl2.workbook.external_link.external import detect_external_links
+from openpyxl2.workbook.defined_name.named_range import read_named_ranges
 
 from .strings import read_string_table
 from openpyxl2.styles.stylesheet import apply_stylesheet

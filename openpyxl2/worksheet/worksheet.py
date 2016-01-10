@@ -43,7 +43,7 @@ from openpyxl2.utils.units import (
     DEFAULT_ROW_HEIGHT
 )
 from openpyxl2.formatting import ConditionalFormatting
-from openpyxl2.workbook.names.named_range import NamedRange
+from openpyxl2.workbook.defined_name.named_range import NamedRange
 from openpyxl2.workbook.child import _WorkbookChild
 from openpyxl2.utils.bound_dictionary import BoundDictionary
 
