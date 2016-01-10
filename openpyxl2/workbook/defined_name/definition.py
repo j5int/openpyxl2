@@ -18,9 +18,9 @@ from openpyxl2.descriptors import (
 from openpyxl2.formula import Tokenizer
 
 
-RESERVED = frozenset(["􏰀Print_Area", "􏰀Print_Titles", "􏰀Criteria",
-                      "􏰀_FilterDatabase", "􏰀Extract", "􏰀􏰀Consolidate_Area",
-                      "􏰀Sheet_Title"])
+RESERVED = frozenset(["Print_Area", "Print_Titles", "Criteria",
+                      "_FilterDatabase", "Extract", "Consolidate_Area",
+                      "Sheet_Title"])
 
 
 class Definition(Serialisable):
