@@ -33,6 +33,7 @@ from openpyxl2.utils.datetime  import datetime_to_W3CDTF
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.chartsheet import Chartsheet
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
+from openpyxl2.workbook.defined_name.definition import Definition
 
 
 def write_properties_app(workbook):
@@ -166,11 +167,11 @@ def _write_defined_names(workbook, names):
     for named_range in workbook.get_named_ranges():
         attrs = dict(named_range)
         if named_range.scope is not None:
-            attrs['localSheetId'] = safe_string(named_range.scope)
+            attrs['localSheetId'] = named_range.scope
 
-        name = Element('{%s}definedName' % SHEET_MAIN_NS, attrs)
-        name.text = named_range.value
-        names.append(name)
+        name = Definition(**attrs)
+        name.value = named_range.value
+        names.append(name.to_tree())
 
 
 def write_workbook_rels(workbook):
