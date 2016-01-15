@@ -8,7 +8,6 @@ from __future__ import absolute_import
 from itertools import islice, chain
 import re
 from inspect import isgenerator
-from weakref import ref
 
 # compatibility imports
 from openpyxl2.compat import (
@@ -45,6 +44,7 @@ from openpyxl2.utils.units import (
 )
 from openpyxl2.formatting import ConditionalFormatting
 from openpyxl2.workbook.child import _WorkbookChild
+from openpyxl2.workbook.defined_name.definition import COL_RANGE_RE, ROW_RANGE_RE
 from openpyxl2.utils.bound_dictionary import BoundDictionary
 
 from .datavalidation import DataValidationList
@@ -762,6 +762,9 @@ class Worksheet(_WorkbookChild):
         Set rows to be printed on the top of every page
         format `A:B
         """
+        if rows is not None:
+            if not ROW_RANGE_RE.match(rows):
+                raise ValueError("Print title rows must be the form 1:3")
         self._print_rows = rows
 
 
@@ -777,6 +780,9 @@ class Worksheet(_WorkbookChild):
         Set cols to be printed on the left of every page
         format ``1:3`
         """
+        if cols is not None:
+            if not COL_RANGE_RE.match(cols):
+                raise ValueError("Print title cols must be the form C:D")
         self._print_cols = cols
 
 
