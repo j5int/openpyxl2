@@ -17,6 +17,10 @@ from openpyxl2.packaging.relationship import get_dependents
 from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.workbook.parser import WorkbookPackage
 from openpyxl2.workbook.workbook import Workbook
+from openpyxl2.workbook.defined_name.definition import (
+    _unpack_print_area,
+    _unpack_print_titles,
+)
 from openpyxl2.workbook.external_link.external import read_external_link
 
 from openpyxl2.utils.datetime import CALENDAR_MAC_1904
@@ -57,3 +61,26 @@ class WorkbookParser:
 
         for sheet in self.sheets:
             yield sheet, self.rels[sheet.id]
+
+
+    def assign_names(self):
+        """
+        Bind reserved names to parsed worksheets
+        """
+        defns = []
+        for defn in self.wb.defined_names.definedName:
+            reserved = defn.is_reserved
+            if reserved:
+                sheet = self.wb._sheets[defn.localSheetId]
+                if reserved == "Print_Titles":
+                    rows, cols = _unpack_print_titles(defn)
+                    sheet.print_title_rows = rows
+                    sheet.print_title_cols = cols
+                elif reserved == "Print_Area":
+                    sheet.print_area = _unpack_print_area(defn)
+                else:
+                    defns.append(defn)
+                continue
+            else:
+                defns.append(defn)
+        self.wb.defined_names.definedName = defns
