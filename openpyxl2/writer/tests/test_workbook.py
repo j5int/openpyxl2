@@ -11,7 +11,7 @@ from openpyxl2.tests.helper import compare_xml
 
 # package
 from openpyxl2 import Workbook, load_workbook
-from openpyxl2.workbook.defined_name.definition import Definition
+from openpyxl2.workbook.defined_name.definition import DefinedName
 from openpyxl2.xml.functions import Element, tostring, fromstring
 from openpyxl2.xml.constants import XLTX, XLSX, XLSM, XLTM
 from .. excel import (
