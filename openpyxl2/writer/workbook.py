@@ -33,7 +33,7 @@ from openpyxl2.utils.datetime  import datetime_to_W3CDTF
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.chartsheet import Chartsheet
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
-from openpyxl2.workbook.defined_name.definition import DefinedName
+from openpyxl2.workbook.defined_name import DefinedName
 
 
 def write_properties_app(workbook):

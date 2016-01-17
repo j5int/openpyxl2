@@ -18,7 +18,7 @@ from openpyxl2.descriptors.nested import NestedString
 
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 
-from .defined_name.definition import DefinedName, DefinedNameList
+from .defined_name import DefinedName, DefinedNameList
 from .external_reference import ExternalReference
 from .function_group import FunctionGroupList
 from .pivot import PivotCacheList
