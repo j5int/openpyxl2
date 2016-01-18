@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2015 openpyxl
+# Copyright (c) 2010-2016 openpyxl
 
 """ Iterators-based worksheet reader
 *Still very raw*
@@ -9,8 +9,8 @@ from __future__ import absolute_import
 from openpyxl2.compat import range
 
 # package
-from openpyxl2.xml.functions import iterparse
-from openpyxl2.xml.functions import safe_iterator
+from openpyxl2.compat import removed_method
+from openpyxl2.xml.functions import iterparse, safe_iterator
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 
 from openpyxl2.worksheet import Worksheet
@@ -250,3 +250,8 @@ class ReadOnlyWorksheet(Worksheet):
     @max_column.setter
     def max_column(self, value):
         self._max_column = value
+
+
+setattr(ReadOnlyWorksheet, '__setitem__', removed_method)
+setattr(ReadOnlyWorksheet, 'range', removed_method)
+setattr(ReadOnlyWorksheet, 'merge_cells', removed_method)
