@@ -35,6 +35,7 @@ from openpyxl2.chartsheet import Chartsheet
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.workbook.defined_name import DefinedName
 from openpyxl2.workbook.parser import ChildSheet, WorkbookPackage
+from openpyxl2.workbook.views import BookView
 
 
 def write_properties_app(workbook):
@@ -112,9 +113,8 @@ def write_workbook(workbook):
 
     # book views
     book_views = SubElement(root, 'bookViews')
-    SubElement(book_views, 'workbookView',
-               {'activeTab': '%d' % workbook._active_sheet_index}
-               )
+    view = BookView(activeTab=workbook._active_sheet_index)
+    book_views.append(view.to_tree())
 
     # worksheets
     sheets = SubElement(root, 'sheets')
