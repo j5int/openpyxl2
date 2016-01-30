@@ -19,6 +19,7 @@ from openpyxl2.styles.named_styles import NamedStyle
 from openpyxl2.chartsheet import Chartsheet
 from .defined_name import DefinedName, DefinedNameList
 from openpyxl2.packaging.core import DocumentProperties
+from openpyxl2.packaging.relationship import RelationshipList
 from .protection import DocumentSecurity
 
 
@@ -55,6 +56,8 @@ class Workbook(object):
 
         if not self.write_only:
             self._sheets.append(Worksheet(self))
+
+        self.rels = RelationshipList()
 
 
     def _setup_styles(self):
