@@ -20,22 +20,8 @@ from openpyxl2.descriptors import (
     Convertible,
     MinMax,
 )
-from openpyxl2.descriptors.excel import ExtensionList
+from openpyxl2.descriptors.excel import ExtensionList, CellRange
 from openpyxl2.descriptors.sequence import ValueSequence
-
-from openpyxl2.utils import RANGE_EXPR
-
-
-class CellRange(Convertible, MatchPattern):
-
-    expected_type = basestring
-    allow_none = True
-    pattern = RANGE_EXPR
-
-    def __set__(self, instance, value):
-        if value is not None:
-            value = value.upper()
-        super(CellRange, self).__set__(instance, value)
 
 
 class SortCondition(Serialisable):
