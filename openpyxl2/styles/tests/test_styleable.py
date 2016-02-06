@@ -5,7 +5,6 @@ import pytest
 
 from openpyxl2.utils.indexed_list import IndexedList
 from ..import (
-    Style,
     Font,
     Border,
     PatternFill,

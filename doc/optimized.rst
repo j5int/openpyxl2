@@ -53,7 +53,7 @@ If you want to have cells with styles or comments then use a :func:`openpyxl2[.]
 >>> ws = wb.create_sheet()
 >>> from openpyxl2[.]writer.write_only import WriteOnlyCell
 >>> from openpyxl2[.]comments import Comment
->>> from openpyxl2[.]styles import Style, Font
+>>> from openpyxl2[.]styles import Font
 >>> cell = WriteOnlyCell(ws, value="hello world")
 >>> cell.font = Font(name='Courrier', size=36)
 >>> cell.comment = Comment(text="A comment", author="Author's Name")
