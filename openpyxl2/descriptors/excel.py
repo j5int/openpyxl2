@@ -6,9 +6,16 @@ Excel specific descriptors
 """
 
 from openpyxl2.xml.constants import REL_NS
-from . import MatchPattern, MinMax, Integer, String, Typed, Sequence
+from . import (
+    MatchPattern,
+    MinMax,
+    Integer,
+    String,
+    Typed,
+    Sequence,
+)
 from .serialisable import Serialisable
-from openpyxl2.utils import RANGE_EXPR
+from openpyxl2.utils.cell import RANGE_EXPR
 
 class HexBinary(MatchPattern):
 

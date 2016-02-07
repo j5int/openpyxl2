@@ -18,7 +18,10 @@ from openpyxl2.descriptors import (
 )
 from openpyxl2.compat import safe_string
 from openpyxl2.formula import Tokenizer
-from openpyxl2.utils import SHEETRANGE_RE, SHEET_TITLE
+from openpyxl2.utils.cell import (
+    SHEETRANGE_RE,
+    SHEET_TITLE,
+)
 
 RESERVED = frozenset(["Print_Area", "Print_Titles", "Criteria",
                       "_FilterDatabase", "Extract", "Consolidate_Area",
