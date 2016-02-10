@@ -1,7 +1,9 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2016 openpyxl
 
-from openpyxl2.compat import iteritems, OrderedDict, deprecated
+from collections import OrderedDict
+
+from openpyxl2.compat import iteritems, deprecated
 from openpyxl2.styles.differential import DifferentialStyle
 from .rule import Rule
 
