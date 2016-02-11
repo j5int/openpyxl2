@@ -9,7 +9,7 @@ import pytest
 from openpyxl2.styles.styleable import StyleArray
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.reader.excel import load_workbook
-from openpyxl2.compat import range, zip
+from openpyxl2.compat import range
 
 
 @pytest.fixture
