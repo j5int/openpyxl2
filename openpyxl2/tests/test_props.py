@@ -17,7 +17,7 @@ from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.workbook import DocumentProperties, Workbook
 
 
-@pytest.mark.parametrize("filename", ['empty.xlsx', 'empty_libre.xlsx'])
+@pytest.mark.parametrize("filename", ['sample.xlsx', 'empty_libre.xlsx'])
 def test_read_sheets_titles(datadir, filename):
     from openpyxl2.reader.workbook import read_sheets
 
