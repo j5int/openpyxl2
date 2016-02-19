@@ -23,7 +23,7 @@ except IOError:
     pass
 
 """Imports for the openpyxl package."""
-from openpyxl2.compat.numbers import NUMPY
+from openpyxl2.compat.numbers import NUMPY, PANDAS
 from openpyxl2.xml import LXML
 
 from openpyxl2.workbook import Workbook
