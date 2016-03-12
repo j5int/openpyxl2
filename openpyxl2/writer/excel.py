@@ -28,7 +28,7 @@ from openpyxl2.xml.constants import (
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.xml.functions import tostring, fromstring, Element
 from openpyxl2.packaging.manifest import write_content_types
-from openpyxl2.packaging.relationship import get_rels_path
+from openpyxl2.packaging.relationship import get_rels_path, RelationshipList
 from openpyxl2.packaging.extended import ExtendedProperties
 
 from openpyxl2.writer.strings import write_string_table
@@ -220,7 +220,9 @@ class ExcelWriter(object):
 
             xml = link.to_tree()
             archive.writestr(arc_path, tostring(xml))
-            archive.writestr(rels_path, tostring(link.file_link.to_tree()))
+            rels = RelationshipList()
+            rels.append(link.file_link)
+            archive.writestr(rels_path, tostring(rels.to_tree()))
 
 
     def save(self, filename, as_template=False):
