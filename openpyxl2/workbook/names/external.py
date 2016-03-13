@@ -87,8 +87,6 @@ def parse_ranges(xml):
         yield ExternalRange(**n.attrib)
 
 
-
-
 def detect_external_links(rels, archive):
     from openpyxl2.reader.workbook import find_external_refs
     rels = dict(rels)
