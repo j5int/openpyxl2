@@ -196,7 +196,7 @@ def test_set_bad_type(dummy_cell):
         cell.set_explicit_value(1, 'q')
 
 
-def test_illegal_chacters(dummy_cell):
+def test_illegal_characters(dummy_cell):
     from openpyxl2.utils.exceptions import IllegalCharacterError
     from openpyxl2.compat import range
     from itertools import chain
