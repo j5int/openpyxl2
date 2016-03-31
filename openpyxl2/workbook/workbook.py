@@ -69,6 +69,7 @@ class Workbook(object):
         from openpyxl2.styles.fonts import DEFAULT_FONT
         from openpyxl2.styles.protection import Protection
         from openpyxl2.styles.colors import COLOR_INDEX
+        from openpyxl2.styles.named_styles import NamedStyles
 
         self._fonts = IndexedList()
         self._fonts.add(DEFAULT_FONT)
@@ -88,7 +89,7 @@ class Workbook(object):
 
         self._colors = COLOR_INDEX
         self._cell_styles = IndexedList([StyleArray()])
-        self._named_styles = OrderedDict({'Normal': NamedStyle(font=DEFAULT_FONT, builtinId=0)})
+        self._named_styles = NamedStyles([NamedStyle(font=DEFAULT_FONT, builtinId=0)])
 
 
     @property
@@ -278,3 +279,11 @@ class Workbook(object):
             save_dump(self, filename)
         else:
             save_workbook(self, filename)
+
+
+    @property
+    def style_names(self):
+        """
+        List of named styles
+        """
+        return [s.name for s in self._named_styles]
