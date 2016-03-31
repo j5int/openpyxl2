@@ -4,6 +4,7 @@ from __future__ import absolute_import
 """Workbook is the top-level container for all document information."""
 
 from openpyxl2.compat import deprecated
+from openpyxl2.compat import OrderedDict
 from openpyxl2.worksheet import Worksheet
 
 from openpyxl2.utils.indexed_list import IndexedList
@@ -87,7 +88,7 @@ class Workbook(object):
 
         self._colors = COLOR_INDEX
         self._cell_styles = IndexedList([StyleArray()])
-        self._named_styles = {'Normal': NamedStyle(font=DEFAULT_FONT, builtinId=0)}
+        self._named_styles = OrderedDict({'Normal': NamedStyle(font=DEFAULT_FONT, builtinId=0)})
 
 
     @property
