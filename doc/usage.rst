@@ -7,7 +7,7 @@ Write a workbook
 
 >>> from openpyxl import Workbook
 >>> from openpyxl2[.]compat import range
->>> from openpyxl2[.]cell import get_column_letter
+>>> from openpyxl2[.]utils import get_column_letter
 >>>
 >>> wb = Workbook()
 >>>
