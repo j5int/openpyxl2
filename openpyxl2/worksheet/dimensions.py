@@ -5,6 +5,7 @@ from openpyxl2.compat import safe_string, deprecated
 from openpyxl2.utils import (
     get_column_interval,
     column_index_from_string,
+    range_boundaries,
 )
 from openpyxl2.descriptors import (
     Integer,
@@ -261,3 +262,21 @@ class SheetFormatProperties(Serialisable):
         self.thickBottom = thickBottom
         self.outlineLevelRow = outlineLevelRow
         self.outlineLevelCol = outlineLevelCol
+
+
+class SheetDimension(Serialisable):
+
+    tagname = "dimension"
+
+    ref = String()
+
+    def __init__(self,
+                 ref=None,
+                ):
+        self.ref = ref
+
+
+    @property
+    def boundaries(self):
+        return range_boundaries(self.ref)
+
