@@ -17,6 +17,7 @@ from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.dimensions import ColumnDimension, RowDimension
 from openpyxl2.worksheet.header_footer import HeaderFooter
 from openpyxl2.worksheet.hyperlink import Hyperlink
+from openpyxl2.worksheet.merge import MergeCells
 from openpyxl2.worksheet.page import PageMargins, PrintOptions, PrintPageSetup
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetViewList
@@ -229,8 +230,10 @@ class WorkSheetParser(object):
 
 
     def parse_merge(self, element):
-        for mergeCell in safe_iterator(element, ('{%s}mergeCell' % SHEET_MAIN_NS)):
-            self.ws.merge_cells(mergeCell.get('ref'))
+        merged = MergeCells.from_tree(element)
+        for c in merged.mergeCell:
+            self.ws.merge_cells(c.ref)
+
 
     def parse_column_dimensions(self, col):
         attrs = dict(col.attrib)
