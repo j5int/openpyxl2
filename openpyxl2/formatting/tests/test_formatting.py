@@ -10,7 +10,7 @@ from openpyxl2.xml.functions import tostring
 from openpyxl2.writer.worksheet import write_conditional_formatting
 from openpyxl2.styles import Border, Side, PatternFill, Color, Font, fills, borders, colors
 from openpyxl2.styles.differential import DifferentialStyle
-from openpyxl2.formatting import ConditionalFormatting
+from openpyxl2.formatting import ConditionalFormattingList
 from openpyxl2.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule, Rule
 
 # test imports
@@ -27,7 +27,7 @@ class DummyWorkbook():
 class DummyWorksheet():
 
     def __init__(self):
-        self.conditional_formatting = ConditionalFormatting()
+        self.conditional_formatting = ConditionalFormattingList()
         self.parent = DummyWorkbook()
 
 
@@ -61,7 +61,7 @@ class TestConditionalFormatting(object):
 
     def test_write_conditional_formatting(self):
         ws = self.ws
-        cf = ConditionalFormatting()
+        cf = ConditionalFormattingList()
         ws.conditional_formatting = cf
 
         fill = PatternFill(start_color=Color('FFEE1111'),
@@ -92,7 +92,7 @@ class TestConditionalFormatting(object):
         """Test to verify font style written correctly."""
 
         ws = self.ws
-        cf = ConditionalFormatting()
+        cf = ConditionalFormattingList()
         ws.conditional_formatting = cf
 
         # Create cf rule

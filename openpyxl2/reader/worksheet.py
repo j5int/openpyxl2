@@ -34,7 +34,7 @@ from openpyxl2.xml.constants import (
 )
 from openpyxl2.xml.functions import safe_iterator, localname
 from openpyxl2.styles import Color
-from openpyxl2.formatting import ConditionalFormatting, Rule
+from openpyxl2.formatting import Rule
 from openpyxl2.formula.translate import Translator
 from openpyxl2.worksheet.properties import WorksheetProperties
 from openpyxl2.utils import (

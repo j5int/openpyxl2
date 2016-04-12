@@ -14,7 +14,7 @@ from openpyxl2.xml.functions import (
     xmlfile,
 )
 from openpyxl2.xml.constants import SHEET_MAIN_NS
-from openpyxl2.formatting import ConditionalFormatting
+from openpyxl2.formatting import ConditionalFormattingList
 from openpyxl2.styles.differential import DifferentialStyle
 from openpyxl2.packaging.relationship import Relationship
 from openpyxl2.worksheet.merge import MergeCells, MergeCell
