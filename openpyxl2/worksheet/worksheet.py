@@ -43,7 +43,7 @@ from openpyxl2.utils.units import (
     DEFAULT_COLUMN_WIDTH,
     DEFAULT_ROW_HEIGHT,
 )
-from openpyxl2.formatting import ConditionalFormattingList
+from openpyxl2.formatting.formatting import ConditionalFormattingList
 from openpyxl2.workbook.child import _WorkbookChild
 from openpyxl2.workbook.defined_name import COL_RANGE_RE, ROW_RANGE_RE
 from openpyxl2.utils.bound_dictionary import BoundDictionary

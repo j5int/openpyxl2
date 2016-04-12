@@ -10,7 +10,7 @@ from openpyxl2.xml.functions import tostring
 from openpyxl2.writer.worksheet import write_conditional_formatting
 from openpyxl2.styles import Border, Side, PatternFill, Color, Font, fills, borders, colors
 from openpyxl2.styles.differential import DifferentialStyle
-from openpyxl2.formatting import ConditionalFormattingList
+from openpyxl2.formatting.formatting import ConditionalFormattingList
 from openpyxl2.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule, Rule
 
 # test imports
