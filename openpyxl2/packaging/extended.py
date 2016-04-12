@@ -3,6 +3,8 @@ from __future__ import absolute_import
 
 from openpyxl2 import __version__
 
+VERSION = ".".join(__version__.split(".")[:2])
+
 from openpyxl2.compat import basestring
 
 from openpyxl2.descriptors.serialisable import Serialisable
@@ -98,7 +100,7 @@ class ExtendedProperties(Serialisable):
                  HyperlinksChanged=None,
                  DigSig=None,
                  Application="Microsoft Excel",
-                 AppVersion=__version__,
+                 AppVersion=VERSION,
                  DocSecurity=None,
                 ):
         self.Template = Template

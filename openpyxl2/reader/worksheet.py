@@ -34,7 +34,8 @@ from openpyxl2.xml.constants import (
 )
 from openpyxl2.xml.functions import safe_iterator, localname
 from openpyxl2.styles import Color
-from openpyxl2.formatting import ConditionalFormatting, Rule
+from openpyxl2.formatting import Rule
+from openpyxl2.formatting.formatting import ConditionalFormatting
 from openpyxl2.formula.translate import Translator
 from openpyxl2.worksheet.properties import WorksheetProperties
 from openpyxl2.utils import (
@@ -277,14 +278,11 @@ class WorkSheetParser(object):
 
 
     def parser_conditional_formatting(self, element):
-        range_string = element.get('sqref')
-        cfRules = element.findall('{%s}cfRule' % SHEET_MAIN_NS)
-        self.ws.conditional_formatting.cf_rules[range_string] = []
-        for node in cfRules:
-            rule = Rule.from_tree(node)
+        cf = ConditionalFormatting.from_tree(element)
+        for rule in cf.rules:
             if rule.dxfId is not None:
                 rule.dxf = self.differential_styles[rule.dxfId]
-            self.ws.conditional_formatting.cf_rules[range_string].append(rule)
+            self.ws.conditional_formatting.add(cf.sqref, rule)
 
 
     def parse_sheet_protection(self, element):

@@ -4,7 +4,6 @@ import pytest
 
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
-from openpyxl2 import __version__
 
 
 @pytest.fixture
@@ -16,6 +15,7 @@ def ExtendedProperties():
 class TestExtendedProperties:
 
     def test_ctor(self, ExtendedProperties):
+        from ..extended import VERSION
         props = ExtendedProperties()
         xml = tostring(props.to_tree())
         expected = """
@@ -23,7 +23,7 @@ class TestExtendedProperties:
         <Application>Microsoft Excel</Application>
         <AppVersion>{0}</AppVersion>
         </Properties>
-        """.format(__version__)
+        """.format(VERSION)
         diff = compare_xml(xml, expected)
         assert diff is None, diff
 
