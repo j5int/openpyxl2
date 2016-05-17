@@ -13,7 +13,7 @@ from openpyxl2.xml.functions import xmlfile
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 
 from openpyxl2.styles.differential import DifferentialStyle
-from openpyxl2.packaging.relationship import Relationship
+from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.worksheet.merge import MergeCells, MergeCell
 from openpyxl2.worksheet.properties import WorksheetProperties
 from openpyxl2.worksheet.hyperlink import (
@@ -80,7 +80,7 @@ def write_worksheet(worksheet):
     """Write a worksheet to an xml file."""
 
     ws = worksheet
-    ws._rels = []
+    ws._rels = RelationshipList()
     ws._hyperlinks = []
 
     out = BytesIO()
@@ -164,7 +164,7 @@ def write_worksheet(worksheet):
             tables = TablePartList()
 
             for table in ws._tables:
-                rel = Relationship(type=table._rel_type)
+                rel = Relationship(type=table._rel_type, Target="")
                 ws._rels.append(rel)
                 table._rel_id = rel.Id
                 tables.append(Related(id=rel.Id))
