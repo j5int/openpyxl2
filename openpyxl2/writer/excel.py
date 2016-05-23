@@ -28,15 +28,19 @@ from openpyxl2.xml.constants import (
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.xml.functions import tostring, fromstring, Element
 from openpyxl2.packaging.manifest import write_content_types
-from openpyxl2.packaging.relationship import get_rels_path, RelationshipList
+from openpyxl2.packaging.relationship import (
+    get_rels_path,
+    RelationshipList,
+    Relationship,
+)
 from openpyxl2.packaging.extended import ExtendedProperties
 
 from openpyxl2.writer.strings import write_string_table
 from openpyxl2.writer.workbook import (
     write_root_rels,
     write_workbook_rels,
-    write_workbook
-    )
+    write_workbook,
+)
 from openpyxl2.writer.theme import write_theme
 from .relations import write_rels
 from openpyxl2.writer.worksheet import write_worksheet
@@ -143,8 +147,6 @@ class ExcelWriter(object):
 
 
     def _write_chartsheets(self, archive):
-        from openpyxl2.packaging.relationship import Relationship, RelationshipList
-        from openpyxl2.worksheet.drawing import Drawing
         for idx, sheet in enumerate(self.workbook.chartsheets, 1):
 
             sheet._path = "sheet{0}.xml".format(idx)
@@ -164,8 +166,7 @@ class ExcelWriter(object):
                 rels.append(rel)
                 tree = rels.to_tree()
 
-                archive.writestr(rels_path, tostring(tree)
-                                 )
+                archive.writestr(rels_path, tostring(tree))
 
 
     def _write_worksheets(self, archive):
