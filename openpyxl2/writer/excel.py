@@ -46,7 +46,7 @@ from .relations import write_rels
 from openpyxl2.writer.worksheet import write_worksheet
 from openpyxl2.styles.stylesheet import write_stylesheet
 
-from openpyxl2.comments.writer import CommentWriter
+from openpyxl2.comments.writer import ShapeWriter
 from openpyxl2.comments.properties import CommentSheet
 
 ARC_VBA = ('xl/vba', r'xl/drawings/.*vmlDrawing\d\.vml', 'xl/ctrlProps', 'customUI',
@@ -56,7 +56,7 @@ ARC_VBA = ('xl/vba', r'xl/drawings/.*vmlDrawing\d\.vml', 'xl/ctrlProps', 'custom
 class ExcelWriter(object):
     """Write a workbook object to an Excel file."""
 
-    comment_writer = CommentWriter
+    comment_writer = ShapeWriter
 
     def __init__(self, workbook, archive):
         self.archive = archive
