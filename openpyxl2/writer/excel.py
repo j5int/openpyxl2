@@ -47,6 +47,7 @@ from openpyxl2.writer.worksheet import write_worksheet
 from openpyxl2.styles.stylesheet import write_stylesheet
 
 from openpyxl2.comments.writer import CommentWriter
+from openpyxl2.comments.properties import CommentSheet
 
 ARC_VBA = ('xl/vba', r'xl/drawings/.*vmlDrawing\d\.vml', 'xl/ctrlProps', 'customUI',
            'xl/activeX', r'xl/media/.*\.emf')
@@ -177,8 +178,9 @@ class ExcelWriter(object):
     def _write_comments(self):
         for idx, cw in enumerate(self._comments, 1):
 
-            self.archive.writestr('xl/comments%d.xml' % idx,
-                                  cw.write_comments())
+            comment_sheet = CommentSheet.write(cw.comments)
+            self.archive.writestr('xl/comments%d.xml' % idx, comment_sheet)
+
             if cw.vml is not None:
                 vml = cw.write_comments_vml(cw.vml)
                 vml_path = cw.vml_path
