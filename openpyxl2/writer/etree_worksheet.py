@@ -4,7 +4,7 @@ from __future__ import absolute_import
 from operator import itemgetter
 
 from openpyxl2.compat import safe_string
-from openpyxl2.comments.properties import CommentRecord
+from openpyxl2.comments.comment_sheet import CommentRecord
 from openpyxl2.xml.functions import Element, SubElement
 from openpyxl2 import LXML
 

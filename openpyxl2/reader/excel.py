@@ -36,7 +36,7 @@ from openpyxl2.xml.constants import (
     XLTX,
 )
 
-from openpyxl2.comments.properties import CommentSheet
+from openpyxl2.comments.comment_sheet import CommentSheet
 from openpyxl2.workbook import Workbook
 
 from .strings import read_string_table
