@@ -6,7 +6,10 @@ from weakref import ref
 from openpyxl2.descriptors import Typed, Set
 from openpyxl2.descriptors.excel import ExtensionList
 from openpyxl2.descriptors.serialisable import Serialisable
-from openpyxl2.drawing.spreadsheet_drawing import AbsoluteAnchor
+from openpyxl2.drawing.spreadsheet_drawing import (
+    AbsoluteAnchor,
+    SpreadsheetDrawing,
+)
 from openpyxl2.worksheet.page import (
     PageMargins,
     PrintPageSetup
@@ -96,6 +99,8 @@ class Chartsheet(_WorkbookChild, Serialisable):
 
 
     def to_tree(self):
+        self._drawing = SpreadsheetDrawing()
+        self._drawing.charts = self._charts
         tree = super(Chartsheet, self).to_tree()
         tree.set("xmlns", SHEET_MAIN_NS)
         return tree
