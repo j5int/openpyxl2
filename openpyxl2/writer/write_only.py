@@ -11,6 +11,7 @@ from tempfile import NamedTemporaryFile
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from openpyxl2.cell import Cell, WriteOnlyCell
+from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.workbook.child import _WorkbookChild
 from openpyxl2.worksheet.related import Related
@@ -244,6 +245,9 @@ class WriteOnlyWorksheet(_WorkbookChild):
                         )
 
     def _write(self):
+        self._drawing = SpreadsheetDrawing()
+        self._drawing.charts = self._charts
+        self._drawing.images = self._images
         self.close()
         with open(self.filename) as src:
             out = src.read()
