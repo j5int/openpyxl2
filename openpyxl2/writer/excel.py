@@ -27,10 +27,7 @@ from openpyxl2.xml.constants import (
     )
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.xml.functions import tostring, fromstring, Element
-from openpyxl2.packaging.manifest import (
-    write_content_types,
-    Manifest,
-)
+from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.packaging.relationship import (
     get_rels_path,
     RelationshipList,
@@ -99,9 +96,8 @@ class ExcelWriter(object):
 
         self._merge_vba()
 
-        manifest = write_content_types(self.workbook,
-                                       as_template=self.as_template, exts=archive.namelist(),
-                                       manifest=self.manifest)
+        manifest._write_content_types(self.workbook,
+                                      as_template=self.as_template, exts=archive.namelist(), )
         manifest._write(archive)
 
 
