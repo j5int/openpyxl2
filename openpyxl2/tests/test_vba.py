@@ -5,25 +5,18 @@ from __future__ import absolute_import
 # Python stdlib imports
 from io import BytesIO
 import zipfile
+import pytest
 
 # package imports
 from openpyxl2.tests.helper import compare_xml
+from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.writer.excel import save_virtual_workbook
-from openpyxl2.packaging.manifest import write_content_types
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS, CONTYPES_NS
 
-def test_write_content_types(datadir):
-    datadir.join('reader').chdir()
-    wb = load_workbook('vba-test.xlsm', keep_vba=True)
-    manifest = write_content_types(wb)
-    datadir.chdir()
-    datadir.join('writer').chdir()
-    with open('Content_types_vba.xml') as expected:
-        diff = compare_xml(tostring(manifest.to_tree()), expected.read())
-        assert diff is None, diff
 
+@pytest.mark.xfail
 def test_content_types(datadir):
     datadir.join('reader').chdir()
     fname = 'vba+comments.xlsm'
