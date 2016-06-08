@@ -11,9 +11,34 @@ from openpyxl2.reader.excel import load_workbook
 from openpyxl2.workbook.defined_name import DefinedName
 from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 
+from openpyxl2.xml.constants import (
+    XLSM,
+    XLSX,
+    XLTM,
+    XLTX
+)
+
 # test imports
 import pytest
 from openpyxl2.tests.schema import validate_archive
+
+
+class TestWorkbook:
+
+    @pytest.mark.parametrize("has_vba, as_template, content_type",
+                             [
+                                 (None, False, XLSX),
+                                 (None, True, XLTX),
+                                 (True, False, XLSM),
+                                 (True, True, XLTM)
+                             ]
+                             )
+    def test_template(self, has_vba, as_template, content_type):
+        from openpyxl2.workbook import Workbook
+        wb = Workbook()
+        wb.vba_archive = has_vba
+        wb.template = as_template
+        assert wb.mime_type == content_type
 
 
 def test_get_active_sheet():
