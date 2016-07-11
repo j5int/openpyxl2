@@ -24,6 +24,7 @@ from openpyxl2.workbook.external_reference import ExternalReference
 from openpyxl2.workbook.parser import ChildSheet, WorkbookPackage
 from openpyxl2.workbook.properties import CalcProperties, WorkbookProperties
 from openpyxl2.workbook.views import BookView
+from openpyxl2.utils.datetime import CALENDAR_MAC_1904
 
 
 def write_root_rels(workbook):
@@ -76,9 +77,11 @@ def write_workbook(workbook):
 
     root = WorkbookPackage()
 
-    props = WorkbookProperties()
+    props = WorkbookProperties() # needs a mapping to the workbook for preservation
     if wb.code_name is not None:
         props.codeName = wb.code_name
+    if wb.excel_base_date == CALENDAR_MAC_1904:
+        props.date1904 = True
     root.workbookPr = props
 
     # book views
