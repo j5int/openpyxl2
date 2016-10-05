@@ -58,7 +58,7 @@ setup(name='openpyxl2',
         'python (>=2.6.0)',
         ],
     install_requires=[
-        'jdcal', 'et_xmlfile', 'regex',
+        'jdcal', 'et_xmlfile',
         ],
     package_data={
         'openpyxl2': ['.constants.json']
