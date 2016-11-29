@@ -1,14 +1,13 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2015 openpyxl
+# Copyright (c) 2010-2016 openpyxl
 
-import pytest
-from openpyxl2.chartsheet import Drawing
+from openpyxl2.worksheet.drawing import Drawing
+from openpyxl2.worksheet.page import PageMargins
 from ..views import ChartsheetView, ChartsheetViewList
-from openpyxl2.worksheet import PageMargins
 
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
-
+import pytest
 
 class DummyWorkbook:
 
