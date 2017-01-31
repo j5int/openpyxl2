@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 import re
 
-from openpyxl2.compat import basestring
+from openpyxl2.compat import unicode
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
     Alias,
@@ -247,7 +247,7 @@ class Filters(Serialisable):
                                    "gregorianMeFrench","gregorianArabic", "hijri","hebrew",
                                    "taiwan","japan", "thai","korea",
                                    "saka","gregorianXlitEnglish","gregorianXlitFrench"])
-    filter = ValueSequence(expected_type=str)
+    filter = ValueSequence(expected_type=unicode)
     dateGroupItem = Sequence(expected_type=DateGroupItem, allow_none=True)
 
     __elements__ = ('filter', 'dateGroupItem')
