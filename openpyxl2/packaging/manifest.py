@@ -37,7 +37,8 @@ from openpyxl2.xml.constants import (
 from openpyxl2.xml.functions import tostring
 
 # initialise mime-types
-mimetypes.init()
+if not mimetypes.inited:
+    mimetypes.init()
 mimetypes.add_type('application/xml', ".xml")
 mimetypes.add_type('application/vnd.openxmlformats-package.relationships+xml', ".rels")
 mimetypes.add_type("application/vnd.ms-office.vbaProject", ".bin")
