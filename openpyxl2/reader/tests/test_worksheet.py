@@ -15,6 +15,7 @@ from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.cell import Cell
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.worksheet import Worksheet
+from openpyxl2.packaging.relationship import Relationship, RelationshipList
 
 
 def test_get_xml_iter():
@@ -656,8 +657,14 @@ def test_tables(WorkSheetParser):
       </tableParts>
     </sheet>
     """
+
     parser = WorkSheetParser
+    r = Relationship(type="table", Id="rId1", Target="../tables/table1.xml")
+    rels = RelationshipList()
+    rels.append(r)
+    parser.ws._rels = rels
+
     parser.source = src
     parser.parse()
 
-    assert [t.id for t in parser.tables.tablePart] == ['rId1']
+    assert parser.tables == ["../tables/table1.xml"]
