@@ -20,7 +20,6 @@ from openpyxl2.xml.constants import (
 
 # test imports
 import pytest
-from openpyxl2.tests.schema import validate_archive
 
 
 class TestWorkbook:
