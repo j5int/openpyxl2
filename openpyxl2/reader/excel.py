@@ -44,7 +44,7 @@ from .strings import read_string_table
 from openpyxl2.styles.stylesheet import apply_stylesheet
 
 from openpyxl2.packaging.core import DocumentProperties
-from openpyxl2.packaging.manifest import Override, Manifest
+from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.packaging.workbook import WorkbookParser
 from openpyxl2.packaging.relationship import get_dependents, get_rels_path
 
