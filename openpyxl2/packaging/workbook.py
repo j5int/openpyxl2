@@ -8,13 +8,9 @@ OO-based reader
 import posixpath
 from warnings import warn
 
-from openpyxl2.xml.constants import (
-    ARC_WORKBOOK,
-    ARC_WORKBOOK_RELS,
-)
 from openpyxl2.xml.functions import fromstring
 
-from openpyxl2.packaging.relationship import get_dependents
+from openpyxl2.packaging.relationship import get_dependents, get_rels_path
 from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.workbook.parser import WorkbookPackage
 from openpyxl2.workbook.workbook import Workbook
@@ -29,15 +25,20 @@ from openpyxl2.utils.datetime import CALENDAR_MAC_1904
 
 class WorkbookParser:
 
-    def __init__(self, archive):
+    def __init__(self, archive, workbook_part_name):
         self.archive = archive
+        self.workbook_part_name = workbook_part_name
         self.wb = Workbook()
         self.sheets = []
-        self.rels = get_dependents(self.archive, ARC_WORKBOOK_RELS)
+
+
+    @property
+    def rels(self):
+        return get_dependents(self.archive, get_rels_path(self.workbook_part_name))
 
 
     def parse(self):
-        src = self.archive.read(ARC_WORKBOOK)
+        src = self.archive.read(self.workbook_part_name)
         node = fromstring(src)
         package = WorkbookPackage.from_tree(node)
         if package.properties.date1904:
