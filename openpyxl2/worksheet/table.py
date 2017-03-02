@@ -15,7 +15,7 @@ from openpyxl2.descriptors import (
     String,
     Sequence,
 )
-from openpyxl2.descriptors.excel import ExtensionList
+from openpyxl2.descriptors.excel import ExtensionList, CellRange
 from openpyxl2.descriptors.sequence import NestedSequence
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import tostring
@@ -210,7 +210,7 @@ class Table(Serialisable):
     name = TableNameDescriptor(allow_none=True)
     displayName = TableNameDescriptor()
     comment = String(allow_none=True)
-    ref = String()
+    ref = CellRange()
     tableType = NoneSet(values=(['worksheet', 'xml', 'queryTable']))
     headerRowCount = Integer(allow_none=True)
     insertRow = Bool(allow_none=True)
