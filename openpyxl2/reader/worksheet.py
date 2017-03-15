@@ -45,7 +45,7 @@ from openpyxl2.utils import (
     column_index_from_string,
     coordinate_to_tuple,
     )
-from openpyxl2.utils.datetime import from_excel
+from openpyxl2.utils.datetime import from_excel, from_ISO8601
 from openpyxl2.descriptors.excel import ExtensionList, Extension
 from openpyxl2.worksheet.table import TablePartList
 
@@ -227,6 +227,8 @@ class WorkSheetParser(object):
                 value = self.shared_strings[int(value)]
             elif data_type == 'str':
                 data_type = 's'
+            elif data_type == 'd':
+                value = from_ISO8601(value)
 
         else:
             if data_type == 'inlineStr':
