@@ -76,7 +76,6 @@ style for lots of cells when instead of only one.
 
 >>> from openpyxl2[.]styles import colors
 >>> from openpyxl2[.]styles import Font, Color
->>> from openpyxl2[.]styles import colors
 >>> from openpyxl import Workbook
 >>> wb = Workbook()
 >>> ws = wb.active
