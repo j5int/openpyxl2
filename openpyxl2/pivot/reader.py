@@ -6,6 +6,7 @@ from zipfile import ZipFile
 from openpyxl2.xml.constants import ARC_CONTENT_TYPES
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.packaging.manifest import Manifest
+from openpyxl2.packaging.relationship import get_dependents
 
 from .pivot import PivotTableDefinition
 from .cache import PivotCacheDefinition
@@ -20,5 +21,10 @@ def read_pivot(file):
     package = Manifest.from_tree(root)
 
     tables = package.findall(PivotTableDefinition.mime_type)
+    table = list(tables)[0]
+    path = table.PartName[1:]
+    src = archive.read(path)
+    table = PivotTableDefinition.from_tree(fromstring(src))
+    deps = get_dependents(archive, path)
 
-    return tables
+    return table, deps
