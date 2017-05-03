@@ -2,10 +2,7 @@ from __future__ import absolute_import
 # Copyright (c) 2010-2015 openpyxl
 
 from openpyxl2.descriptors.serialisable import Serialisable
-from openpyxl2.descriptors import (
-    Integer,
-    Sequence,
-)
+from openpyxl2.descriptors import Integer
 from openpyxl2.descriptors.excel import Relation
 
 class PivotCache(Serialisable):
@@ -21,17 +18,3 @@ class PivotCache(Serialisable):
                 ):
         self.cacheId = cacheId
         self.id = id
-
-
-class PivotCacheList(Serialisable):
-
-    tagname = "pivotCaches"
-
-    pivotCache = Sequence(expected_type=PivotCache, )
-
-    __elements__ = ('pivotCache',)
-
-    def __init__(self,
-                 pivotCache=(),
-                ):
-        self.pivotCache = pivotCache

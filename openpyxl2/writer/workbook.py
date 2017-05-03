@@ -16,6 +16,7 @@ from openpyxl2.xml.constants import (
 )
 from openpyxl2.xml.functions import tostring, fromstring
 
+from openpyxl2.workbook.pivot import PivotCache
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.chartsheet import Chartsheet
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
@@ -143,15 +144,13 @@ def write_workbook(workbook):
     root.definedNames = defined_names
 
     # pivots
-    from openpyxl2.workbook.pivot import PivotCacheList, PivotCache
-    root.pivotCaches = PivotCacheList()
     for pivot in wb._pivots:
         c = PivotCache(cacheId=pivot.cacheId)
         root.pivotCaches.pivotCache.append(c)
         rel = Relationship(Type=pivot.cache.rel_type, Target=pivot.cache.path)
         wb.rels.append(rel)
         c.id = rel.id
-    wb._pivots = []
+    wb._pivots = [] # reset
 
     root.calcPr = wb.calculation
 
