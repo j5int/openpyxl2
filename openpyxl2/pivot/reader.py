@@ -5,7 +5,7 @@ from __future__ import absolute_import
 from openpyxl2.xml.functions import fromstring
 from openpyxl2.packaging.relationship import get_dependents, get_rels_path
 
-from .pivot import TableDefinition
+from .table import TableDefinition
 from .cache import CacheDefinition
 from .record import RecordList
 
