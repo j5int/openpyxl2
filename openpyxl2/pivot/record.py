@@ -1,3 +1,5 @@
+# Copyright (c) 2010-2017 openpyxl
+
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
     Typed,
