@@ -10,7 +10,11 @@ from warnings import warn
 
 from openpyxl2.xml.functions import fromstring
 
-from openpyxl2.packaging.relationship import get_dependents, get_rels_path
+from openpyxl2.packaging.relationship import (
+    get_dependents,
+    get_rels_path,
+    get_rel,
+)
 from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.workbook.parser import WorkbookPackage
 from openpyxl2.workbook.workbook import Workbook
@@ -19,6 +23,8 @@ from openpyxl2.workbook.defined_name import (
     _unpack_print_titles,
 )
 from openpyxl2.workbook.external_link.external import read_external_link
+from openpyxl2.pivot.cache import CacheDefinition
+from openpyxl2.pivot.record import RecordList
 
 from openpyxl2.utils.datetime import CALENDAR_MAC_1904
 
@@ -52,6 +58,7 @@ class WorkbookParser:
         self.wb.active = package.active
         self.sheets = package.sheets
         self.wb.calculation = package.calcPr
+        self.caches = package.pivotCaches
 
         #external links contain cached worksheets and can be very big
         if not self.wb.keep_links:
@@ -103,3 +110,15 @@ class WorkbookParser:
             else:
                 defns.append(defn)
         self.wb.defined_names.definedName = defns
+
+
+    @property
+    def pivot_caches(self):
+        """
+        Get PivotCache objects
+        """
+        for cache in self.caches:
+            c = get_rel(self.archive, self.rels, id=cache.id, cls=CacheDefinition)
+            records = get_rel(archive, cache.deps, cache.id, RecordList)
+            cache.records = records
+            yield c.cacheId, c
