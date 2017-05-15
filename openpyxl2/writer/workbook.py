@@ -16,13 +16,12 @@ from openpyxl2.xml.constants import (
 )
 from openpyxl2.xml.functions import tostring, fromstring
 
-from openpyxl2.workbook.pivot import PivotCache
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.chartsheet import Chartsheet
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
 from openpyxl2.workbook.defined_name import DefinedName
 from openpyxl2.workbook.external_reference import ExternalReference
-from openpyxl2.workbook.parser import ChildSheet, WorkbookPackage
+from openpyxl2.workbook.parser import ChildSheet, WorkbookPackage, PivotCache
 from openpyxl2.workbook.properties import CalcProperties, WorkbookProperties
 from openpyxl2.workbook.views import BookView
 from openpyxl2.utils.datetime import CALENDAR_MAC_1904
