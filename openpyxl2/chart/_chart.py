@@ -13,7 +13,7 @@ from openpyxl2.descriptors import (
     Bool,
 )
 from openpyxl2.descriptors.nested import Nested
-from openpyxl2.descriptors.sequence import NestedSequence, Sequence
+from openpyxl2.descriptors.sequence import NestedSequence, ValueSequence
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.xml.constants import CHART_NS, PACKAGE_CHARTS
 
@@ -49,7 +49,7 @@ class ChartBase(Serialisable):
     legend = Typed(expected_type=Legend, allow_none=True)
     layout = Typed(expected_type=Layout, allow_none=True)
     roundedCorners = Bool(allow_none=True)
-    axId = Sequence(expected_type=AxId)
+    axId = ValueSequence(expected_type=int)
 
     _series_type = ""
     ser = ()
@@ -95,7 +95,7 @@ class ChartBase(Serialisable):
 
 
     def to_tree(self, namespace=None, tagname=None, idx=None):
-        self.axId = [AxId(id) for id in self._axes]
+        self.axId = [id for id in self._axes]
         if self.ser is not None:
             for s in self.ser:
                 s.__elements__ = attribute_mapping[self._series_type]
