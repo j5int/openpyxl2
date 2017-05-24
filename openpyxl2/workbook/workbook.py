@@ -27,6 +27,7 @@ from openpyxl2.styles.fonts import DEFAULT_FONT
 from openpyxl2.styles.protection import Protection
 from openpyxl2.styles.colors import COLOR_INDEX
 from openpyxl2.styles.named_styles import NamedStyleList
+from openpyxl2.styles.table import TableStyleList
 
 from openpyxl2.chartsheet import Chartsheet
 from .defined_name import DefinedName, DefinedNameList
@@ -102,6 +103,7 @@ class Workbook(object):
         self._cell_styles = IndexedList([StyleArray()])
         self._named_styles = NamedStyleList()
         self.add_named_style(NamedStyle(font=DEFAULT_FONT, builtinId=0))
+        self._table_styles = TableStyleList()
 
 
     @property
