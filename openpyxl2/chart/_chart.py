@@ -15,7 +15,7 @@ from openpyxl2.descriptors import (
 from openpyxl2.descriptors.nested import Nested
 from openpyxl2.descriptors.sequence import NestedSequence, ValueSequence
 from openpyxl2.descriptors.serialisable import Serialisable
-from openpyxl2.xml.constants import CHART_NS, PACKAGE_CHARTS
+from openpyxl2.xml.constants import PACKAGE_CHARTS
 
 from ._3d import _3DBase
 from .data_source import AxDataSource, NumRef
@@ -122,9 +122,7 @@ class ChartBase(Serialisable):
         cs = ChartSpace(chart=container)
         cs.style = self.style
         cs.roundedCorners = self.roundedCorners
-        tree = cs.to_tree()
-        tree.set("xmlns", CHART_NS)
-        return tree
+        return cs.to_tree()
 
 
     @property
