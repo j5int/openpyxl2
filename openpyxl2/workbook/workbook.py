@@ -20,6 +20,14 @@ from openpyxl2.writer.excel import save_workbook
 from openpyxl2.styles.cell_style import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle
 from openpyxl2.styles.differential import DifferentialStyleList
+from openpyxl2.styles.alignment import Alignment
+from openpyxl2.styles.borders import DEFAULT_BORDER
+from openpyxl2.styles.fills import DEFAULT_EMPTY_FILL, DEFAULT_GRAY_FILL
+from openpyxl2.styles.fonts import DEFAULT_FONT
+from openpyxl2.styles.protection import Protection
+from openpyxl2.styles.colors import COLOR_INDEX
+from openpyxl2.styles.named_styles import NamedStyleList
+from openpyxl2.styles.table import TableStyleList
 
 from openpyxl2.chartsheet import Chartsheet
 from .defined_name import DefinedName, DefinedNameList
@@ -74,13 +82,6 @@ class Workbook(object):
 
     def _setup_styles(self):
         """Bootstrap styles"""
-        from openpyxl2.styles.alignment import Alignment
-        from openpyxl2.styles.borders import DEFAULT_BORDER
-        from openpyxl2.styles.fills import DEFAULT_EMPTY_FILL, DEFAULT_GRAY_FILL
-        from openpyxl2.styles.fonts import DEFAULT_FONT
-        from openpyxl2.styles.protection import Protection
-        from openpyxl2.styles.colors import COLOR_INDEX
-        from openpyxl2.styles.named_styles import NamedStyleList
 
         self._fonts = IndexedList()
         self._fonts.add(DEFAULT_FONT)
@@ -102,6 +103,7 @@ class Workbook(object):
         self._cell_styles = IndexedList([StyleArray()])
         self._named_styles = NamedStyleList()
         self.add_named_style(NamedStyle(font=DEFAULT_FONT, builtinId=0))
+        self._table_styles = TableStyleList()
 
 
     @property
