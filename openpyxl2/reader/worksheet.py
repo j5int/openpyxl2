@@ -23,6 +23,7 @@ from openpyxl2.worksheet.header_footer import HeaderFooter
 from openpyxl2.worksheet.hyperlink import Hyperlink
 from openpyxl2.worksheet.merge import MergeCells
 from openpyxl2.worksheet.page import PageMargins, PrintOptions, PrintPageSetup
+from openpyxl2.worksheet.pagebreak import PageBreak
 from openpyxl2.worksheet.protection import SheetProtection
 from openpyxl2.worksheet.views import SheetViewList
 from openpyxl2.worksheet.datavalidation import DataValidationList
@@ -114,7 +115,8 @@ class WorkSheetParser(object):
             #'{%s}sheet/{%s}sortState' % (SHEET_MAIN_NS, SHEET_MAIN_NS): ('sort_state', SortState),
             '{%s}sheetPr' % SHEET_MAIN_NS: ('sheet_properties', WorksheetProperties),
             '{%s}sheetViews' % SHEET_MAIN_NS: ('views', SheetViewList),
-            '{%s}sheetFormatPr' % SHEET_MAIN_NS: ('sheet_format', SheetFormatProperties)
+            '{%s}sheetFormatPr' % SHEET_MAIN_NS: ('sheet_format', SheetFormatProperties),
+            '{%s}rowBreaks' % SHEET_MAIN_NS: ('page_breaks', PageBreak),
         }
 
         tags = dispatcher.keys()
