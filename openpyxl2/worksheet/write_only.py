@@ -19,9 +19,9 @@ from openpyxl2.worksheet.dimensions import SheetFormatProperties
 
 from openpyxl2.utils.exceptions import WorkbookAlreadySaved
 
-from .etree_worksheet import write_cell
-from .excel import ExcelWriter
-from .worksheet import write_drawing, write_conditional_formatting
+from openpyxl2.writer.etree_worksheet import write_cell
+from openpyxl2.writer.excel import ExcelWriter
+from openpyxl2.writer.worksheet import write_drawing, write_conditional_formatting
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import xmlfile, Element
 
