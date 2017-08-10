@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from openpyxl2.compat import deprecated
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
+from openpyxl2.worksheet.write_only import WriteOnlyWorksheet
 from openpyxl2.worksheet.copier import WorksheetCopy
 
 from openpyxl2.utils import quote_sheetname
@@ -13,8 +14,7 @@ from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 
-from openpyxl2.writer.write_only import WriteOnlyWorksheet, save_dump
-from openpyxl2.writer.excel import save_workbook
+from openpyxl2.writer.excel import save_workbook, save_dump
 
 from openpyxl2.styles.cell_style import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle

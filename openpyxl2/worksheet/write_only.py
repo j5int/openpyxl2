@@ -8,22 +8,19 @@ import atexit
 from inspect import isgenerator
 import os
 from tempfile import NamedTemporaryFile
-from zipfile import ZipFile, ZIP_DEFLATED
 
 from openpyxl2.cell import Cell, WriteOnlyCell
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
-from openpyxl2.worksheet import Worksheet
 from openpyxl2.workbook.child import _WorkbookChild
-from openpyxl2.worksheet.related import Related
-from openpyxl2.worksheet.dimensions import SheetFormatProperties
+from .worksheet import Worksheet
+from .related import Related
 
 from openpyxl2.utils.exceptions import WorkbookAlreadySaved
 
 from openpyxl2.writer.etree_worksheet import write_cell
-from openpyxl2.writer.excel import ExcelWriter
 from openpyxl2.writer.worksheet import write_drawing, write_conditional_formatting
 from openpyxl2.xml.constants import SHEET_MAIN_NS
-from openpyxl2.xml.functions import xmlfile, Element
+from openpyxl2.xml.functions import xmlfile
 
 ALL_TEMP_FILES = []
 
@@ -261,12 +258,3 @@ class WriteOnlyWorksheet(_WorkbookChild):
             out = src.read()
         self._cleanup()
         return out
-
-
-def save_dump(workbook, filename):
-    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
-    if workbook.worksheets == []:
-        workbook.create_sheet()
-    writer = ExcelWriter(workbook, archive)
-    writer.save(filename)
-    return True
