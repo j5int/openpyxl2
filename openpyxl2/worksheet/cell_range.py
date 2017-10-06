@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+# Copyright (c) 2010-2017 openpyxl
 
 from openpyxl2.compat.strings import safe_repr, unicode
 from openpyxl2.descriptors import Strict
