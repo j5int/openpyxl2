@@ -34,7 +34,6 @@ from openpyxl2.utils.cell import COORD_RE
 from openpyxl2.cell import Cell
 from openpyxl2.utils.exceptions import (
     SheetTitleException,
-    InsufficientCoordinatesException,
     NamedRangeException
 )
 from openpyxl2.utils.units import (
