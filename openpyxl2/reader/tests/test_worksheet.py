@@ -15,6 +15,7 @@ from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.cell import Cell
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.worksheet import Worksheet
+from openpyxl2.worksheet.pagebreak import Break, PageBreak
 from openpyxl2.packaging.relationship import Relationship, RelationshipList
 
 
@@ -707,3 +708,22 @@ def test_sort_state(WorkSheetParser):
     ws = parser.ws
 
     assert ws.sort_state.ref == "A2:AM3269"
+
+
+def test_page_break(WorkSheetParser):
+    src = """
+    <sheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+        <rowBreaks count="1" manualBreakCount="1">
+            <brk id="15" man="1" max="16383" min="0"/>
+        </rowBreaks>
+    </sheet>
+    """
+    expected_pagebreak = PageBreak()
+    expected_pagebreak.append(Break(id=15))
+
+    parser = WorkSheetParser
+    parser.source = src
+    parser.parse()
+    ws = parser.ws
+
+    assert ws.page_breaks == expected_pagebreak

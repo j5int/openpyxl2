@@ -8,6 +8,7 @@ from openpyxl2.chart import BarChart
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2 import Workbook
 from openpyxl2.worksheet.table import Table
+from openpyxl2.utils.exceptions import InvalidFileException
 
 
 @pytest.fixture
@@ -143,3 +144,14 @@ def test_merge_vba(ExcelWriter, archive, datadir):
         'xl/ctrlProps/ctrlProp8.xml',
         'xl/ctrlProps/ctrlProp2.xml',
     ])
+
+
+def test_duplicate_chart(ExcelWriter, archive, Workbook):
+    from openpyxl2.chart import PieChart
+    pc = PieChart()
+    wb = Workbook()
+    writer = ExcelWriter(wb, archive)
+
+    writer._charts = [pc]*2
+    with pytest.raises(InvalidFileException):
+        writer._write_charts()
