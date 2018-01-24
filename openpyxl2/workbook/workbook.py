@@ -4,9 +4,9 @@ from __future__ import absolute_import
 """Workbook is the top-level container for all document information."""
 
 from openpyxl2.compat import deprecated
-from openpyxl2.compat import OrderedDict
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
+from openpyxl2.worksheet.write_only import WriteOnlyWorksheet
 from openpyxl2.worksheet.copier import WorksheetCopy
 
 from openpyxl2.utils import quote_sheetname
@@ -14,8 +14,7 @@ from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 
-from openpyxl2.writer.write_only import WriteOnlyWorksheet, save_dump
-from openpyxl2.writer.excel import save_workbook
+from openpyxl2.writer.excel import save_workbook, save_dump
 
 from openpyxl2.styles.cell_style import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle
@@ -34,6 +33,9 @@ from .defined_name import DefinedName, DefinedNameList
 from openpyxl2.packaging.core import DocumentProperties
 from openpyxl2.packaging.relationship import RelationshipList
 from .protection import DocumentSecurity
+from .properties import CalcProperties
+from .views import BookView
+
 
 from openpyxl2.xml.constants import (
     XLSM,
@@ -54,8 +56,10 @@ class Workbook(object):
 
     def __init__(self,
                  write_only=False,
+                 iso_dates=False,
                  ):
         self._sheets = []
+        self._pivots = []
         self._active_sheet_index = 0
         self.defined_names = DefinedNameList()
         self._external_links = []
@@ -73,11 +77,14 @@ class Workbook(object):
         self.code_name = None
         self.excel_base_date = CALENDAR_WINDOWS_1900
         self.encoding = "utf-8"
+        self.iso_dates = iso_dates
 
         if not self.write_only:
             self._sheets.append(Worksheet(self))
 
         self.rels = RelationshipList()
+        self.calculation = CalcProperties()
+        self.views = [BookView()]
 
 
     def _setup_styles(self):
@@ -234,7 +241,7 @@ class Workbook(object):
         :type name: string
 
         """
-        for sheet in self.worksheets:
+        for sheet in self.worksheets + self.chartsheets:
             if sheet.title == key:
                 return sheet
         raise KeyError("Worksheet {0} does not exist.".format(key))

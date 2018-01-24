@@ -7,6 +7,8 @@ from openpyxl2.compat import safe_string
 from openpyxl2.comments.comment_sheet import CommentRecord
 from openpyxl2.xml.functions import Element, SubElement
 from openpyxl2 import LXML
+from openpyxl2.utils.datetime import to_excel, days_to_time
+from datetime import timedelta
 
 
 def get_rows_to_write(worksheet):
@@ -68,6 +70,15 @@ def etree_write_cell(xf, worksheet, cell, styled=None):
 
     value = cell._value
 
+    if cell.data_type == "d":
+        if cell.parent.parent.iso_dates:
+            if isinstance(value, timedelta):
+                value = days_to_time(value)
+            value = value.isoformat()
+        else:
+            attributes['t'] = "n"
+            value = to_excel(value)
+
     if cell._comment is not None:
         comment = CommentRecord.from_cell(cell)
         worksheet._comments.append(comment)
@@ -106,6 +117,15 @@ def lxml_write_cell(xf, worksheet, cell, styled=False):
         attributes['t'] = cell.data_type
 
     value = cell._value
+
+    if cell.data_type == "d":
+        if cell.parent.parent.iso_dates:
+            if isinstance(value, timedelta):
+                value = days_to_time(value)
+            value = value.isoformat()
+        else:
+            attributes['t'] = "n"
+            value = to_excel(value)
 
     if cell._comment is not None:
         comment = CommentRecord.from_cell(cell)
