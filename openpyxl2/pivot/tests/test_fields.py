@@ -3,10 +3,7 @@ from __future__ import absolute_import
 import pytest
 
 from datetime import datetime
-from io import BytesIO
-from zipfile import ZipFile
 
-from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
 

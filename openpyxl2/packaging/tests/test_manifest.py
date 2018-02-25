@@ -8,16 +8,6 @@ from zipfile import ZipFile
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
 
-from openpyxl2.xml.constants import (
-    ARC_CONTENT_TYPES,
-    ARC_WORKBOOK,
-    CONTYPES_NS,
-    XLSM,
-    XLSX,
-    XLTM,
-    XLTX,
-)
-
 from ..manifest import WORKSHEET_TYPE
 
 @pytest.fixture

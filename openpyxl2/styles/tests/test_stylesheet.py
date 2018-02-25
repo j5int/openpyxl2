@@ -192,8 +192,6 @@ class TestStylesheet:
 
 
     def test_named_styles(self, datadir, Stylesheet):
-        from openpyxl2.styles.named_styles import NamedStyle
-        from openpyxl2.styles.fonts import DEFAULT_FONT
         from openpyxl2.styles.fills import DEFAULT_EMPTY_FILL
         from openpyxl2.styles.borders import Border
 
