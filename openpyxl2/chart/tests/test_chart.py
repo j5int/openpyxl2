@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 import pytest
 
-from openpyxl2.xml.functions import fromstring, tostring
+from openpyxl2.xml.functions import tostring
 from openpyxl2.tests.helper import compare_xml
 from ..chartspace import PlotArea
 

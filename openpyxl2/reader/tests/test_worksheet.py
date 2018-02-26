@@ -9,11 +9,9 @@ from zipfile import ZipFile
 
 from lxml.etree import iterparse, fromstring
 
-from openpyxl2.utils.exceptions import InvalidFileException
 from openpyxl2 import load_workbook
 from openpyxl2.compat import unicode
 from openpyxl2.xml.constants import SHEET_MAIN_NS
-from openpyxl2.cell import Cell
 from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.worksheet import Worksheet
 from openpyxl2.worksheet.pagebreak import Break, PageBreak

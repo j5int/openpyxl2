@@ -10,12 +10,9 @@ from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
 
 from .test_fields import (
-    Boolean,
     Index,
-    Missing,
     Number,
     Text,
-    DateTimeField,
 )
 
 @pytest.fixture
