@@ -1,12 +1,9 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2017 openpyxl
+# Copyright (c) 2010-2018 openpyxl
 import pytest
 
 from datetime import datetime
-from io import BytesIO
-from zipfile import ZipFile
 
-from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.xml.functions import fromstring, tostring
 from openpyxl2.tests.helper import compare_xml
 

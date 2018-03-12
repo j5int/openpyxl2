@@ -1,19 +1,16 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2017 openpyxl
+# Copyright (c) 2010-2018 openpyxl
 
 
 # Python stdlib imports
 from io import BytesIO
 import zipfile
-import pytest
 
 # package imports
-from openpyxl2.tests.helper import compare_xml
-from openpyxl2.packaging.manifest import Manifest
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.writer.excel import save_virtual_workbook
-from openpyxl2.xml.functions import fromstring, tostring
-from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS, CONTYPES_NS
+from openpyxl2.xml.functions import fromstring
+from openpyxl2.xml.constants import CONTYPES_NS
 
 
 def test_content_types(datadir):

@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2017 openpyxl
+# Copyright (c) 2010-2018 openpyxl
 
 import datetime
 import decimal
@@ -14,7 +14,6 @@ from openpyxl2 import Workbook
 from .. worksheet import write_worksheet
 
 from openpyxl2.tests.helper import compare_xml
-from openpyxl2.worksheet.properties import PageSetupProperties
 from openpyxl2.worksheet.dimensions import DimensionHolder
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
 
@@ -83,7 +82,6 @@ def write_cell_implementation(request, etree_write_cell, lxml_write_cell):
                              (None, """<c r="A1" t="n"></c>"""),
                          ])
 def test_write_cell(worksheet, write_cell_implementation, value, expected):
-    from openpyxl2.cell import Cell
     write_cell = write_cell_implementation
 
     ws = worksheet
@@ -112,7 +110,6 @@ def test_write_cell(worksheet, write_cell_implementation, value, expected):
                          ]
                          )
 def test_write_date(worksheet, write_cell_implementation, value, expected, iso_dates):
-    from openpyxl2.cell import Cell
     write_cell = write_cell_implementation
 
     ws = worksheet

@@ -285,7 +285,7 @@ API Documentation
 ------------------
 
 Key Classes
-+++++++++++ 
++++++++++++
 
 * :class:`openpyxl2[.]workbook.workbook.Workbook`
 * :class:`openpyxl2[.]worksheet.worksheet.Worksheet`

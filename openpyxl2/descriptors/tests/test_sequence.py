@@ -1,11 +1,11 @@
 from __future__ import absolute_import
-# Copyright (c) 2010-2017 openpyxl
+# Copyright (c) 2010-2018 openpyxl
 import pytest
 
 from openpyxl2.xml.functions import fromstring, tostring, Element
 from openpyxl2.tests.helper import compare_xml
 from ..serialisable import Serialisable
-from ..base import Integer, Alias
+from ..base import Integer
 
 @pytest.fixture
 def Sequence():
