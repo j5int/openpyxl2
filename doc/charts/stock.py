@@ -1,4 +1,3 @@
-
 from datetime import date
 
 from openpyxl2 import Workbook

@@ -4,8 +4,7 @@ from __future__ import absolute_import
 import pytest
 
 from openpyxl2.compat import unicode
-from openpyxl2.xml.functions import fromstring, tostring
-from openpyxl2.tests.helper import compare_xml
+
 
 @pytest.fixture
 def Reference():

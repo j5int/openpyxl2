@@ -8,12 +8,7 @@ from itertools import islice
 # package imports
 from openpyxl2.workbook import Workbook
 from openpyxl2.cell import Cell
-from openpyxl2.utils import coordinate_from_string
-from openpyxl2.comments import Comment
-from openpyxl2.utils.exceptions import (
-    SheetTitleException,
-    NamedRangeException
-    )
+from openpyxl2.utils.exceptions import NamedRangeException
 
 
 class DummyWorkbook:

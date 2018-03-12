@@ -3,7 +3,6 @@ from __future__ import absolute_import
 
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2.xml.functions import fromstring
-from openpyxl2.workbook import Workbook
 
 from ..comments import Comment
 
