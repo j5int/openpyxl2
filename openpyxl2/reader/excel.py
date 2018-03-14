@@ -39,14 +39,14 @@ from openpyxl2.xml.constants import (
 )
 
 from openpyxl2.comments.comment_sheet import CommentSheet
-from openpyxl2.workbook import Workbook
 
 from .strings import read_string_table
+from .workbook import WorkbookParser
 from openpyxl2.styles.stylesheet import apply_stylesheet
 
 from openpyxl2.packaging.core import DocumentProperties
 from openpyxl2.packaging.manifest import Manifest, Override
-from openpyxl2.packaging.workbook import WorkbookParser
+
 from openpyxl2.packaging.relationship import get_dependents, get_rels_path
 
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
