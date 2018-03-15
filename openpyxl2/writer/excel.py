@@ -37,10 +37,7 @@ from openpyxl2.packaging.relationship import (
 from openpyxl2.packaging.extended import ExtendedProperties
 
 from openpyxl2.writer.strings import write_string_table
-from openpyxl2.writer.workbook import (
-    write_root_rels,
-    WorkbookWriter
-)
+from openpyxl2.writer.workbook import WorkbookWriter
 from openpyxl2.writer.theme import write_theme
 from openpyxl2.writer.worksheet import write_worksheet
 from openpyxl2.styles.stylesheet import write_stylesheet
@@ -69,7 +66,6 @@ class ExcelWriter(object):
         # cleanup all worksheets
         archive = self._archive
 
-        archive.writestr(ARC_ROOT_RELS, write_root_rels(self.workbook))
         props = ExtendedProperties()
         archive.writestr(ARC_APP, tostring(props.to_tree()))
 
@@ -92,6 +88,7 @@ class ExcelWriter(object):
         archive.writestr(ARC_STYLE, tostring(stylesheet))
 
         writer = WorkbookWriter(self.workbook)
+        archive.writestr(ARC_ROOT_RELS, writer.write_root_rels())
         archive.writestr(ARC_WORKBOOK, writer.write())
         archive.writestr(ARC_WORKBOOK_RELS, writer.write_rels())
 
