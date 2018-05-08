@@ -8,7 +8,6 @@ from openpyxl2.chart.series import DataPoint
 from openpyxl2.chart.shapes import GraphicalProperties
 from openpyxl2.drawing.fill import (
     GradientFillProperties,
-    GradientStopList,
     GradientStop,
     LinearShadeProperties
 )
