@@ -7,4 +7,3 @@ prune scratchpad
 recursive-exclude openpyxl2 test_*.py tests/*.py
 
 include *.rst
-include openpyxl2/.constants.json

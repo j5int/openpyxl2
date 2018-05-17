@@ -57,9 +57,6 @@ setup(name='openpyxl2',
     install_requires=[
         'jdcal', 'et_xmlfile',
         ],
-    package_data={
-        'openpyxl2': ['.constants.json']
-    },
     classifiers=[
                  'Development Status :: 5 - Production/Stable',
                  'Operating System :: MacOS :: MacOS X',
