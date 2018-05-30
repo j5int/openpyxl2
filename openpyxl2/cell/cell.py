@@ -48,7 +48,6 @@ from openpyxl2.styles import numbers, is_date_format
 from openpyxl2.styles.styleable import StyleableObject
 from openpyxl2.worksheet.hyperlink import Hyperlink
 
-
 # constants
 
 
