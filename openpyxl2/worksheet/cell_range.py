@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 # Copyright (c) 2010-2018 openpyxl
 
 from copy import copy
-from itertools import islice, product
 
 from openpyxl2.compat.strings import safe_repr
 from openpyxl2.descriptors import Strict
