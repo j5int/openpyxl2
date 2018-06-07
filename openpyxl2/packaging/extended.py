@@ -1,12 +1,7 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2018 openpyxl
 
-from openpyxl2 import __version__
-
-VERSION = ".".join(__version__.split(".")[:2])
-
 from openpyxl2.compat import unicode
-
 from openpyxl2.descriptors.serialisable import Serialisable
 from openpyxl2.descriptors import (
     Typed,
@@ -16,6 +11,13 @@ from openpyxl2.descriptors.nested import (
 )
 
 from openpyxl2.xml.constants import XPROPS_NS
+
+
+def get_version():
+    from openpyxl2 import __version__
+
+    VERSION = ".".join(__version__.split(".")[:2])
+    return VERSION
 
 
 class DigSigBlob(Serialisable):
@@ -100,7 +102,7 @@ class ExtendedProperties(Serialisable):
                  HyperlinksChanged=None,
                  DigSig=None,
                  Application="Microsoft Excel",
-                 AppVersion=VERSION,
+                 AppVersion=None,
                  DocSecurity=None,
                 ):
         self.Template = Template
@@ -128,6 +130,8 @@ class ExtendedProperties(Serialisable):
         self.HyperlinksChanged = HyperlinksChanged
         self.DigSig = None
         self.Application = Application
+        if AppVersion is None:
+            AppVersion = get_version()
         self.AppVersion = AppVersion
         self.DocSecurity = DocSecurity
 
