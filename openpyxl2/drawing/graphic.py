@@ -14,7 +14,6 @@ from openpyxl2.descriptors import (
     String,
     Alias,
 )
-from openpyxl2.descriptors.excel import Relation
 from openpyxl2.descriptors.excel import ExtensionList as OfficeArtExtensionList
 
 from openpyxl2.chart.shapes import GraphicalProperties
@@ -28,6 +27,7 @@ from .geometry import (
     ShapeStyle,
     GroupTransform2D
 )
+from .relation import ChartRelation
 from .xdr import XDRTransform2D
 
 
@@ -394,17 +394,6 @@ class NonVisualGraphicFrame(Serialisable):
         if cNvGraphicFramePr is None:
             cNvGraphicFramePr = NonVisualGraphicFrameProperties()
         self.cNvGraphicFramePr = cNvGraphicFramePr
-
-
-class ChartRelation(Serialisable):
-
-    tagname = "chart"
-    namespace = CHART_NS
-
-    id = Relation()
-
-    def __init__(self, id):
-        self.id = id
 
 
 class GraphicData(Serialisable):
