@@ -52,6 +52,7 @@ from openpyxl2.packaging.relationship import get_dependents, get_rels_path
 from openpyxl2.worksheet.read_only import ReadOnlyWorksheet
 from openpyxl2.worksheet.table import Table
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
+from openpyxl2.drawing.image_reader import find_images
 from openpyxl2.chart.reader import find_charts
 
 from openpyxl2.xml.functions import fromstring
@@ -272,6 +273,8 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA,
                 for rel in drawings:
                     for c in find_charts(archive, rel.target):
                         ws.add_chart(c, c.anchor)
+                    for im in find_images(archive, rel.target):
+                        ws.add_image(im, im.anchor)
 
                 pivot_rel = rels.find(TableDefinition.rel_type)
                 for r in pivot_rel:

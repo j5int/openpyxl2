@@ -12,7 +12,7 @@ from openpyxl2.descriptors.nested import (
 from openpyxl2.drawing.colors import ColorChoiceDescriptor
 from openpyxl2.drawing.fill import *
 from openpyxl2.drawing.line import LineProperties
-from openpyxl2.drawing.shapes import (
+from openpyxl2.drawing.geometry import (
     Shape3D,
     Scene3D,
     Transform2D,
