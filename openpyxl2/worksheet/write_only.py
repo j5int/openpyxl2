@@ -10,16 +10,12 @@ import os
 from tempfile import NamedTemporaryFile
 
 from openpyxl2.cell import Cell, WriteOnlyCell
-from openpyxl2.comments.comment_sheet import CommentRecord
 from openpyxl2.drawing.spreadsheet_drawing import SpreadsheetDrawing
 from openpyxl2.workbook.child import _WorkbookChild
 from .worksheet import Worksheet
 from .related import Related
 
 from openpyxl2.utils.exceptions import WorkbookAlreadySaved
-
-from openpyxl2.writer.etree_worksheet import write_cell
-from openpyxl2.writer.worksheet import write_drawing, write_conditional_formatting
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import xmlfile
 
