@@ -17,7 +17,7 @@ from .merge import MergeCell, MergeCells
 from .related import Related
 from .table import TablePartList
 
-from openpyxl2.writer.etree_worksheet import write_cell
+from openpyxl2.writer.cell import write_cell
 
 
 class WorksheetWriter:
