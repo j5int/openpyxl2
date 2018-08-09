@@ -11,8 +11,6 @@ from openpyxl2.xml.functions import fromstring, tostring, xmlfile
 from openpyxl2.reader.excel import load_workbook
 from openpyxl2 import Workbook
 
-from .. worksheet import write_worksheet
-
 from openpyxl2.tests.helper import compare_xml
 from openpyxl2.xml.constants import SHEET_MAIN_NS, REL_NS
 from openpyxl2.utils.datetime import CALENDAR_MAC_1904, CALENDAR_WINDOWS_1900
