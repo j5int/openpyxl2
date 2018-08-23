@@ -21,7 +21,7 @@ from .merge import MergeCell, MergeCells
 from .related import Related
 from .table import TablePartList
 
-from openpyxl2.writer.cell import write_cell
+from openpyxl2.cell.writer import write_cell
 
 
 ALL_TEMP_FILES = []
