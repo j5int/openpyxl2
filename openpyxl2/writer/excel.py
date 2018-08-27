@@ -35,14 +35,14 @@ from openpyxl2.packaging.relationship import (
     RelationshipList,
     Relationship,
 )
-from openpyxl2.packaging.extended import ExtendedProperties
-
-from openpyxl2.writer.strings import write_string_table
-from openpyxl2.writer.workbook import WorkbookWriter
-from openpyxl2.writer.theme import write_theme
-from openpyxl2.styles.stylesheet import write_stylesheet
-
 from openpyxl2.comments.comment_sheet import CommentSheet
+from openpyxl2.packaging.extended import ExtendedProperties
+from openpyxl2.styles.stylesheet import write_stylesheet
+from openpyxl2.worksheet.writer import WorksheetWriter
+
+from .strings import write_string_table
+from .workbook import WorkbookWriter
+from .theme import write_theme
 
 
 class ExcelWriter(object):
@@ -194,9 +194,18 @@ class ExcelWriter(object):
         ws._drawing = SpreadsheetDrawing()
         ws._drawing.charts = ws._charts
         ws._drawing.images = ws._images
-        writer = ws._write()
+        if self.workbook.write_only:
+            if not ws.closed:
+                ws.close()
+            writer = ws._writer
+        else:
+            writer = WorksheetWriter(ws)
+            writer.write()
+
+        ws._rels = writer._rels
         self._archive.write(writer.out, ws.path[1:])
         self.manifest.append(ws)
+        writer.cleanup()
 
 
     def _write_worksheets(self):
