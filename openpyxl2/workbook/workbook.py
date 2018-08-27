@@ -14,7 +14,7 @@ from openpyxl2.utils.indexed_list import IndexedList
 from openpyxl2.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl2.utils.exceptions import ReadOnlyWorkbookException
 
-from openpyxl2.writer.excel import save_workbook, save_dump
+from openpyxl2.writer.excel import save_workbook
 
 from openpyxl2.styles.cell_style import StyleArray
 from openpyxl2.styles.named_styles import NamedStyle
@@ -379,10 +379,9 @@ class Workbook(object):
         """
         if self.read_only:
             raise TypeError("""Workbook is read-only""")
-        if self.write_only:
-            save_dump(self, filename)
-        else:
-            save_workbook(self, filename)
+        if self.write_only and not self.worksheets:
+            self.create_sheet()
+        save_workbook(self, filename)
 
 
     @property
