@@ -22,7 +22,6 @@ from openpyxl2.compat import (
 
 # package imports
 from openpyxl2.utils import (
-    coordinate_from_string,
     column_index_from_string,
     get_column_letter,
     range_boundaries,
