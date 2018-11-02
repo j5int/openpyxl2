@@ -1,9 +1,0 @@
-prune openpyxl2/tests
-prune openpyxl2/sample
-prune openpyxl2/benchmarks
-prune openpyxl2/develop
-prune scratchpad
-
-recursive-exclude openpyxl2 test_*.py tests/*.py
-
-include *.rst
