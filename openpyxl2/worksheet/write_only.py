@@ -16,7 +16,7 @@ from openpyxl2.utils.exceptions import WorkbookAlreadySaved
 from openpyxl2.xml.constants import SHEET_MAIN_NS
 from openpyxl2.xml.functions import xmlfile
 
-from .writer import WorksheetWriter
+from ._writer import WorksheetWriter
 
 
 class WriteOnlyWorksheet(_WorkbookChild):

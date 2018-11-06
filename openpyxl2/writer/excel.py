@@ -38,7 +38,7 @@ from openpyxl2.packaging.relationship import (
 from openpyxl2.comments.comment_sheet import CommentSheet
 from openpyxl2.packaging.extended import ExtendedProperties
 from openpyxl2.styles.stylesheet import write_stylesheet
-from openpyxl2.worksheet.writer import WorksheetWriter
+from openpyxl2.worksheet._writer import WorksheetWriter
 
 from .workbook import WorkbookWriter
 from .theme import write_theme
